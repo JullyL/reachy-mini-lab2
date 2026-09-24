@@ -1,0 +1,19 @@
+{
+  "source": "actual Conversation App HuggingFaceRealtimeHandler",
+  "revision": "b9f58a3587d79a3275d4402d1a8d210649d62d50",
+  "input_mode": "text",
+  "question": "Why does a metal spoon feel colder than a wooden spoon?",
+  "answer": "Metal conducts heat away from your hand much faster than wood, so your skin cools quickly and the spoon feels colder. Wood is a poor heat conductor, so it takes heat from your hand more slowly, even when both spoons are at the same temperature.",
+  "duration_s": 15.04,
+  "voice": "Aiden",
+  "sample_rate": 16000,
+  "sha256": "64723e9371d620cad3a382eac116ef840c3bfe1de8e66f3e16a73495544930c6",
+  "response": {
+    "id": "resp_d887aa534cb849c1beb16bc5585658d7",
+    "status": "completed"
+  },
+  "choreography_reviewed": false,
+  "network_capture_elapsed_s": 4.962317400000757,
+  "event_log_format": "metadata-only; PCM audio is stored once in answer.wav",
+  "original_event_log_sha256": "543287c59d7f08a9933077437ec8b70cb392081be8a5d4862a3a503a5106ae1c"
+}

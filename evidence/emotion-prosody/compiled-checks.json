@@ -1,0 +1,568 @@
+{
+  "A_and_thinking_unchanged": true,
+  "questions": [
+    {
+      "question": "q1",
+      "head_peak_deg": 15.212818745575406,
+      "head_speed_peak_deg_s": 52.167762244174995,
+      "head_acceleration_peak_deg_s2": 350.00000000000813,
+      "gesture_sha256": "5b2360e98056c9787a9db8c14e73b0b1be6cd40822e147fbadbf8e172d61db17",
+      "alignment_sha256": "89d2af1e07a4ce6315602b15d28386d4db1148e5b3b16776a75c202edaf589fa",
+      "cues": [
+        {
+          "start_s": 5.0,
+          "end_s": 6.65,
+          "state": "curious",
+          "phrase": "The Moon doesn't actually change shape",
+          "source_motion": "inquiring1",
+          "accents": [
+            {
+              "at_s": 0.15,
+              "word": "moon",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 1.46,
+              "word": "shape",
+              "kind": "phrase_ending"
+            }
+          ]
+        },
+        {
+          "start_s": 7.05,
+          "end_s": 10.51,
+          "state": "explaining",
+          "phrase": "as it orbits Earth",
+          "source_motion": "understanding1",
+          "accents": [
+            {
+              "at_s": 2.53,
+              "word": "orbits",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 5.28,
+              "word": "half",
+              "kind": "acoustic_prominence"
+            }
+          ]
+        },
+        {
+          "start_s": 11.04,
+          "end_s": 15.98,
+          "state": "happy",
+          "phrase": "Those changing views create the phases",
+          "source_motion": "cheerful1",
+          "accents": [
+            {
+              "at_s": 6.43,
+              "word": "changing",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 7.97,
+              "word": "phases",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 9.735,
+              "word": "moon",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 10.775,
+              "word": "again",
+              "kind": "phrase_ending"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question": "q2",
+      "head_peak_deg": 18.96955936835603,
+      "head_speed_peak_deg_s": 54.462751720208466,
+      "head_acceleration_peak_deg_s2": 346.6401681261067,
+      "gesture_sha256": "683dd9fdf45d477573cf2cf1d8310ab56f09aa53fef0080f9f2ec8759eaf1df4",
+      "alignment_sha256": "41735e2d7759f0b0efe65f3d63c2ef8d431a9b3fe3c62a7de8a3acefbc9314c7",
+      "cues": [
+        {
+          "start_s": 5.0,
+          "end_s": 8.17,
+          "state": "surprised",
+          "phrase": "Lightning's light travels almost instantly",
+          "source_motion": "surprised1",
+          "accents": [
+            {
+              "at_s": 0.635,
+              "word": "light",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 1.885,
+              "word": "instantly",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 2.905,
+              "word": "eyes",
+              "kind": "phrase_ending"
+            }
+          ]
+        },
+        {
+          "start_s": 8.51,
+          "end_s": 13.31,
+          "state": "explaining",
+          "phrase": "while thunder is sound",
+          "source_motion": "understanding1",
+          "accents": [
+            {
+              "at_s": 3.925,
+              "word": "thunder",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 5.355,
+              "word": "through",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 6.67,
+              "word": "hundred",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 8.11,
+              "word": "second",
+              "kind": "phrase_ending"
+            }
+          ]
+        },
+        {
+          "start_s": 14.1,
+          "end_s": 20.1,
+          "state": "curious",
+          "phrase": "That delay lets you estimate distance",
+          "source_motion": "inquiring1",
+          "accents": [
+            {
+              "at_s": 9.58,
+              "word": "delay",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 12.555,
+              "word": "seconds",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 13.535,
+              "word": "flash",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 14.92,
+              "word": "means",
+              "kind": "acoustic_prominence"
+            }
+          ]
+        },
+        {
+          "start_s": 20.1,
+          "end_s": 22.3,
+          "state": "affirming",
+          "phrase": "the storm is about one kilometer away",
+          "source_motion": "yes1",
+          "accents": [
+            {
+              "at_s": 15.405,
+              "word": "storm",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 17.18,
+              "word": "away",
+              "kind": "phrase_ending"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question": "q3",
+      "head_peak_deg": 9.519531294047653,
+      "head_speed_peak_deg_s": 48.42747637012681,
+      "head_acceleration_peak_deg_s2": 349.99999999999756,
+      "gesture_sha256": "71615e420355d15cb56e2438a28c81177edbd856b5370fa6eacef7ab4382b349",
+      "alignment_sha256": "0f8b0cc5ad7121a8077bd48bc4940c3e507f7cd8c4b908552b9e00aa9ddc54cd",
+      "cues": [
+        {
+          "start_s": 5.0,
+          "end_s": 9.91,
+          "state": "curious",
+          "phrase": "A rainbow appears",
+          "source_motion": "inquiring1",
+          "accents": [
+            {
+              "at_s": 0.37,
+              "word": "rainbow",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 1.555,
+              "word": "sunlight",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 3.205,
+              "word": "bends",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 4.735,
+              "word": "colors",
+              "kind": "phrase_ending"
+            }
+          ]
+        },
+        {
+          "start_s": 10.35,
+          "end_s": 14.13,
+          "state": "explaining",
+          "phrase": "reflects inside the drops",
+          "source_motion": "understanding1",
+          "accents": [
+            {
+              "at_s": 7.505,
+              "word": "bends",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 8.77,
+              "word": "leaves",
+              "kind": "acoustic_prominence"
+            }
+          ]
+        },
+        {
+          "start_s": 14.53,
+          "end_s": 16.810000000000002,
+          "state": "happy",
+          "phrase": "You see it",
+          "source_motion": "cheerful1",
+          "accents": [
+            {
+              "at_s": 10.4,
+              "word": "sun",
+              "kind": "acoustic_prominence"
+            }
+          ]
+        },
+        {
+          "start_s": 16.810000000000002,
+          "end_s": 17.95,
+          "state": "affirming",
+          "phrase": "rain is in front of you",
+          "source_motion": "yes1",
+          "accents": [
+            {
+              "at_s": 12.005,
+              "word": "rain",
+              "kind": "acoustic_prominence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question": "q4",
+      "head_peak_deg": 18.98195346584048,
+      "head_speed_peak_deg_s": 59.27843194150633,
+      "head_acceleration_peak_deg_s2": 346.9951781356703,
+      "gesture_sha256": "be23e9ae705916b4f7eb20e39f847926f6570fa39d4aec1b5a3ae227b5432e62",
+      "alignment_sha256": "78d8815516bf9dec598f59e1e644b1aaf745a9fcaea1a5be78375aff971739b9",
+      "cues": [
+        {
+          "start_s": 5.0,
+          "end_s": 8.57,
+          "state": "explaining",
+          "phrase": "Metal conducts heat",
+          "source_motion": "understanding1",
+          "accents": [
+            {
+              "at_s": 0.835,
+              "word": "heat",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 2.33,
+              "word": "faster",
+              "kind": "acoustic_prominence"
+            }
+          ]
+        },
+        {
+          "start_s": 8.57,
+          "end_s": 11.75,
+          "state": "surprised",
+          "phrase": "your skin cools quickly",
+          "source_motion": "surprised1",
+          "accents": [
+            {
+              "at_s": 3.945,
+              "word": "skin",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 5.735,
+              "word": "spoon",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 6.67,
+              "word": "colder",
+              "kind": "phrase_ending"
+            }
+          ]
+        },
+        {
+          "start_s": 12.46,
+          "end_s": 17.8,
+          "state": "curious",
+          "phrase": "Wood is a poor heat conductor",
+          "source_motion": "inquiring1",
+          "accents": [
+            {
+              "at_s": 8.105,
+              "word": "poor",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 10.225,
+              "word": "heat",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 11.625,
+              "word": "slowly",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 12.445,
+              "word": "even",
+              "kind": "phrase_ending"
+            }
+          ]
+        },
+        {
+          "start_s": 17.8,
+          "end_s": 19.95,
+          "state": "affirming",
+          "phrase": "both spoons are at the same temperature",
+          "source_motion": "yes1",
+          "accents": [
+            {
+              "at_s": 13.335,
+              "word": "spoons",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 14.875,
+              "word": "temperature",
+              "kind": "phrase_ending"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question": "q5",
+      "head_peak_deg": 7.64144449816293,
+      "head_speed_peak_deg_s": 37.55267669743339,
+      "head_acceleration_peak_deg_s2": 349.99999999999824,
+      "gesture_sha256": "2383257e2f656357e977241e131f677fbe339159cf293605954d3268b7a7fefc",
+      "alignment_sha256": "75cc4a15eba63ddbe0c9a0761eb291f1f8f40427e6f7aa75d42e8ae32ea04797",
+      "cues": [
+        {
+          "start_s": 5.0,
+          "end_s": 8.620000000000001,
+          "state": "explaining",
+          "phrase": "Soap molecules",
+          "source_motion": "understanding1",
+          "accents": [
+            {
+              "at_s": 0.2,
+              "word": "soap",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 1.48,
+              "word": "water",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 3.42,
+              "word": "end",
+              "kind": "phrase_ending"
+            }
+          ]
+        },
+        {
+          "start_s": 9.07,
+          "end_s": 14.48,
+          "state": "curious",
+          "phrase": "Their grease-loving ends surround oily dirt",
+          "source_motion": "inquiring1",
+          "accents": [
+            {
+              "at_s": 6.135,
+              "word": "oily",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 7.77,
+              "word": "water",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 9.06,
+              "word": "outward",
+              "kind": "acoustic_prominence"
+            }
+          ]
+        },
+        {
+          "start_s": 14.91,
+          "end_s": 17.369999999999997,
+          "state": "enthusiastic",
+          "phrase": "forming tiny droplets called micelles",
+          "source_motion": "enthusiastic1",
+          "accents": [
+            {
+              "at_s": 10.845,
+              "word": "droplets",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 11.97,
+              "word": "micelles",
+              "kind": "phrase_ending"
+            }
+          ]
+        },
+        {
+          "start_s": 17.78,
+          "end_s": 20.880000000000003,
+          "state": "happy",
+          "phrase": "Water can then carry those droplets away",
+          "source_motion": "cheerful1",
+          "accents": [
+            {
+              "at_s": 13.03,
+              "word": "water",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 14.95,
+              "word": "away",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 15.64,
+              "word": "rinse",
+              "kind": "phrase_ending"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question": "q6",
+      "head_peak_deg": 16.28771880632462,
+      "head_speed_peak_deg_s": 59.466989031942674,
+      "head_acceleration_peak_deg_s2": 349.99999999998823,
+      "gesture_sha256": "0206f12ad8dd08af801e0da13d30659a07cc66552a8e649bf920d49e7dc48e56",
+      "alignment_sha256": "5742c975e7bd5c32d11b46ebef8cdfd85bd87e65bbafd37ee72d5f9aa2e26a3e",
+      "cues": [
+        {
+          "start_s": 5.0,
+          "end_s": 9.64,
+          "state": "explaining",
+          "phrase": "Shadows change",
+          "source_motion": "understanding1",
+          "accents": [
+            {
+              "at_s": 0.32,
+              "word": "shadows",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 2.48,
+              "word": "move",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 3.37,
+              "word": "sky",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 4.335,
+              "word": "rotates",
+              "kind": "phrase_ending"
+            }
+          ]
+        },
+        {
+          "start_s": 10.280000000000001,
+          "end_s": 14.61,
+          "state": "curious",
+          "phrase": "When the Sun is low",
+          "source_motion": "inquiring1",
+          "accents": [
+            {
+              "at_s": 6.31,
+              "word": "low",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 7.755,
+              "word": "sunset",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 8.94,
+              "word": "shadows",
+              "kind": "acoustic_prominence"
+            }
+          ]
+        },
+        {
+          "start_s": 15.11,
+          "end_s": 18.03,
+          "state": "affirming",
+          "phrase": "when it is highest around midday",
+          "source_motion": "yes1",
+          "accents": [
+            {
+              "at_s": 10.67,
+              "word": "highest",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 11.89,
+              "word": "midday",
+              "kind": "acoustic_prominence"
+            },
+            {
+              "at_s": 12.835,
+              "word": "shortest",
+              "kind": "phrase_ending"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

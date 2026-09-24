@@ -1,0 +1,19 @@
+{
+  "source": "actual Conversation App HuggingFaceRealtimeHandler",
+  "revision": "b9f58a3587d79a3275d4402d1a8d210649d62d50",
+  "input_mode": "text",
+  "question": "Why does the Moon appear to change shape?",
+  "answer": "The Moon doesn't actually change shape; as it orbits Earth, we see different amounts of its sunlit half. Those changing views create the phases, from crescent to full Moon and back again.",
+  "duration_s": 11.04,
+  "voice": "Aiden",
+  "sample_rate": 16000,
+  "sha256": "060d9c8ca99929920229f32356f18dc79c3a2638b66c985d4f0516fd3388652f",
+  "response": {
+    "id": "resp_56bbea17a7914929b737c23f8fcbaded",
+    "status": "completed"
+  },
+  "choreography_reviewed": false,
+  "network_capture_elapsed_s": 4.465637599991169,
+  "event_log_format": "metadata-only; PCM audio is stored once in answer.wav",
+  "original_event_log_sha256": "9f1fe492de2c9c3d2062355a9a59bd344909b24b66f943edcfb4746f926d73ce"
+}

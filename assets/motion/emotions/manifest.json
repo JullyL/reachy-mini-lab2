@@ -1,0 +1,53 @@
+{
+  "revision": "873ae49f0b89114b7e535eff0c1f7560d21d9357",
+  "motions": [
+    {
+      "id": "curious1",
+      "sha256": "16be0c194e33933d13fc38c105be8a47cb6b7de7e220b4567dc3e38bd564f749",
+      "url": "https://huggingface.co/datasets/pollen-robotics/reachy-mini-emotions-library/resolve/873ae49f0b89114b7e535eff0c1f7560d21d9357/curious1.json",
+      "duration_s": 11.78
+    },
+    {
+      "id": "inquiring1",
+      "sha256": "a3f8b057ccebbb48c22dc6017114d6a4a77c6117989d9c93e89b7f4b8320fe0e",
+      "url": "https://huggingface.co/datasets/pollen-robotics/reachy-mini-emotions-library/resolve/873ae49f0b89114b7e535eff0c1f7560d21d9357/inquiring1.json",
+      "duration_s": 2.14
+    },
+    {
+      "id": "attentive1",
+      "sha256": "eac086094c388fbe9d6d704ba3705578526de3c0b6343b4774fca965d91a58e4",
+      "url": "https://huggingface.co/datasets/pollen-robotics/reachy-mini-emotions-library/resolve/873ae49f0b89114b7e535eff0c1f7560d21d9357/attentive1.json",
+      "duration_s": 4.28
+    },
+    {
+      "id": "understanding1",
+      "sha256": "75a1341acec63c421bda3b1302aeac8117eecf281d30b0f34a458b3ec973b37a",
+      "url": "https://huggingface.co/datasets/pollen-robotics/reachy-mini-emotions-library/resolve/873ae49f0b89114b7e535eff0c1f7560d21d9357/understanding1.json",
+      "duration_s": 3.94
+    },
+    {
+      "id": "yes1",
+      "sha256": "b355cabc9c7ef844055b2b3bb96ca914118fab1c842429e724f512852aa47568",
+      "url": "https://huggingface.co/datasets/pollen-robotics/reachy-mini-emotions-library/resolve/873ae49f0b89114b7e535eff0c1f7560d21d9357/yes1.json",
+      "duration_s": 3.4
+    },
+    {
+      "id": "cheerful1",
+      "sha256": "158a235b49aceaefa4fc245ee34478d6321fcefe16a90846b5a09472ed535186",
+      "url": "https://huggingface.co/datasets/pollen-robotics/reachy-mini-emotions-library/resolve/873ae49f0b89114b7e535eff0c1f7560d21d9357/cheerful1.json",
+      "duration_s": 2.8
+    },
+    {
+      "id": "enthusiastic1",
+      "sha256": "49e4c1775cc84b2bd6509863d1efa1ec303f4954f1d807fddd696fbfe6ad3a48",
+      "url": "https://huggingface.co/datasets/pollen-robotics/reachy-mini-emotions-library/resolve/873ae49f0b89114b7e535eff0c1f7560d21d9357/enthusiastic1.json",
+      "duration_s": 2.72
+    },
+    {
+      "id": "surprised1",
+      "sha256": "0a85b55d4b2ef686efb42b608556cdba0f7691cce4a66e54f2a79b6fe425e0db",
+      "url": "https://huggingface.co/datasets/pollen-robotics/reachy-mini-emotions-library/resolve/873ae49f0b89114b7e535eff0c1f7560d21d9357/surprised1.json",
+      "duration_s": 2.48
+    }
+  ]
+}
