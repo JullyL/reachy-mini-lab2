@@ -1,5 +1,6 @@
 """Single-controller monotonic trial scheduler and append-only evidence."""
 import hashlib
+import errno
 import json
 import queue
 import socket
@@ -14,7 +15,7 @@ import numpy as np
 from .audio import AudioOutput
 from .conversation_audio import read_wav
 from .motion import rotvec
-from .choreography import compile_performance, STUDY_VERSION
+
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTROL_PORT = 18731
@@ -32,7 +33,7 @@ class Controller:
     """Exclusive local TCP endpoint: blocks duplicate app processes across copies.
 
     External SDK tools do not honor this lock; the operator must close them.
-    Managed apps and daemon motions are checked separately by SimRobot.
+    Managed apps and daemon motions are checked separately by SDKRobot.
     """
     def __enter__(self):
         self.stop = threading.Event()
@@ -41,13 +42,18 @@ class Controller:
         self.server = socket.socket()
         if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
             self.server.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        else:
+            # Reopen after TCP TIME_WAIT; an active listening socket still excludes us.
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         try:
             self.server.bind(("127.0.0.1", CONTROL_PORT))
             self.server.listen(4)
             self.server.settimeout(.1)
-        except OSError:
+        except OSError as exc:
             self.server.close()
-            raise RuntimeError("Another trial controller is active (port 18731)") from None
+            if exc.errno == errno.EADDRINUSE:
+                raise RuntimeError("Another trial controller is active (port 18731)") from None
+            raise RuntimeError(f"Cannot bind local stop-control port 18731: {exc}") from exc
         self.thread = threading.Thread(target=self._listen, daemon=True)
         self.thread.start()
         return self
@@ -66,7 +72,7 @@ class Controller:
                     command = conn.recv(128).decode().strip()
                     if command == "stop":
                         self.stop.set()
-                    if command in {"stop", "repeat_prompt", "operator_error"}:
+                    if command in {"stop", "operator_error", "interruption"}:
                         self.events.put((command, time.perf_counter()))
                         conn.sendall(b"recorded\n")
                     else:
@@ -96,156 +102,206 @@ class TrialLog:
         self.wall = time.time()
         self.accepted = None
         self.metadata = {"trial_id": self.id, **metadata}
-        self.records = []
 
     def event(self, marker, at=None, **values):
         at = time.perf_counter() if at is None else at
         record = {**self.metadata, "marker": marker, "monotonic_s": at,
                   "wall_time_utc": datetime.fromtimestamp(self.wall + at - self.origin, timezone.utc).isoformat(),
                   "elapsed_s": None if self.accepted is None else at - self.accepted, **values}
-        self.records.append(record)
         self.file.write(json.dumps(record, allow_nan=False) + "\n")
         self.file.flush()
         elapsed = "pre" if record["elapsed_s"] is None else f"{record['elapsed_s']:.3f}s"
-        print(f"{record['wall_time_utc']} {marker} {elapsed}", flush=True)
+        if marker not in {"FEEDBACK", "COMMAND"}:
+            print(f"{record['wall_time_utc']} {marker} {elapsed}", flush=True)
 
     def close(self):
         self.file.close()
 
 
-def run_trial(robot, control, condition, question_id, log_dir, *, participant="TECH",
-              order="", condition_position=0, sequence=1, session_id="", repeat_of="",
-              accept=None, silent=False, stop_after=None):
-    config = load_json(ROOT / "config/conditions.json")
-    questions = load_json(ROOT / "config/questions.json")
-    question = next(q for q in questions["questions"] if q["id"] == question_id)
-    delay = config["cue_start_s"]
-    answer_path = ROOT / question["audio"]
-    if question.get("answer_text_sha256") and hashlib.sha256(question["answer"].encode("utf-8")).hexdigest() != question["answer_text_sha256"]:
-        raise ValueError("Answer text changed: capture matching backend audio and update its choreography before trials")
-    if digest(answer_path) != question.get("sha256"):
-        raise ValueError("Answer hash mismatch: restore the frozen WAV or bind the new backend capture and choreography")
-    rate, samples = read_wav(answer_path)
-    if abs(len(samples)/rate - question["duration_s"]) > 1/rate:
-        raise ValueError("Answer duration does not match frozen WAV")
-    gesture = compile_performance(question, {**config, "selected_condition": condition})
-    log = TrialLog(log_dir, {"study_version": STUDY_VERSION,
-                            "condition": condition, "expressive_motion": config["conditions"][condition],
-                            "cue_start_s": delay, "parameter_units": config["units"],
-                            "question_id": question_id, "answer_asset_id": question["answer_asset_id"],
-                            "answer_sha256": digest(answer_path), "gesture_sha256": gesture["sha256"],
-                            "motion_source_hashes": gesture["source_hashes"],
-                            "choreography_reviewed": gesture["score"].get("reviewed", False),
-                            "choreography_timing_basis": gesture["timing_basis"],
-                            "speech_motion":gesture["speech_motion"],
-                            "speech_alignment_sha256":gesture["score"]["alignment_sha256"],
-                            "participant_id": participant, "condition_order": order,
-                            "condition_position": condition_position, "trial_sequence": sequence,
-                            "session_id": session_id, "repeat_of": repeat_of,
-                            "input_mode": "operator-mediated" if accept else "automated technical test", "silent": silent,
-                            "robot_backend": type(robot).__name__, "answer_preparation": questions["preparation"]})
-    output = AudioOutput(rate, samples, silent)
-    status, error, recovery, cue_at, speech_at, observed_at = "failed", None, None, None, None, None
-    frame_deviations, speech_end, prompt_count, stop_timer = [], None, 0, None
-    speech_feedback = {"samples":0, "peak_head_rad":0.0, "peak_antenna_rad":0.0}
+def summarize_feedback(rows, baseline, amplitude, cfg):
+    """Separate right/left measured excursions; never infer delivery from commands."""
+    if len(rows) < 2:
+        return {"verified": False, "reason": "insufficient feedback", "samples": len(rows)}
+    times = np.array([r["elapsed_s"] for r in rows])
+    angles = np.array([r["angles_deg_right_left"] for r in rows])-baseline
+    moving = (times >= 1) & (times <= 5.05)
+    if moving.sum() < 2:
+        return {"verified": False, "reason": "no movement interval feedback"}
+    actual = angles[moving]
+    gaps = np.diff(times)
+    peaks, ranges = np.max(np.abs(actual), axis=0), np.ptp(actual, axis=0)
+    rate = (len(rows)-1)/(times[-1]-times[0])
+    head_ok = all(r["head_translation_m"] <= cfg["head_translation_tolerance_m"] and
+                  r["head_rotation_deg"] <= cfg["head_rotation_tolerance_deg"] and
+                  abs(r["body_yaw_deg"]) <= cfg["body_yaw_tolerance_deg"] for r in rows)
+    error = max(r["tracking_error_deg"] for r in rows)
+    tolerance = cfg["excursion_tolerance_deg"]
+    # Both signed lobes, not just one absolute peak, must actually occur.
+    excursion_ok = np.all(np.abs(np.max(actual, axis=0)-amplitude) <= tolerance) and np.all(np.abs(np.min(actual, axis=0)+amplitude) <= tolerance)
+    return {"verified": bool(rate >= cfg["minimum_feedback_hz"] and np.max(gaps) <= .1 and head_ok and excursion_ok),
+            "basis": "measured joint feedback; mock backend is command echo only",
+            "samples": len(rows), "achieved_poll_hz": float(rate), "max_poll_gap_s": float(max(gaps)),
+            "right": {"maximum_abs_displacement_deg": float(peaks[0]), "range_deg": float(ranges[0])},
+            "left": {"maximum_abs_displacement_deg": float(peaks[1]), "range_deg": float(ranges[1])},
+            "stationary_head_base": bool(head_ok), "max_tracking_error_deg": float(error),
+            "tracking_error_basis": "unlagged command-to-feedback diagnostic; not an excursion acceptance threshold",
+            "right_positive_peak_s": float(times[moving][np.argmax(actual[:, 0])]),
+            "right_negative_peak_s": float(times[moving][np.argmin(actual[:, 0])]),
+            "left_positive_peak_s": float(times[moving][np.argmax(actual[:, 1])]),
+            "left_negative_peak_s": float(times[moving][np.argmin(actual[:, 1])])}
+
+
+def run_trial(robot, control, condition, log_dir, *, participant="TECH", order="", position=0,
+              attempt=1, repeat_of="", accept=None, silent=False, stop_after=None,
+              commissioning=False, audio_device=None, operator="", deviation=""):
+    from .greeting import STUDY_VERSION, compile_greeting, settings, software_digest, require_physical_review
+    if participant != "TECH":
+        require_physical_review()
+        if robot.backend != "physical" or silent or commissioning or accept is None:
+            raise ValueError("Participant trials require reviewed physical, audible operator-triggered execution")
+    cfg = settings()
+    asset = ROOT / cfg["audio"]
+    receipt = load_json(ROOT / "assets/greeting/manifest.json")
+    if digest(asset) != receipt["sha256"]:
+        raise ValueError("Frozen greeting WAV hash mismatch")
+    rate, samples = read_wav(asset)
+    duration = len(samples)/rate
+    if not 0 < duration <= 4 or receipt["text"] != "Hello, nice to meet you":
+        raise ValueError("Greeting must fit inside the four-second movement interval")
+    gesture = compile_greeting(condition, cfg, robot.neutral_angles, commissioning)
+    log = TrialLog(log_dir, {"study_version": STUDY_VERSION, "condition": condition,
+        "antenna_amplitude_deg": gesture["amplitude_deg"], "provisional": cfg["provisional"],
+        "condition_order": order, "condition_position": position, "participant_id": participant,
+        "attempt": attempt, "repeat_of": repeat_of, "operator": operator, "protocol_deviation": deviation,
+        "robot_backend": robot.backend, "robot_host": robot.host,
+        "silent": silent, "commissioning": commissioning, "input_mode": "operator" if accept else "technical",
+        "audio_sha256": digest(asset), "audio_device_requested": audio_device, "audio_duration_s": duration,
+        "configuration_sha256": digest(ROOT / "config/conditions.json"), "settings": cfg,
+        "calibration_sha256": digest(ROOT / "config/calibration.json"),
+        "software_sha256": software_digest(), "trajectory_sha256": gesture["sha256"],
+        "neutral_target_deg_right_left": np.rad2deg(robot.neutral_angles).tolist()})
+    output = AudioOutput(rate, samples, silent, device=audio_device)
+    status, error, recovery, baseline = "failed", None, {"succeeded": False}, None
+    feedback, deviations = [], []
+    speech_start, speech_end, movement_start, movement_end = None, None, None, None
+    timer, skips, intervention = None, 0, False
+    observed_start = None
     try:
-        log.event("TRIAL_START", cue_target_s=delay, speech_target_s=config["speech_target_s"])
+        log.event("TRIAL_START")
         robot.check_exclusive()
         initial = robot.neutral(control.stop)
         log.event("INITIAL_NEUTRAL", **initial)
         if not initial["succeeded"]:
-            raise RuntimeError("Initial neutral was not confirmed")
+            raise RuntimeError("Initial neutral not confirmed")
+        # Average five actual neutral samples before the common one-second hold.
+        neutral_samples = []
+        for _ in range(5):
+            if control.stop.wait(.02):
+                raise InterruptedError("Stopped during neutral calibration")
+            head, antennas, body = robot.pose()
+            neutral_samples.append(np.rad2deg(antennas))
+        baseline = np.mean(neutral_samples, axis=0)
+        if not np.isfinite(baseline).all() or np.max(np.abs(baseline-np.rad2deg(robot.neutral_angles))) > 2:
+            raise RuntimeError("Measured baseline is not calibrated neutral")
+        log.event("BASELINE", measured_neutral_deg_right_left=baseline.tolist(), raw_samples_deg= [a.tolist() for a in neutral_samples])
         output.open()
-        print(f"{question_id}: {question['question']}", flush=True)
+        log.event("AUDIO_DEVICE", **output.device_info)
         if accept:
             accept()
         if control.stop.is_set():
-            raise InterruptedError("Stop before acceptance")
+            raise InterruptedError("Stop before greeting")
         log.accepted = time.perf_counter()
-        log.event("QUESTION_ACCEPTED", at=log.accepted)
-        output.arm(log.accepted + config["speech_target_s"])
+        log.event("PRE_HOLD_START", at=log.accepted)
+        output.arm(log.accepted+1)
         if stop_after is not None:
-            stop_timer = threading.Timer(stop_after, control.stop.set)
-            stop_timer.start()
-        frame_index, next_feedback, state_index = 0, 0.0, 0
+            timer = threading.Timer(stop_after, control.stop.set)
+            timer.start()
+        index, next_feedback = 0, 0
         while True:
             now = time.perf_counter()
-            elapsed = now - log.accepted
+            elapsed = now-log.accepted
             output.poll_silent(now)
             while not output.events.empty():
                 marker, at, info = output.events.get()
+                log.event(marker, at=at, **info)
                 if marker == "AUDIO_ERROR":
                     raise RuntimeError(info["error"])
                 if marker == "SPEECH_START":
-                    speech_at = at
-                    info["deviation_s"] = at - log.accepted - config["speech_target_s"]
+                    speech_start = at-log.accepted
                 elif marker == "SPEECH_END":
-                    speech_end = at
-                log.event(marker, at=at, **info)
+                    speech_end = at-log.accepted
             while not control.events.empty():
                 name, at = control.events.get()
-                eligible = log.accepted <= at and (speech_at is None or at < speech_at)
-                if name == "repeat_prompt" and eligible:
-                    prompt_count += 1
-                log.event("OPERATOR_EVENT", at=at, event=name, in_waiting_interval=eligible)
+                log.event("OPERATOR_EVENT", at=at, event=name)
+                intervention = True
+                if name == "interruption":
+                    control.stop.set()
             if control.stop.is_set():
                 log.event("STOP_REQUESTED")
-                raise InterruptedError("Operator or validation stop")
-            if state_index < len(gesture["cues"]) and elapsed >= gesture["cues"][state_index]["start_s"]:
-                log.event("EXPRESSION_STATE", **gesture["cues"][state_index])
-                state_index += 1
-            if frame_index < len(gesture["time"]) and elapsed >= gesture["time"][frame_index]:
-                # Do not dump overdue frames in a burst after a scheduling stall.
-                desired = int(np.searchsorted(gesture["time"], elapsed, side="right") - 1)
-                desired = min(desired, len(gesture["time"]) - 1)
-                if desired > frame_index:
-                    log.event("FRAME_SKIP", count=desired - frame_index)
-                frame_index = desired
+                raise InterruptedError("Operator/technical stop")
+            if index < len(gesture["time"]) and elapsed >= gesture["time"][index]:
+                desired = min(int(elapsed*50), 300)
+                if desired > index:
+                    skips += desired-index
+                    log.event("FRAME_SKIP", count=desired-index)
+                index = desired
                 dispatched = time.perf_counter()
-                robot.send(gesture["set_target_data"][frame_index])
-                if cue_at is None and elapsed >= delay:
-                    cue_at = dispatched
-                    log.event("CUE_START", at=dispatched, basis="first trajectory command dispatch",
-                              deviation_s=dispatched - log.accepted - delay)
-                frame_deviations.append(dispatched - log.accepted - gesture["time"][frame_index])
-                frame_index += 1
-                if frame_index == len(gesture["time"]):
-                    log.event("PERFORMANCE_END", basis="final neutral trajectory command dispatched")
+                robot.send(gesture["set_target_data"][index])
+                deviations.append(dispatched-log.accepted-gesture["time"][index])
+                log.event("COMMAND", at=dispatched, scheduled_s=gesture["time"][index],
+                          antennas_rad_right_left=gesture["set_target_data"][index]["antennas"])
+                if movement_start is None and index >= 50:
+                    movement_start = dispatched-log.accepted
+                    log.event("MOVEMENT_START", at=dispatched, basis="dispatch; actual angle samples logged separately")
+                if movement_end is None and index >= 250:
+                    movement_end = dispatched-log.accepted
+                    log.event("MOVEMENT_END", at=dispatched)
+                    log.event("POST_HOLD_START", at=dispatched)
+                index += 1
             if elapsed >= next_feedback:
-                head, antennas = robot.pose()
-                if speech_at is not None and now >= speech_at:
-                    speech_feedback["samples"] += 1
-                    speech_feedback["peak_head_rad"] = max(speech_feedback["peak_head_rad"],float(np.linalg.norm(rotvec(head[:3,:3]))))
-                    speech_feedback["peak_antenna_rad"] = max(speech_feedback["peak_antenna_rad"],float(np.max(np.abs(antennas))))
-                moved = float(np.linalg.norm(rotvec(head[:3, :3]))) > .004 or float(np.max(np.abs(antennas))) > .004
-                if cue_at is not None and observed_at is None and moved:
-                    observed_at = time.perf_counter()
-                    log.event("CUE_OBSERVED", at=observed_at,
-                              basis="SDK feedback exceeds 0.004 rad; poll and transport latency included",
-                              deviation_s=observed_at - log.accepted - delay)
-                next_feedback = elapsed + .01
-            if speech_end is not None and now >= speech_end:
+                head, antennas, body = robot.pose()
+                measured_at = time.perf_counter()
+                if not np.isfinite([*np.asarray(head).ravel(), *antennas, body]).all():
+                    raise RuntimeError("Nonfinite feedback")
+                target_index = min(max(index-1, 0), 300)
+                target = np.asarray(gesture["set_target_data"][target_index]["antennas"])
+                row = {"elapsed_s": measured_at-log.accepted,
+                    "angles_deg_right_left": np.rad2deg(antennas).tolist(),
+                    "head_translation_m": float(np.linalg.norm(head[:3, 3])),
+                    "head_rotation_deg": float(np.rad2deg(np.linalg.norm(rotvec(head[:3, :3])))),
+                    "body_yaw_deg": float(np.rad2deg(body)),
+                    "tracking_error_deg": float(np.max(np.abs(np.rad2deg(antennas-target))))}
+                if observed_start is None and elapsed >= 1 and max(abs(x) for x in np.asarray(row["angles_deg_right_left"])-baseline) > .5:
+                    observed_start = measured_at-log.accepted
+                    log.event("MOVEMENT_OBSERVED", at=measured_at, threshold_deg=.5, basis="SDK feedback; includes transport and threshold-crossing delay")
+                feedback.append(row)
+                log.event("FEEDBACK", at=measured_at, **row)
+                next_feedback = elapsed+1/cfg["feedback_hz"]
+            if elapsed >= 6 and index >= 301 and speech_end is not None and elapsed >= speech_end:
+                log.event("CYCLE_END")
                 break
-            if elapsed > config["speech_target_s"] + len(samples) / rate + 3:
-                raise TimeoutError("Audio did not complete")
-            control.stop.wait(.002)
-        if cue_at is None or speech_at is None or observed_at is None:
-            raise RuntimeError("Missing required cue or speech onset evidence")
+            if elapsed > 7:
+                raise TimeoutError("Greeting/audio failed to complete on schedule")
+            control.stop.wait(.001)
+        if intervention:
+            raise RuntimeError("Operator intervention during greeting")
+        # Completion checks the scheduled endpoint BEFORE cleanup can repair it.
+        if max(abs(x) for x in np.asarray(feedback[-1]["angles_deg_right_left"])-baseline) > 2:
+            raise RuntimeError("Scheduled endpoint outside ±2 degrees of measured neutral")
         status = "completed"
     except (KeyboardInterrupt, InterruptedError) as exc:
         control.stop.set()
         status, error = "interrupted", str(exc) or "KeyboardInterrupt"
     except Exception as exc:
-        status, error = "failed", f"{type(exc).__name__}: {exc}"
+        error = f"{type(exc).__name__}: {exc}"
         log.event("ERROR", error=error)
     finally:
-        if stop_timer:
-            stop_timer.cancel()
+        if timer:
+            timer.cancel()
         try:
             output.stop()
         except Exception as exc:
-            log.event("ERROR", error=f"Audio stop: {exc}")
-            status = "failed"
+            status, error = "failed", f"Audio stop failed: {exc}"
         log.event("RETURN_TO_NEUTRAL")
         try:
             recovery = robot.neutral()
@@ -254,25 +310,21 @@ def run_trial(robot, control, condition, question_id, log_dir, *, participant="T
         log.event("NEUTRAL_RESULT", **recovery)
         if not recovery["succeeded"]:
             status = "failed"
-        cue_dev = None if cue_at is None else cue_at - log.accepted - delay
-        speech_dev = None if speech_at is None else speech_at - log.accepted - config["speech_target_s"]
-        timing_ok = all(v is not None and abs(v) <= config["timing_tolerance_s"] for v in [cue_dev, speech_dev])
-        skips = sum(r.get("count", 0) for r in log.records if r["marker"] == "FRAME_SKIP")
-        operator_error = any(r.get("event") == "operator_error" for r in log.records)
-        prompt_count = sum(r.get("event") == "repeat_prompt" and log.accepted is not None
-                           and r["monotonic_s"] >= log.accepted
-                           and (speech_at is None or r["monotonic_s"] < speech_at)
-                           for r in log.records)
-        from .robot import SimRobot
-        study_valid = status == "completed" and timing_ok and not skips and not operator_error and not silent and isinstance(robot, SimRobot)
-        log.event("TRIAL_END", completion_status=status, error=error,
-                  neutral_recovery_succeeded=recovery["succeeded"],
-                  cue_deviation_s=cue_dev, speech_deviation_s=speech_dev,
-                  actual_cue_observed_s=None if observed_at is None else observed_at-log.accepted,
-                  max_frame_deviation_s=max(frame_deviations, default=None), skipped_frames=skips,
-                  timing_ok=timing_ok, technically_valid=study_valid,
-                  speech_motion_feedback=speech_feedback,
-                  repeat_prompt_count=prompt_count,
-                  acceptance_to_end_s=None if log.accepted is None else time.perf_counter()-log.accepted)
+        movement = summarize_feedback(feedback, baseline, gesture["amplitude_deg"], cfg) if baseline is not None else {"verified": False}
+        timing_ok = (speech_start is not None and movement_start is not None and movement_end is not None and
+            abs(speech_start-1) <= cfg["timing_tolerance_s"] and abs(movement_start-1) <= cfg["timing_tolerance_s"] and
+            abs(movement_end-5) <= cfg["timing_tolerance_s"] and abs(speech_start-movement_start) <= cfg["timing_tolerance_s"] and
+            max(deviations, default=1) <= cfg["timing_tolerance_s"] and skips == 0)
+        verified = status == "completed" and timing_ok and movement["verified"]
+        # Fidelity faults invalidate completion, independent of participants' ratings.
+        if status == "completed" and not verified:
+            status, error = "failed", "Movement or timing verification failed"
+        log.event("TRIAL_END", completion_status=status, completion=int(status == "completed"), error=error,
+            neutral_recovery_succeeded=recovery["succeeded"], measured_movement=movement,
+            observed_movement_start_s=observed_start, speech_start_s=speech_start, speech_end_s=speech_end, movement_start_s=movement_start, movement_end_s=movement_end,
+            synchronization_error_s=None if speech_start is None or movement_start is None else speech_start-movement_start,
+            skipped_frames=skips, max_dispatch_deviation_s=max(deviations, default=None), timing_ok=timing_ok,
+            software_checks_passed=verified, technically_valid=bool(verified and not silent and robot.backend != "mock"),
+            study_eligible=bool(verified and not silent and robot.backend == "physical" and not commissioning and participant != "TECH"))
         log.close()
     return log.path, status

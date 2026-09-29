@@ -1,4 +1,4 @@
-"""Explicitly simulation-only SDK adapter; no daemon creation or upgrades."""
+"""Explicit mock, MuJoCo and physical SDK adapters; never spawns a daemon."""
 import json
 import time
 import urllib.request
@@ -8,74 +8,85 @@ import numpy as np
 from .motion import rotation, rotvec
 from .emotion_player import transition_duration
 
+SDK_VERSION = "1.11.0"
 
-def api(path, post=False):
-    request = urllib.request.Request("http://127.0.0.1:8000/api/" + path,
-                                     data=b"" if post else None)
-    with urllib.request.urlopen(request, timeout=2) as response:
+
+def api(path, host="127.0.0.1"):
+    with urllib.request.urlopen(f"http://{host}:8000/api/{path}", timeout=2) as response:
         return json.load(response)
 
 
-class SimRobot:
-    def __init__(self):
-        self.mini = None
+class SDKRobot:
+    def __init__(self, backend="sim", host="127.0.0.1", neutral=None):
+        self.backend, self.host, self.mini = backend, host, None
+        self.neutral_angles = np.zeros(2) if neutral is None else np.asarray(neutral, dtype=float)
 
     def connect(self):
-        status = api("daemon/status")
-        if not status.get("simulation_enabled") or status.get("mockup_sim_enabled"):
-            raise RuntimeError("This build requires MuJoCo simulation; physical execution is disabled")
-        if status.get("version") != "1.11.0" or status.get("state") != "running":
-            raise RuntimeError("Requires the running SDK 1.11.0 simulator")
+        status = api("daemon/status", self.host)
+        is_sim = status.get("simulation_enabled") is True
+        if status.get("mockup_sim_enabled") or is_sim != (self.backend == "sim"):
+            raise RuntimeError("Daemon type differs from explicitly selected backend")
+        if status.get("version") != SDK_VERSION or status.get("state") != "running":
+            raise RuntimeError(f"Requires running SDK {SDK_VERSION}; found {status}")
         self.check_exclusive()
+        # Some Python distributions do not execute the GStreamer .pth bootstrap.
+        import gstreamer_libs
+        gstreamer_libs.setup_python_environment()
         from reachy_mini import ReachyMini
-        self.mini = ReachyMini(connection_mode="localhost_only", media_backend="no_media",
-                              automatic_body_yaw=False, timeout=3, log_level="WARNING")
+        self.mini = ReachyMini(host=self.host, connection_mode="network", spawn_daemon=False,
+                              media_backend="no_media", automatic_body_yaw=False,
+                              timeout=3, log_level="WARNING")
         self.mini.disable_wobbling()
         self.mini.stop_head_tracking()
         self.mini.enable_motors()
         return status
 
     def check_exclusive(self):
-        lock = api("daemon/robot-app-lock-status")
-        if lock.get("state") != "free":
-            raise RuntimeError(f"Managed robot controller active: {lock}")
-        running = api("move/running")
-        if running:
-            raise RuntimeError(f"Another motion is running: {running}")
+        lock = api("daemon/robot-app-lock-status", self.host)
+        if lock.get("state") != "free" or api("move/running", self.host):
+            raise RuntimeError("Close managed apps and all other motion controllers")
 
     def pose(self):
-        return (self.mini.get_current_head_pose(),
-                np.array(self.mini.get_present_antenna_joint_positions()))
+        head = self.mini.get_current_head_pose()
+        joints, antennas = self.mini.get_current_joint_positions()
+        # SDK head joint list: body_rotation followed by six Stewart platform motors.
+        return head, np.asarray(antennas), float(joints[0])
 
     def send(self, frame):
-        self.mini.set_target(head=np.array(frame["head"], dtype=np.float64),
+        self.mini.set_target(head=np.asarray(frame["head"], dtype=np.float64),
                              antennas=frame["antennas"], body_yaw=0.0)
 
     def neutral(self, stop=None):
-        head, antennas = self.pose()
+        head, antennas, body = self.pose()
         rv, xyz = rotvec(head[:3, :3]), head[:3, 3].copy()
-        duration = transition_duration(head, antennas)
+        # Ported Emotions prelude duration, with a custom minimum recovery time.
+        duration = max(.5, transition_duration(head, antennas, target_antennas=self.neutral_angles),
+                       min(1.5, abs(np.rad2deg(body))*.015))
         start = time.perf_counter()
         while True:
-            u = 1 if duration == 0 else min(1, (time.perf_counter() - start) / duration)
-            w = 1 - (10*u**3 - 15*u**4 + 6*u**5)
-            target = np.eye(4)
-            target[:3, :3], target[:3, 3] = rotation(rv * w), xyz * w
-            self.send({"head": target, "antennas": antennas * w})
-            if u == 1:
-                break
             if stop is not None and stop.is_set():
                 raise InterruptedError("Stopped while initializing neutral")
+            u = min(1, (time.perf_counter()-start)/duration)
+            w = 1-(10*u**3-15*u**4+6*u**5)
+            target = np.eye(4)
+            target[:3, :3], target[:3, 3] = rotation(rv*w), xyz*w
+            self.mini.set_target(head=target, antennas=(self.neutral_angles+(antennas-self.neutral_angles)*w).tolist(), body_yaw=body*w)
+            if u == 1:
+                break
             time.sleep(.01)
-        # Poll actual SDK feedback; a sent neutral command is not success.
-        deadline = time.perf_counter() + 1.5
+        deadline, consecutive = time.perf_counter()+2, 0
+        errors = {}
         while time.perf_counter() < deadline:
-            head, antennas = self.pose()
+            head, antennas, body = self.pose()
             errors = {"head_translation_m": float(np.linalg.norm(head[:3, 3])),
-                      "head_rotation_rad": float(np.linalg.norm(rotvec(head[:3, :3]))),
-                      "antenna_max_rad": float(np.max(np.abs(antennas)))}
-            if errors["head_translation_m"] < .002 and errors["head_rotation_rad"] < .025 and errors["antenna_max_rad"] < .025:
-                return {"succeeded": True, "basis": "SDK feedback tolerances", **errors}
+                      "head_rotation_deg": float(np.rad2deg(np.linalg.norm(rotvec(head[:3, :3])))),
+                      "antenna_error_deg_right_left": np.rad2deg(antennas-self.neutral_angles).tolist(),
+                      "body_yaw_deg": float(np.rad2deg(body))}
+            finite = np.isfinite([*head.ravel(), *antennas, body]).all()
+            good = finite and errors["head_translation_m"] <= .002 and errors["head_rotation_deg"] <= 2 and max(abs(x) for x in errors["antenna_error_deg_right_left"]) <= 2 and abs(errors["body_yaw_deg"]) <= 2
+            consecutive = consecutive+1 if good else 0
+            if consecutive >= 5:
+                return {"succeeded": True, "basis": "five SDK feedback polls within tolerance", **errors}
             time.sleep(.02)
         return {"succeeded": False, "basis": "SDK feedback outside tolerance", **errors}
 
@@ -85,18 +96,31 @@ class SimRobot:
 
 
 class MockRobot:
-    def __init__(self):
-        self.head, self.antennas = np.eye(4), np.zeros(2)
+    backend = "mock"
+    host = "none"
+
+    def __init__(self, neutral=None):
+        self.neutral_angles = np.zeros(2) if neutral is None else np.asarray(neutral)
+        self.head, self.antennas, self.body = np.eye(4), self.neutral_angles.copy(), 0.0
+
     def connect(self):
-        return {"simulation_enabled": False, "backend": "mock; no robot"}
+        return {"backend": "mock; command echo only, no robot physics"}
+
     def check_exclusive(self):
         pass
+
     def pose(self):
-        return self.head.copy(), self.antennas.copy()
+        return self.head.copy(), self.antennas.copy(), self.body
+
     def send(self, frame):
-        self.head, self.antennas = np.array(frame["head"]), np.array(frame["antennas"])
+        self.head, self.antennas = np.asarray(frame["head"]), np.asarray(frame["antennas"])
+        self.body = frame["body_yaw"]
+
     def neutral(self, stop=None):
-        self.head, self.antennas = np.eye(4), np.zeros(2)
-        return {"succeeded": True, "basis": "mock only"}
+        if stop is not None and stop.is_set():
+            raise InterruptedError("Stopped")
+        self.head, self.antennas, self.body = np.eye(4), self.neutral_angles.copy(), 0.0
+        return {"succeeded": True, "basis": "mock command echo only"}
+
     def close(self):
         pass

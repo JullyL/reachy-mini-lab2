@@ -5,8 +5,9 @@ __pycache__/
 .env*
 !*.example
 logs/
-captures/
 tmp/
 analysis/
 build/
 dist/
+
+.DS_Store

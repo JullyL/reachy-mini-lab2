@@ -11,7 +11,7 @@ import numpy as np
 
 
 def audio_to_float32(audio):
-    """Upstream PCM conversion, used by every cached-answer playback."""
+    """Upstream PCM conversion, used by every prerecorded greeting."""
     if audio.dtype == np.int16:
         return audio.astype(np.float32) / 32768.0
     if audio.dtype == np.float32:
@@ -22,10 +22,10 @@ def audio_to_float32(audio):
 def read_wav(path: Path):
     with wave.open(str(path), "rb") as stream:
         if stream.getsampwidth() != 2 or stream.getnchannels() != 1:
-            raise ValueError("Answer must be mono signed 16-bit PCM WAV")
+            raise ValueError("Greeting must be mono signed 16-bit PCM WAV")
         rate = stream.getframerate()
         audio = np.frombuffer(stream.readframes(stream.getnframes()), dtype="<i2")
     if not len(audio) or not np.any(audio):
-        raise ValueError("Answer has no speech samples")
+        raise ValueError("Greeting has no speech samples")
     return rate, audio_to_float32(audio)
 

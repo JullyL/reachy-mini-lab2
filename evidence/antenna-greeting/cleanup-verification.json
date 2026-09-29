@@ -1,0 +1,175 @@
+{
+  "scope": "Final cleanup regression; simulation only, not physical robot or participant evidence",
+  "pytest": "16 passed in 26.78s; see cleanup-pytest.txt",
+  "source_verification": "Three retained upstream source hashes verified",
+  "dependency_check": "pip check: No broken requirements found",
+  "simulation": [
+    {
+      "condition": "A",
+      "stop_after_s": null,
+      "passed": true,
+      "trial_id": "250256a1-95c0-412d-b4b9-7c993d194965",
+      "wall_time_utc": "2026-09-29T18:57:32.423068+00:00",
+      "software_sha256": "1247773e69c0c29ffbb4cfc97ab79ecf370e6c2ddbb0a401ce3cdbb7012d3c9d",
+      "configuration_sha256": "26007d66918c171767bed41bf78240546689758ac5ed00d6d9d6ccbece30e530",
+      "audio_sha256": "87306852e02c15f481cc53773a3f28d1722a8dca5318194053fe30300a695c06",
+      "completion_status": "completed",
+      "neutral_recovery_succeeded": true,
+      "measured_movement": {
+        "verified": true,
+        "basis": "measured joint feedback; mock backend is command echo only",
+        "samples": 292,
+        "achieved_poll_hz": 48.50520723457792,
+        "max_poll_gap_s": 0.02975945803336799,
+        "right": {
+          "maximum_abs_displacement_deg": 10.127177603155197,
+          "range_deg": 19.771630279570473
+        },
+        "left": {
+          "maximum_abs_displacement_deg": 10.127169465368127,
+          "range_deg": 19.771678111140485
+        },
+        "stationary_head_base": true,
+        "max_tracking_error_deg": 1.9748921034741833,
+        "tracking_error_basis": "unlagged command-to-feedback diagnostic; not an excursion acceptance threshold",
+        "right_positive_peak_s": 4.136238791048527,
+        "right_negative_peak_s": 2.2396738750394434,
+        "left_positive_peak_s": 2.2396738750394434,
+        "left_negative_peak_s": 4.136238791048527
+      },
+      "timing_ok": true,
+      "technically_valid": true,
+      "study_eligible": false
+    },
+    {
+      "condition": "B",
+      "stop_after_s": null,
+      "passed": true,
+      "trial_id": "d71b5992-3737-4b3a-b09b-730f74f147ac",
+      "wall_time_utc": "2026-09-29T18:57:40.632353+00:00",
+      "software_sha256": "1247773e69c0c29ffbb4cfc97ab79ecf370e6c2ddbb0a401ce3cdbb7012d3c9d",
+      "configuration_sha256": "26007d66918c171767bed41bf78240546689758ac5ed00d6d9d6ccbece30e530",
+      "audio_sha256": "87306852e02c15f481cc53773a3f28d1722a8dca5318194053fe30300a695c06",
+      "completion_status": "completed",
+      "neutral_recovery_succeeded": true,
+      "measured_movement": {
+        "verified": true,
+        "basis": "measured joint feedback; mock backend is command echo only",
+        "samples": 293,
+        "achieved_poll_hz": 48.65179780131933,
+        "max_poll_gap_s": 0.029518041061237454,
+        "right": {
+          "maximum_abs_displacement_deg": 29.809508432125888,
+          "range_deg": 59.60343165450381
+        },
+        "left": {
+          "maximum_abs_displacement_deg": 29.80953189114177,
+          "range_deg": 59.6034936478149
+        },
+        "stationary_head_base": true,
+        "max_tracking_error_deg": 4.732176915005645,
+        "tracking_error_basis": "unlagged command-to-feedback diagnostic; not an excursion acceptance threshold",
+        "right_positive_peak_s": 4.122032165993005,
+        "right_negative_peak_s": 2.1819382498506457,
+        "left_positive_peak_s": 2.1819382498506457,
+        "left_negative_peak_s": 4.122032165993005
+      },
+      "timing_ok": true,
+      "technically_valid": true,
+      "study_eligible": false
+    },
+    {
+      "condition": "B",
+      "stop_after_s": 0.3,
+      "passed": true,
+      "trial_id": "90a5d4ea-bdee-4c3f-881b-d6f2652b5fac",
+      "wall_time_utc": "2026-09-29T18:57:42.962239+00:00",
+      "software_sha256": "1247773e69c0c29ffbb4cfc97ab79ecf370e6c2ddbb0a401ce3cdbb7012d3c9d",
+      "configuration_sha256": "26007d66918c171767bed41bf78240546689758ac5ed00d6d9d6ccbece30e530",
+      "audio_sha256": "87306852e02c15f481cc53773a3f28d1722a8dca5318194053fe30300a695c06",
+      "completion_status": "interrupted",
+      "neutral_recovery_succeeded": true,
+      "measured_movement": {
+        "verified": false,
+        "reason": "no movement interval feedback"
+      },
+      "timing_ok": false,
+      "technically_valid": false,
+      "study_eligible": false
+    },
+    {
+      "condition": "B",
+      "stop_after_s": 2.5,
+      "passed": true,
+      "trial_id": "082dabad-cbba-447c-928d-de20d6043c0c",
+      "wall_time_utc": "2026-09-29T18:57:48.200475+00:00",
+      "software_sha256": "1247773e69c0c29ffbb4cfc97ab79ecf370e6c2ddbb0a401ce3cdbb7012d3c9d",
+      "configuration_sha256": "26007d66918c171767bed41bf78240546689758ac5ed00d6d9d6ccbece30e530",
+      "audio_sha256": "87306852e02c15f481cc53773a3f28d1722a8dca5318194053fe30300a695c06",
+      "completion_status": "interrupted",
+      "neutral_recovery_succeeded": true,
+      "measured_movement": {
+        "verified": false,
+        "basis": "measured joint feedback; mock backend is command echo only",
+        "samples": 122,
+        "achieved_poll_hz": 48.6112124937231,
+        "max_poll_gap_s": 0.021569832926616073,
+        "right": {
+          "maximum_abs_displacement_deg": 29.795347045542716,
+          "range_deg": 29.795443915871104
+        },
+        "left": {
+          "maximum_abs_displacement_deg": 29.795386203075182,
+          "range_deg": 29.795480558581165
+        },
+        "stationary_head_base": true,
+        "max_tracking_error_deg": 4.294752654481151,
+        "tracking_error_basis": "unlagged command-to-feedback diagnostic; not an excursion acceptance threshold",
+        "right_positive_peak_s": 1.0441165841184556,
+        "right_negative_peak_s": 2.1996635000687093,
+        "left_positive_peak_s": 2.1996635000687093,
+        "left_negative_peak_s": 1.0022402920294553
+      },
+      "timing_ok": false,
+      "technically_valid": false,
+      "study_eligible": false
+    },
+    {
+      "condition": "B",
+      "stop_after_s": 5.4,
+      "passed": true,
+      "trial_id": "f4f0fb05-7093-4c87-a839-90f7709bf639",
+      "wall_time_utc": "2026-09-29T18:57:56.096665+00:00",
+      "software_sha256": "1247773e69c0c29ffbb4cfc97ab79ecf370e6c2ddbb0a401ce3cdbb7012d3c9d",
+      "configuration_sha256": "26007d66918c171767bed41bf78240546689758ac5ed00d6d9d6ccbece30e530",
+      "audio_sha256": "87306852e02c15f481cc53773a3f28d1722a8dca5318194053fe30300a695c06",
+      "completion_status": "interrupted",
+      "neutral_recovery_succeeded": true,
+      "measured_movement": {
+        "verified": true,
+        "basis": "measured joint feedback; mock backend is command echo only",
+        "samples": 263,
+        "achieved_poll_hz": 48.57627743062939,
+        "max_poll_gap_s": 0.02804625011049211,
+        "right": {
+          "maximum_abs_displacement_deg": 29.798971671865445,
+          "range_deg": 59.588951131295175
+        },
+        "left": {
+          "maximum_abs_displacement_deg": 29.798989830675,
+          "range_deg": 59.589009561424945
+        },
+        "stationary_head_base": true,
+        "max_tracking_error_deg": 4.757764748953429,
+        "tracking_error_basis": "unlagged command-to-feedback diagnostic; not an excursion acceptance threshold",
+        "right_positive_peak_s": 4.149096084060147,
+        "right_negative_peak_s": 2.1756907091476023,
+        "left_positive_peak_s": 2.1756907091476023,
+        "left_negative_peak_s": 4.149096084060147
+      },
+      "timing_ok": true,
+      "technically_valid": false,
+      "study_eligible": false
+    }
+  ]
+}

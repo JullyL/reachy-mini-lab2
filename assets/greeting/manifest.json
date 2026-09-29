@@ -1,0 +1,10 @@
+{
+  "text": "Hello, nice to meet you",
+  "sha256": "87306852e02c15f481cc53773a3f28d1722a8dca5318194053fe30300a695c06",
+  "sample_rate": 16000,
+  "duration_s": 1.7493125,
+  "source": "Locally prerecorded macOS say, Samantha voice, rate 170; not a Conversation App backend capture",
+  "generation_command": "say -v Samantha -r 170 -o assets/greeting/hello.wav --file-format=WAVE --data-format=LEI16@16000 'Hello, nice to meet you'",
+  "listening_review": "PENDING",
+  "acoustic_sync_review": "PENDING"
+}

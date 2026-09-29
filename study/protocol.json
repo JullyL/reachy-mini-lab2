@@ -1,23 +1,14 @@
 {
-  "assignments": {
-    "P01": "AB",
-    "P02": "BA",
-    "P03": "AB",
-    "P04": "BA"
-  },
-  "question_order": [
-    "q1",
-    "q2",
-    "q3",
-    "q4",
-    "q5",
-    "q6"
-  ],
-  "intertrial_pause_s": 10,
-  "primary_hries_dimension": "animacy",
-  "objective_measure": "Participant repeated or rephrased question count during acceptance-to-speech interval",
-  "qualitative_question": "What did you think the robot's movements meant, and how did they affect your experience?",
-  "study_version": "expressive-performance-v2",
-  "expression_check": "The robot used expressive head and antenna movements while preparing and giving its answers.",
-  "expression_check_scale": "1 strongly disagree to 7 strongly agree; study-specific, not a validated HRIES item"
+  "study_version": "antenna-greeting-v1",
+  "survey_version": "HRIES-greeting-v1",
+  "assignments": {"P01": "AB", "P02": "BA", "P03": "AB", "P04": "BA"},
+  "greetings_per_condition": 1,
+  "between_conditions_neutral_s": 30,
+  "maximum_attempts_per_condition": 2,
+  "primary_hries_dimension": "sociability",
+  "exploratory_outcomes": ["valence", "arousal"],
+  "objective_measure": "Greeting completion per attempt: 1 completed; 0 interrupted/failed; NA unobserved",
+  "questionnaire_order": ["HRIES", "valence", "arousal", "qualitative_response", "movement_size"],
+  "qualitative_question": "How would you describe Reachy Mini during this greeting, and what influenced your impression?",
+  "label_corrections": "Swap supplement response labels 2/3 and 5/6; retain 1-7 numeric scoring"
 }

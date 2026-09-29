@@ -1,0 +1,18 @@
+{
+  "source": "/Users/pandora2/Documents/GitHub/reachy-mini-lab2/output/documents/HRI Report Lab 2 Section 5 Draft.docx",
+  "output": "/Users/pandora2/Documents/GitHub/reachy-mini-lab2/output/documents/HRI Report Lab 2 Section 3 Revised.docx",
+  "changed_package_parts": [
+    "word/document.xml"
+  ],
+  "sections_1_2_4_5_xml_identical": true,
+  "original_section3_body_nodes": 13,
+  "replacement_section3_body_nodes": 34,
+  "rendered_pages": 12,
+  "section3_pages": [
+    2,
+    3,
+    4
+  ],
+  "all_rendered_pages_visually_reviewed": true,
+  "output_sha256": "c7818651c031f3c88d9c47f4f56a1bb4458e1f114818cc20eda85b1c17ef70fa"
+}

@@ -1,20 +1,25 @@
-# Post-condition survey specification
+# Post-greeting measures — HRIES-greeting-v1
 
-Administer after each complete six-question block. Use the same wording, item order and scale in both blocks. The participant should rate the robot just experienced, without seeing A/B labels. The primary HRIES dimension is animacy; administer all four dimensions regardless.
+Use section 5.6 of the preserved report. Administer after one completed greeting, referring to the robot just observed. Order: all HRIES items, valence, arousal, verbatim open response, movement-size check last. Do not show A/B amplitude labels to participants.
 
-Use Table S1 on page 2 of the [assignment-linked published supplement](https://public-pages-files-2025.frontiersin.org/articles/1585589/file/Data_Sheet_1.pdf/1585589_data-sheet_1/1) to obtain the official questionnaire wording and response anchors. Original scale: [Spatola et al. (2021)](https://doi.org/10.1007/s12369-020-00667-4). Store the questionnaire version used in every response row.
+HRIES is from Spatola et al. (2021), https://doi.org/10.1007/s12369-020-00667-4. The assignment-linked [Mauliana et al. (2025) supplement, Table S1](https://public-pages-files-2025.frontiersin.org/articles/1585589/file/Data_Sheet_1.pdf/1585589_data-sheet_1/1) supplies items and anchors. Preserve the report's explicit study adaptation: **swap labels 2/3 and 5/6** to make intensity increase. Numeric values remain 1–7. This is a documented adaptation, not an unmodified reproduction of that supplement.
 
-| CSV columns in order | HRIES terms in that order |
-| --- | --- |
-| soc_1, soc_2, soc_3, soc_4 | Warm, Likeable, Trustworthy, Friendly |
-| ani_1, ani_2, ani_3, ani_4 | Alive, Natural, Real, Human-like |
-| age_1, age_2, age_3, age_4 | Self-reliant, Rational, Intentional, Intelligent |
-| dis_1, dis_2, dis_3, dis_4 | Creepy, Scary, Uncanny, Weird |
+“Based on the greeting you just experienced, rate how well each term describes Reachy Mini. Enter one number from 1 to 7 for each term.”
 
-**Resolve before participant collection:** the linked supplement lists the positive labels at points 5 and 6 in an apparently reversed intensity order. Do not silently repair or substitute an agree/disagree scale for HRIES. Obtain the course-approved anchor wording, document the decision and adaptation from general robot ratings to this just-completed interaction, and use it consistently. The numeric scoring code accepts integers 1-7 but does not establish that an unresolved questionnaire is valid.
+1 = Completely NOT capable; 2 = Moderately NOT capable; 3 = Slightly NOT capable; 4 = Undecided; 5 = Slightly capable; 6 = Moderately capable; 7 = Completely capable.
 
-Additional study-specific manipulation check: "The robot used expressive head and antenna movements while preparing and giving its answers." Use 1 = strongly disagree through 7 = strongly agree. This is separate from HRIES and is not a validated scale. Record this as `expression_check`; a higher score indicates more perceived expressive movement. Use `study_version=expressive-performance-v2`.
+| Columns | Terms in order | Interpretation |
+| --- | --- | --- |
+| soc_1–soc_4 | Warm, Likeable, Trustworthy, Friendly | Sociability, primary HRIES outcome |
+| ani_1–ani_4 | Alive, Natural, Real, Human-like | Animacy, separate secondary dimension |
+| age_1–age_4 | Self-reliant, Rational, Intentional, Intelligent | Agency, separate secondary dimension |
+| dis_1–dis_4 | Creepy, Scary, Uncanny, Weird | Disturbance, higher means more disturbance |
 
-Neutral open question: "What did you think the robot's movements meant, and how did they affect your experience?" Record the response accurately without coaching. Do not collect names or identifying stories.
+Average four answered items per dimension. If any is missing, leave that mean missing. Never form an overall HRIES score.
 
-The behavioral measure is observer-counted repeated/rephrased question utterances during the waiting interval; it is collected through app marks, not the survey. Record `observer_coverage` as `complete` or `missing`. Missing coverage leaves that measure unscored rather than converting it to zero.
+- Valence: “How positive or negative did Reachy Mini’s apparent emotional state seem?” 1 = very negative; 4 = neutral; 7 = very positive.
+- Arousal: “How emotionally activated did Reachy Mini seem?” 1 = very low activation/sleepy; 4 = moderate activation; 7 = very high activation/aroused. Activation may be positive or negative.
+- Open response: “How would you describe Reachy Mini during this greeting, and what influenced your impression?” Record verbatim.
+- Movement size: “How large were the antenna movements during this greeting?” 1 = very small; 7 = very large.
+
+Valence and arousal are separate exploratory, study-created outcomes, not HRIES scores or validated Reachy emotion scales. A movement-size response that does not favor B is retained, not an exclusion criterion. Leave skipped responses blank or NA; record the reason in deviations.csv.

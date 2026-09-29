@@ -1,4 +1,4 @@
-"""Emotions app trajectory processing plus an explicitly adapted study cue.
+"""Emotions trajectory processing and rotation helpers for the greeting app.
 
 parse_trajectory / downsample_by_hz port src/lib/emotionsLibrary.ts, MIT,
 cde39d23da61ada61d9ae4635bee051334434b44. Extra validation rejects malformed

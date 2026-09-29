@@ -1,0 +1,24 @@
+{
+  "verified_date": "2026-09-29",
+  "method": "Fetched pinned public source; byte-compared retained Emotions files; retained Conversation source directly",
+  "files": [
+    {
+      "local_path": "third_party/conversation/streaming.py",
+      "url": "https://raw.githubusercontent.com/pollen-robotics/reachy_mini_conversation_app/b9f58a3587d79a3275d4402d1a8d210649d62d50/src/reachy_mini_conversation_app/streaming.py",
+      "revision": "b9f58a3587d79a3275d4402d1a8d210649d62d50",
+      "sha256": "9e974dd167d23aaa949d04e71c7e99f57ab01bea781241a28488ec1b58a09f62"
+    },
+    {
+      "local_path": "third_party/emotions/emotionsLibrary.ts",
+      "url": "https://huggingface.co/spaces/pollen-robotics/emotions/raw/cde39d23da61ada61d9ae4635bee051334434b44/src/lib/emotionsLibrary.ts",
+      "revision": "cde39d23da61ada61d9ae4635bee051334434b44",
+      "sha256": "5e2078b78d064d6ca8d53070e42c870bb03dcf83e77f64285692f16aac6870d0"
+    },
+    {
+      "local_path": "third_party/emotions/trajectoryPlayer.ts",
+      "url": "https://huggingface.co/spaces/pollen-robotics/emotions/raw/cde39d23da61ada61d9ae4635bee051334434b44/src/lib/trajectoryPlayer.ts",
+      "revision": "cde39d23da61ada61d9ae4635bee051334434b44",
+      "sha256": "4cb216aa73f1d4fc7c5008108bbf406b655962e337a41243c301f582800e77f6"
+    }
+  ]
+}

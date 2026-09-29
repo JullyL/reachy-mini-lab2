@@ -1,0 +1,13 @@
+{
+  "approved": false,
+  "reviewer": "PENDING",
+  "robot_id": "PENDING",
+  "configuration_sha256": "PENDING",
+  "audio_sha256": "PENDING",
+  "calibration_sha256": "PENDING",
+  "software_sha256": "PENDING",
+  "simulation_evidence": "PENDING",
+  "half_amplitude_evidence": "PENDING: initial 5 and 15 degree commissioning cycles",
+  "full_amplitude_evidence": "PENDING: A and B measured angles, stationary head/base, timing, sound and stop recovery",
+  "audio_listening_review": "PENDING: phrase, intelligibility, fixed output device/volume and acoustic synchronization"
+}

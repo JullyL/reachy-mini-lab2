@@ -1,0 +1,16 @@
+{
+  "reachy_lab2/__init__.py": "d877264024bf36fcca87b506c8c180e3074aa58e9d029dcf8aac16965350859b",
+  "reachy_lab2/__main__.py": "eb0e8b7dedb0d78f4b98b8edba639c5048eb3c82a6e2049e5de94d0d9681d7bf",
+  "reachy_lab2/analysis.py": "2acbe76ff5f623df845dc33db7ce74d1ad0713758b79c6284116f82d96817040",
+  "reachy_lab2/audio.py": "65130b365fc10d2e87caa137401c657d059bd60b4da60f736717b2bec0a6d71b",
+  "reachy_lab2/conversation_audio.py": "5883feabd3db834b375e10a35f9abe8bb295237483a5279399807ada8d905ea4",
+  "reachy_lab2/emotion_player.py": "a2edf16a1438b6d20fe5d5c4a7462d243f9650bd481df5d6b9e7974cc9b9b4c7",
+  "reachy_lab2/greeting.py": "3f602fc8e42edd37d3babdf35adc2b66fae5cce9530aab2f8a3a3c62880bef7e",
+  "reachy_lab2/motion.py": "dfed896377741b06e044cff070b884d5a547573a390d4eda4e06d5c60946aa04",
+  "reachy_lab2/robot.py": "6be5ae6077d6ec32b9b079b2a63f7ce8c0639b402b6a53c03321287402c6a36f",
+  "reachy_lab2/trial.py": "50ed0265c683f97ea1c45c12ba5c9fb54ffd341bb6b2c927ad385f2892b11418",
+  "config/conditions.json": "26007d66918c171767bed41bf78240546689758ac5ed00d6d9d6ccbece30e530",
+  "config/calibration.json": "83d4b1eff4c75dae467af2dd28e6acb32061506b5ff135f29173d87bc9739f4c",
+  "assets/greeting/hello.wav": "87306852e02c15f481cc53773a3f28d1722a8dca5318194053fe30300a695c06",
+  "requirements-lock.txt": "dbd2dc61576afe26668d2e207250f54f9cf6ea52348c5d446863f5165cd23574"
+}

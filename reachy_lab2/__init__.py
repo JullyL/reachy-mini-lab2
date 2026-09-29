@@ -1,2 +1,1 @@
-"""Controlled cue-timing trials, independent of live LLM latency."""
-
+"""Controlled antenna-amplitude greeting trials for Reachy Mini."""

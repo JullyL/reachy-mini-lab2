@@ -1,20 +1,17 @@
-"""Parts 6-7: explicit missingness, separate HRIES dimensions, paired summaries.
-
-No participant data is bundled. Never write into the supplied raw-data folder.
-"""
+"""Separate HRIES dimensions, paired descriptive summaries and an attempt audit."""
 import argparse
 import csv
 import json
 import statistics
 from pathlib import Path
 
+from .greeting import STUDY_VERSION
 from .trial import ROOT, digest, load_json
-from .choreography import STUDY_VERSION
 
 DIMENSIONS = {"sociability": "soc", "animacy": "ani", "agency": "age", "disturbance": "dis"}
 ITEMS = [f"{prefix}_{i}" for prefix in DIMENSIONS.values() for i in range(1, 5)]
-FIELDS = ["participant_id", "condition", "order", "session_id", "study_version", "survey_version", "observer_coverage", "include",
-          "exclusion_reason", *ITEMS, "expression_check", "qualitative_response", "protocol_deviation"]
+FIELDS = ["participant_id", "condition", "order", "trial_id", "study_version", "survey_version", "include",
+          "exclusion_reason", *ITEMS, "valence", "arousal", "qualitative_response", "movement_size", "protocol_deviation"]
 
 
 def rating(value):
@@ -22,7 +19,7 @@ def rating(value):
         return None
     number = int(value)
     if str(number) != str(value) or not 1 <= number <= 7:
-        raise ValueError(f"Rating must be an integer 1-7 or blank/NA, got {value!r}")
+        raise ValueError(f"Rating must be an integer 1-7 or blank/NA: {value!r}")
     return number
 
 
@@ -31,8 +28,9 @@ def score(row):
     for dimension, prefix in DIMENSIONS.items():
         values = [rating(row.get(f"{prefix}_{i}")) for i in range(1, 5)]
         result[dimension] = None if None in values else statistics.mean(values)
-        result[dimension + "_n_items"] = sum(v is not None for v in values)
-    result["expression_check"] = rating(row.get("expression_check"))
+        result[dimension+"_n_items"] = sum(v is not None for v in values)
+    for name in ("valence", "arousal", "movement_size"):
+        result[name] = rating(row.get(name))
     return result
 
 
@@ -46,92 +44,90 @@ def write_csv(path, records, fields):
 def analyze(raw, logs, out):
     raw, logs, out = Path(raw).resolve(), Path(logs).resolve(), Path(out).resolve()
     if raw.parent == out or raw.parent in out.parents:
-        raise ValueError("Analysis output must be outside the raw data directory")
+        raise ValueError("Analysis output must be outside raw data")
     with raw.open(newline="", encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
         if not set(FIELDS).issubset(reader.fieldnames or []):
-            raise ValueError("Use the provided responses.csv column schema")
+            raise ValueError("Use the greeting responses.csv schema")
         rows = list(reader)
     if not rows:
-        raise ValueError("No participant responses: no study results have been generated")
-    protocol = load_json(ROOT / "study/protocol.json")
-    stimuli = {q["id"]: q["sha256"] for q in load_json(ROOT / "config/questions.json")["questions"]}
-    sessions, audit = {}, {str(raw): digest(raw)}
-    for file in sorted(logs.glob("*.jsonl")):
-        records = [json.loads(s) for s in file.read_text().splitlines() if s.strip()]
-        if not records:
+        raise ValueError("No participant responses; no study results generated")
+    protocol = load_json(ROOT/"study/protocol.json")
+    trials, audit, attempts = {}, {str(raw): digest(raw)}, []
+    for path in sorted(logs.glob("*.jsonl")):
+        records = [json.loads(s) for s in path.read_text().splitlines() if s.strip()]
+        if not records or records[0].get("study_version") != STUDY_VERSION:
             continue
-        audit[str(file)] = digest(file)
+        audit[str(path)] = digest(path)
         end = records[-1]
-        # Retain incomplete logs for auditing, but never treat them as valid trials.
-        if end["marker"] == "TRIAL_END" and end.get("study_version") == STUDY_VERSION:
-            sessions.setdefault(end["session_id"], []).append(end)
-    ready, seen = [], set()
+        if end["marker"] != "TRIAL_END":
+            attempts.append({"trial_id": end["trial_id"], "participant_id": end["participant_id"], "condition": end["condition"], "completion": None, "status": "incomplete log", "reason": "Missing terminal record"})
+            continue
+        if end["trial_id"] in trials:
+            raise ValueError("Duplicate trial UUID in logs")
+        trials[end["trial_id"]] = end
+        attempts.append({"trial_id": end["trial_id"], "participant_id": end["participant_id"], "condition": end["condition"], "completion": end["completion"], "status": end["completion_status"], "reason": end["error"]})
+    ready, seen, frozen = [], set(), None
     for row in rows:
         pid, condition = row["participant_id"], row["condition"]
-        if row["study_version"] != STUDY_VERSION:
-            raise ValueError("Do not mix the archived timing study with expressive-performance-v2")
+        if row["study_version"] != STUDY_VERSION or row["survey_version"] != protocol["survey_version"]:
+            raise ValueError("Study/survey version mismatch")
         if pid not in protocol["assignments"] or row["order"] != protocol["assignments"][pid]:
-            raise ValueError(f"Unknown ID or assignment mismatch: {pid}")
-        if condition not in "AB" or len(condition) != 1 or row["include"] not in ("0", "1"):
+            raise ValueError("Unknown participant or assignment mismatch")
+        if condition not in ("A", "B") or row["include"] not in ("0", "1"):
             raise ValueError("Invalid condition or inclusion flag")
-        if not row["survey_version"]:
-            raise ValueError("Record the approved questionnaire version")
-        if row["observer_coverage"] not in ("complete", "missing"):
-            raise ValueError("Observer coverage must be complete or missing; unknown counts are not zero")
         if row["include"] == "0" and not row["exclusion_reason"]:
             raise ValueError("Exclusions require a reason")
-        trial_rows = sessions.get(row["session_id"], [])
-        valid = len(trial_rows) == len(protocol["question_order"]) and all(
-            r["technically_valid"] and r["participant_id"] == pid and r["condition"] == condition
-            and r["condition_order"] == row["order"] and r["input_mode"] == "operator-mediated"
-            and r["condition_position"] == row["order"].index(condition) + 1
-            and r.get("choreography_reviewed") is True
-            and r.get("expressive_motion") == (1 if condition == "B" else 0)
-            and r.get("answer_sha256") == stimuli.get(r["question_id"])
-            for r in trial_rows)
-        valid = valid and sorted((r["trial_sequence"], r["question_id"]) for r in trial_rows) == list(enumerate(protocol["question_order"], 1))
+        trial = trials.get(row["trial_id"])
+        valid = trial and trial.get("study_eligible") and trial["participant_id"] == pid and trial["condition"] == condition and trial["condition_order"] == row["order"] and trial["condition_position"] == row["order"].index(condition)+1
         if row["include"] == "1":
             if not valid:
-                raise ValueError(f"Included {pid}/{condition} needs six valid matching trial logs")
+                raise ValueError(f"Included {pid}/{condition} needs a matching eligible physical trial")
             if (pid, condition) in seen:
-                raise ValueError("Duplicate included participant/condition; adjudicate repeats explicitly")
+                raise ValueError("Duplicate included participant/condition")
             seen.add((pid, condition))
-        counts = sum(r["repeat_prompt_count"] for r in trial_rows) if valid and row["observer_coverage"] == "complete" else None
-        ready.append({"participant_id": pid, "condition": condition, "order": row["order"], "study_version":row["study_version"],
-                      "session_id": row["session_id"], "include": row["include"],
-                      "exclusion_reason": row["exclusion_reason"],
-                      "survey_version": row["survey_version"], "observer_coverage": row["observer_coverage"],
-                      **{item: rating(row[item]) for item in ITEMS}, **score(row),
-                      "repeat_prompt_count": counts, "valid_trial_count": sum(bool(r["technically_valid"]) for r in trial_rows),
-                      "qualitative_response": row["qualitative_response"],
-                      "protocol_deviation": row["protocol_deviation"]})
-    measures = [*DIMENSIONS, "expression_check", "repeat_prompt_count"]
-    summaries, pairs = [], []
+            fingerprint = tuple(trial[k] for k in ("configuration_sha256", "audio_sha256", "calibration_sha256", "software_sha256"))
+            if frozen is not None and fingerprint != frozen:
+                raise ValueError("Do not combine different stimulus/code/calibration versions")
+            frozen = fingerprint
+            completed = [r for r in trials.values() if r["participant_id"] == pid and r["condition"] == condition and r["completion"] == 1]
+            if min(completed, key=lambda r:r["wall_time_utc"])["trial_id"] != row["trial_id"]:
+                raise ValueError("Use ratings from the first completed attempt")
+        ready.append({**row, **score(row), "completion": trial["completion"] if trial else None,
+                      "prior_exposure": bool(trial and trial["repeat_of"])})
     included = [r for r in ready if r["include"] == "1"]
+    measures = [*DIMENSIONS, "valence", "arousal", "movement_size", "completion"]
+    summaries, pairs = [], []
     for measure in measures:
         for condition in "AB":
             values = [r[measure] for r in included if r["condition"] == condition and r[measure] is not None]
             summaries.append({"measure": measure, "condition": condition, "n": len(values),
                 "mean": statistics.mean(values) if values else None,
-                "sd": statistics.stdev(values) if len(values) > 1 else None,
+                "sd": statistics.stdev(values) if len(values)>1 else None,
                 "median": statistics.median(values) if values else None})
         for pid in sorted({r["participant_id"] for r in included}):
             by = {r["condition"]: r for r in included if r["participant_id"] == pid}
-            a = by.get("A", {}).get(measure)
-            b = by.get("B", {}).get(measure)
+            a, b = by.get("A", {}).get(measure), by.get("B", {}).get(measure)
             pairs.append({"participant_id": pid, "measure": measure, "A": a, "B": b,
                           "B_minus_A": None if a is None or b is None else b-a})
     out.mkdir(parents=True, exist_ok=False)
-    write_csv(out / "analysis_ready.csv", ready, list(ready[0]))
-    write_csv(out / "condition_summary.csv", summaries, list(summaries[0]))
-    write_csv(out / "paired_differences.csv", pairs, ["participant_id", "measure", "A", "B", "B_minus_A"])
-    qualitative = [{k: row[k] for k in ["participant_id", "condition", "include", "qualitative_response"]} |
-                   {"category": "", "coding_note": ""} for row in rows]
-    write_csv(out / "qualitative_coding.csv", qualitative, list(qualitative[0]))
-    audit["protocol_sha256"] = digest(ROOT / "study/protocol.json")
-    audit["missingness_policy"] = "No imputation; dimension score requires four valid items; pairs require A and B"
-    (out / "audit.json").write_text(json.dumps(audit, indent=2))
+    write_csv(out/"analysis_ready.csv", ready, list(ready[0]))
+    write_csv(out/"condition_summary.csv", summaries, list(summaries[0]))
+    write_csv(out/"paired_differences.csv", pairs, ["participant_id", "measure", "A", "B", "B_minus_A"])
+    # All physical participant attempts, including failures, remain in the denominator.
+    physical_ids = {r["trial_id"] for r in trials.values() if r["robot_backend"] == "physical" and r["participant_id"] != "TECH"}
+    objective = [r for r in attempts if r["trial_id"] in physical_ids or r["status"] == "incomplete log"]
+    write_csv(out/"attempt_outcomes.csv", objective, ["trial_id", "participant_id", "condition", "completion", "status", "reason"])
+    objective_summary = []
+    for condition in "AB":
+        vals = [r["completion"] for r in objective if r["condition"] == condition and r["completion"] is not None]
+        objective_summary.append({"condition": condition, "observed_attempts": len(vals), "completed": sum(vals), "completion_proportion": statistics.mean(vals) if vals else None})
+    write_csv(out/"attempt_summary.csv", objective_summary, list(objective_summary[0]))
+    qualitative = [{k:r[k] for k in ("participant_id", "condition", "include", "qualitative_response")} | {"category":"", "coding_note":""} for r in rows]
+    write_csv(out/"qualitative_coding.csv", qualitative, list(qualitative[0]))
+    audit.update(primary_hries_outcome="sociability", exploratory_outcomes=["valence", "arousal"],
+                 missingness_policy="No imputation; four responses per HRIES mean; pairs require A and B")
+    (out/"audit.json").write_text(json.dumps(audit, indent=2)+"\n")
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -139,18 +135,12 @@ def analyze(raw, logs, out):
     for ax, dimension in zip(axes.flat, DIMENSIONS):
         for pair in pairs:
             if pair["measure"] == dimension and pair["A"] is not None and pair["B"] is not None:
-                ax.plot([0, 1], [pair["A"], pair["B"]], "o-", alpha=.75, label=pair["participant_id"])
-        ax.set(title=dimension.title(), xticks=[0, 1], xticklabels=["A: brief cue", "B: expressive"], ylim=(.8, 7.2), ylabel="HRIES mean (1-7)")
+                ax.plot([0, 1], [pair["A"], pair["B"]], "o-", alpha=.75)
+        ax.set(title=dimension.title(), xticks=[0, 1], xticklabels=["A", "B"], ylim=(.8, 7.2), ylabel="HRIES mean (1–7)")
         ax.grid(axis="y", alpha=.2)
-    handles, labels = axes.flat[0].get_legend_handles_labels()
-    if handles:
-        fig.legend(handles, labels, loc="lower center", ncol=min(len(labels), 6))
-    fixture = all(r["survey_version"].startswith("SYNTHETIC") for r in rows)
-    title = "SYNTHETIC TEST DATA ONLY" if fixture else "Paired participant ratings"
-    fig.suptitle(title + "; higher disturbance means more disturbance")
-    fig.tight_layout(rect=(0, .04, 1, 1))
-    fig.savefig(out / "paired_hries.png", dpi=200)
-    fig.savefig(out / "paired_hries.pdf")
+    fig.suptitle("Paired ratings; sociability primary; higher disturbance means more disturbance")
+    fig.tight_layout()
+    fig.savefig(out/"paired_hries.png", dpi=200)
     plt.close(fig)
     return ready
 

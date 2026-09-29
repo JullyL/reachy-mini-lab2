@@ -1,1 +1,1 @@
-participant_id,condition,session_id,trial_id,issue,decision,reason,recorded_utc
+participant_id,trial_id,condition,attempt,date,kind,description,resolution,missing_reason

@@ -1,46 +1,68 @@
+"""Operator CLI for the fixed greeting; no microphone or live generation path."""
 import argparse
-import asyncio
 import json
 import re
-import time
-import uuid
+from pathlib import Path
 
-from .robot import MockRobot, SimRobot
-from .trial import Controller, ROOT, load_json, run_trial, send_control
+import numpy as np
+
+from .greeting import require_physical_review, settings, software_digest
+from .robot import MockRobot, SDKRobot
+from .trial import Controller, ROOT, digest, load_json, run_trial, send_control
+
+
+def previous_attempts(directory, participant):
+    rows = []
+    for path in Path(directory).glob("*.jsonl"):
+        records = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+        if records and records[0].get("participant_id") == participant:
+            if records[-1]["marker"] != "TRIAL_END":
+                raise ValueError("Incomplete earlier log: document recovery before continuing")
+            rows.append(records[-1])
+    return rows
+
+
+def session_attempt(rows, condition, order, repeat_of):
+    prior = [r for r in rows if r["condition"] == condition]
+    position = order.index(condition)+1
+    if position == 2 and not any(r["condition"] == order[0] and r["completion"] == 1 for r in rows):
+        raise ValueError("Complete the assigned first condition before the second")
+    if any(r["completion"] == 1 for r in prior):
+        raise ValueError("Use the first completed attempt; do not repeat based on ratings")
+    if len(prior) >= 2:
+        raise ValueError("Only one replacement attempt is permitted")
+    if prior and repeat_of != prior[0]["trial_id"]:
+        raise ValueError("Replacement requires --repeat-of with the original failed/interrupted trial ID")
+    if not prior and repeat_of:
+        raise ValueError("No original attempt matches --repeat-of")
+    return position, len(prior)+1
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Reachy Lab 2: brief cue versus emotional performance")
+    parser = argparse.ArgumentParser(description="Reachy Mini antenna-amplitude greeting")
     sub = parser.add_subparsers(dest="command", required=True)
-    trial = sub.add_parser("trial")
-    trial.add_argument("--condition", choices=["A", "B"], required=True)
-    trial.add_argument("--question", default="q1")
-    trial.add_argument("--auto-accept", action="store_true", help="Technical validation only; no human question")
-    trial.add_argument("--stop-after", type=float, help="Technical interruption test, seconds after acceptance")
-    session = sub.add_parser("session")
-    session.add_argument("--participant", required=True)
-    session.add_argument("--condition", choices=["A", "B"], required=True)
-    session.add_argument("--repeat-of", default="", help="Previous condition session ID; retains original logs")
+    trial = sub.add_parser("trial", help="Technical preview, never participant data")
+    session = sub.add_parser("session", help="One participant condition; physical review required")
     for p in (trial, session):
-        p.add_argument("--backend", choices=["sim", "mock"], default="sim")
-        p.add_argument("--silent", action="store_true", help="Explicit no-audio technical test, never study-valid")
-        p.add_argument("--log-dir", default=str(ROOT / "logs"))
+        p.add_argument("--condition", choices=["A", "B"], required=True)
+        p.add_argument("--backend", choices=["mock", "sim", "physical"], default="sim")
+        p.add_argument("--host", default="127.0.0.1", help="Explicit daemon host; physical: reachy-mini.local")
+        p.add_argument("--audio-device", type=int)
+        p.add_argument("--log-dir", default=str(ROOT/"logs"))
+    trial.add_argument("--silent", action="store_true")
+    trial.add_argument("--auto-accept", action="store_true")
+    trial.add_argument("--stop-after", type=float)
+    trial.add_argument("--commissioning", action="store_true", help="Technical half-amplitude 5/15 degree cycle")
+    trial.add_argument("--physical-check", action="store_true", help="Explicit full-amplitude technical physical validation")
+    session.add_argument("--participant", required=True)
+    session.add_argument("--operator", required=True)
+    session.add_argument("--repeat-of", default="")
+    session.add_argument("--deviation", default="")
     sub.add_parser("stop")
     mark = sub.add_parser("mark")
-    mark.add_argument("kind", choices=["repeat_prompt", "operator_error"])
+    mark.add_argument("kind", choices=["operator_error", "interruption"])
     sub.add_parser("devices")
-    from .choreography import STATES
-    emotion = sub.add_parser("emotion", help="Preview one named emotional performance in the simulator")
-    emotion.add_argument("--state", choices=sorted(STATES), required=True)
-    emotion.add_argument("--duration", type=float, default=3.0)
-    live = sub.add_parser("live", help="Actual Conversation App input/backend with emotional motion; not study data")
-    source = live.add_mutually_exclusive_group(required=True)
-    source.add_argument("--text", help="Text question; tests backend but not microphone")
-    source.add_argument("--input-device", type=int, help="Explicit microphone number from devices")
-    source.add_argument("--audio-file", help="Upload a mono PCM16 16kHz WAV; not a microphone test")
-    live.add_argument("--seconds", type=float, default=6, help="Push-to-talk capture length, 1-30 seconds")
-    live.add_argument("--out", default=None, help="New capture directory")
-    live.add_argument("--capture-only", action="store_true", help="Save backend answer without playing it")
+    sub.add_parser("fingerprint", help="Print hashes for a completed physical review record")
     args = parser.parse_args()
     if args.command in {"stop", "mark"}:
         print(send_control("stop" if args.command == "stop" else args.kind))
@@ -49,82 +71,50 @@ def main():
         import sounddevice
         print(sounddevice.query_devices())
         return 0
-    if args.command == "emotion":
-        from .choreography import EmotionLibrary, frame, HZ
-        clip = EmotionLibrary().clip(args.state, args.duration)
-        with Controller() as control:
-            robot = SimRobot()
-            try:
-                print(json.dumps(robot.connect()))
-                if not robot.neutral(control.stop)["succeeded"]:
-                    raise RuntimeError("Initial neutral not confirmed")
-                start = time.perf_counter()
-                index = 0
-                while index < len(clip) and not control.stop.is_set():
-                    index = min(int((time.perf_counter()-start)*HZ),len(clip)-1)
-                    robot.send(frame(clip[index]))
-                    if index == len(clip)-1:
-                        break
-                    control.stop.wait(1/HZ)
-                return 2 if control.stop.is_set() else 0
-            finally:
-                try:
-                    if robot.mini is not None and not robot.neutral()["succeeded"]:
-                        raise RuntimeError("Emotion preview neutral recovery failed")
-                finally:
-                    robot.close()
-    if args.command == "live":
-        from .live import live_turn
-        with Controller() as control:
-            robot = SimRobot()
-            try:
-                print(json.dumps(robot.connect()))
-                destination = args.out or str(ROOT / "captures" / str(uuid.uuid4()))
-                asyncio.run(live_turn(robot, control, destination, text=args.text,
-                    input_device=args.input_device, input_wav=args.audio_file, seconds=args.seconds, capture_only=args.capture_only))
-                return 0
-            finally:
-                robot.close()
+    if args.command == "fingerprint":
+        print(json.dumps({"configuration_sha256": digest(ROOT/"config/conditions.json"),
+            "calibration_sha256": digest(ROOT/"config/calibration.json"),
+            "audio_sha256": digest(ROOT/settings()["audio"]), "software_sha256": software_digest()}, indent=2))
+        return 0
+    study = args.command == "session"
+    if study:
+        if args.backend != "physical":
+            raise ValueError("Participant sessions require the physical robot")
+        require_physical_review()
+        if not re.fullmatch(r"P\d{2,3}", args.participant):
+            raise ValueError("Use a de-identified participant ID")
+        protocol = load_json(ROOT/"study/protocol.json")
+        order = protocol["assignments"][args.participant]
+    elif args.backend == "physical" and not (args.commissioning or args.physical_check):
+        raise ValueError("Physical technical trials require --commissioning or --physical-check")
+    calibration = load_json(ROOT/"config/calibration.json")
+    neutral = np.deg2rad(calibration["neutral_deg_right_left"]) if args.backend == "physical" else np.zeros(2)
     with Controller() as control:
-        robot = SimRobot() if args.backend == "sim" else MockRobot()
+        if study:
+            position, attempt = session_attempt(previous_attempts(args.log_dir, args.participant), args.condition, order, args.repeat_of)
+        robot = MockRobot(neutral) if args.backend == "mock" else SDKRobot(args.backend, args.host, neutral)
         try:
             print(json.dumps(robot.connect()))
-            if args.command == "trial":
-                accept = None if args.auto_accept else lambda: input("After the complete question, press Enter to accept. Ctrl+C stops. ")
-                path, status = run_trial(robot, control, args.condition, args.question, args.log_dir,
-                                         accept=accept, silent=args.silent, stop_after=args.stop_after)
-                print(f"{status}: {path}")
-                return 0 if status == "completed" else 2
-            if not re.fullmatch(r"P\d{2,3}", args.participant):
-                raise ValueError("Use a de-identified ID such as P01")
-            protocol = load_json(ROOT / "study/protocol.json")
-            scores = load_json(ROOT / "config/choreography.json")["questions"]
-            if not all(scores[q].get("reviewed") for q in protocol["question_order"]):
-                raise ValueError("Listen/watch each B trial and review its score before study sessions. Trials remain available for preview.")
-            order = protocol["assignments"][args.participant]
-            position = order.index(args.condition) + 1
-            print(f"{args.participant}: assigned {order}; condition {position}/2 = {args.condition}")
-            print("Check the session sheet: run condition 1 before condition 2; administer HRIES after each.")
-            session_id = str(uuid.uuid4())
-            print(f"Session ID: {session_id}. Repeats must specify --repeat-of with the original ID.")
-            input("Confirm neutral script, observer ready, and condition order recorded; press Enter. ")
-            for seq, question in enumerate(protocol["question_order"], 1):
-                if control.stop.is_set():
-                    return 2
-                path, status = run_trial(robot, control, args.condition, question, args.log_dir,
-                    participant=args.participant, order=order, condition_position=position, sequence=seq,
-                    session_id=session_id, repeat_of=args.repeat_of,
-                    accept=lambda: input("Participant asks the displayed question; Enter immediately after completion. "),
-                    silent=args.silent)
-                print(f"{status}: {path}")
-                if status != "completed":
-                    print("Condition interrupted. Preserve logs and document whether the whole condition will be repeated.")
-                    return 2
-                if seq < len(protocol["question_order"]):
-                    if control.stop.wait(protocol["intertrial_pause_s"]):
-                        return 2
-            print("Condition complete. Administer all 16 HRIES items, the expression check, and the open question now.")
-            return 0
+            if study:
+                print(f"{args.participant}: greeting {position}/2; assigned order {order}; attempt {attempt}")
+                if position == 2:
+                    input("After first-condition questionnaires, press Enter to begin the 30-second neutral reset. ")
+                    if not robot.neutral(control.stop)["succeeded"] or control.stop.wait(30):
+                        raise InterruptedError("Neutral reset did not complete")
+                accept = lambda: input("Read the fixed instructions; confirm agreement, observer and room ready. Enter starts one greeting. ")
+            else:
+                accept = None if args.auto_accept else lambda: input("Ready for one technical greeting; Enter starts, Ctrl+C stops. ")
+            path, status = run_trial(robot, control, args.condition, args.log_dir,
+                participant=args.participant if study else "TECH", order=order if study else "",
+                position=position if study else 0, attempt=attempt if study else 1,
+                repeat_of=args.repeat_of if study else "", accept=accept,
+                silent=False if study else args.silent, stop_after=None if study else args.stop_after,
+                commissioning=False if study else args.commissioning, audio_device=args.audio_device,
+                operator=args.operator if study else "TECH", deviation=args.deviation if study else "")
+            print(f"{status}: {path}")
+            if study:
+                print("Record trial ID and outcome. After completion collect HRIES, valence, arousal, open response, then movement-size rating.")
+            return 0 if status == "completed" else 2
         finally:
             robot.close()
 

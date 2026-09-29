@@ -4,8 +4,10 @@ import time
 
 
 class AudioOutput:
-    def __init__(self, rate, samples, silent=False):
+    def __init__(self, rate, samples, silent=False, device=None):
         self.rate, self.samples, self.silent = rate, samples, silent
+        self.device = device
+        self.device_info = {"basis": "silent technical test"}
         self.events = queue.SimpleQueue()
         self.target = None
         self.sent = 0
@@ -17,7 +19,9 @@ class AudioOutput:
         if self.silent:
             return
         import sounddevice as sd
+        self.device_info = dict(sd.query_devices(self.device, "output"))
         self.stream = sd.OutputStream(samplerate=self.rate, channels=1,
+                                      device=self.device,
                                       dtype="float32", blocksize=0, latency="low",
                                       callback=self._callback)
         self.stream.start()
@@ -66,4 +70,3 @@ class AudioOutput:
             self.stream.abort()
             self.stream.close()
             self.stream = None
-
