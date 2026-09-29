@@ -1,0 +1,1577 @@
+{
+  "schema_version": 1,
+  "engine": "pocketsphinx",
+  "engine_version": "5.1.1",
+  "decoder_settings": {
+    "cmn": "batch",
+    "beam": 1e-100,
+    "pbeam": 1e-100,
+    "bestpath": false
+  },
+  "timing_basis": "PocketSphinx local forced word/phone alignment; vowel centers approximate syllable nuclei; acoustic prominence estimates emphasis, not verified linguistic stress; listening review required",
+  "reviewed": false,
+  "audio_sha256": "64723e9371d620cad3a382eac116ef840c3bfe1de8e66f3e16a73495544930c6",
+  "answer_text_sha256": "b9e42e24bfc1a48bfec4bf61de997f18bf9afe4ef14723d48526c1368898a444",
+  "duration_s": 15.04,
+  "normalized_text": "metal conducts heat away from your hand much faster than wood so your skin cools quickly and the spoon feels colder wood is a poor heat conductor so it takes heat from your hand more slowly even when both spoons are at the same temperature",
+  "dictionary_overrides": {},
+  "words": [
+    {
+      "word": "metal",
+      "start_s": 0.0,
+      "end_s": 0.27,
+      "phones": [
+        {
+          "phone": "M",
+          "start_s": 0.0,
+          "end_s": 0.08
+        },
+        {
+          "phone": "EH",
+          "start_s": 0.08,
+          "end_s": 0.13
+        },
+        {
+          "phone": "T",
+          "start_s": 0.13,
+          "end_s": 0.16
+        },
+        {
+          "phone": "AH",
+          "start_s": 0.16,
+          "end_s": 0.2
+        },
+        {
+          "phone": "L",
+          "start_s": 0.2,
+          "end_s": 0.27
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 0.105,
+          "vowel": "EH",
+          "rms": 0.30837,
+          "duration_s": 0.05
+        },
+        {
+          "at_s": 0.18,
+          "vowel": "AH",
+          "rms": 0.320574,
+          "duration_s": 0.04
+        }
+      ]
+    },
+    {
+      "word": "conducts",
+      "start_s": 0.27,
+      "end_s": 0.73,
+      "phones": [
+        {
+          "phone": "K",
+          "start_s": 0.27,
+          "end_s": 0.34
+        },
+        {
+          "phone": "AH",
+          "start_s": 0.34,
+          "end_s": 0.38
+        },
+        {
+          "phone": "N",
+          "start_s": 0.38,
+          "end_s": 0.45
+        },
+        {
+          "phone": "D",
+          "start_s": 0.45,
+          "end_s": 0.48
+        },
+        {
+          "phone": "AH",
+          "start_s": 0.48,
+          "end_s": 0.58
+        },
+        {
+          "phone": "K",
+          "start_s": 0.58,
+          "end_s": 0.64
+        },
+        {
+          "phone": "T",
+          "start_s": 0.64,
+          "end_s": 0.69
+        },
+        {
+          "phone": "S",
+          "start_s": 0.69,
+          "end_s": 0.73
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 0.36,
+          "vowel": "AH",
+          "rms": 0.206181,
+          "duration_s": 0.04
+        },
+        {
+          "at_s": 0.53,
+          "vowel": "AH",
+          "rms": 0.213197,
+          "duration_s": 0.1
+        }
+      ]
+    },
+    {
+      "word": "heat",
+      "start_s": 0.73,
+      "end_s": 0.9,
+      "phones": [
+        {
+          "phone": "HH",
+          "start_s": 0.73,
+          "end_s": 0.8
+        },
+        {
+          "phone": "IY",
+          "start_s": 0.8,
+          "end_s": 0.87
+        },
+        {
+          "phone": "T",
+          "start_s": 0.87,
+          "end_s": 0.9
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 0.835,
+          "vowel": "IY",
+          "rms": 0.284723,
+          "duration_s": 0.07
+        }
+      ]
+    },
+    {
+      "word": "away",
+      "start_s": 0.9,
+      "end_s": 1.14,
+      "phones": [
+        {
+          "phone": "AH",
+          "start_s": 0.9,
+          "end_s": 0.94
+        },
+        {
+          "phone": "W",
+          "start_s": 0.94,
+          "end_s": 1.08
+        },
+        {
+          "phone": "EY",
+          "start_s": 1.08,
+          "end_s": 1.14
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 0.92,
+          "vowel": "AH",
+          "rms": 0.234851,
+          "duration_s": 0.04
+        },
+        {
+          "at_s": 1.11,
+          "vowel": "EY",
+          "rms": 0.156786,
+          "duration_s": 0.06
+        }
+      ]
+    },
+    {
+      "word": "from",
+      "start_s": 1.14,
+      "end_s": 1.33,
+      "phones": [
+        {
+          "phone": "F",
+          "start_s": 1.14,
+          "end_s": 1.22
+        },
+        {
+          "phone": "R",
+          "start_s": 1.22,
+          "end_s": 1.25
+        },
+        {
+          "phone": "AH",
+          "start_s": 1.25,
+          "end_s": 1.28
+        },
+        {
+          "phone": "M",
+          "start_s": 1.28,
+          "end_s": 1.33
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 1.265,
+          "vowel": "AH",
+          "rms": 0.15293,
+          "duration_s": 0.03
+        }
+      ]
+    },
+    {
+      "word": "your",
+      "start_s": 1.33,
+      "end_s": 1.46,
+      "phones": [
+        {
+          "phone": "Y",
+          "start_s": 1.33,
+          "end_s": 1.38
+        },
+        {
+          "phone": "UH",
+          "start_s": 1.38,
+          "end_s": 1.42
+        },
+        {
+          "phone": "R",
+          "start_s": 1.42,
+          "end_s": 1.46
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 1.4,
+          "vowel": "UH",
+          "rms": 0.161819,
+          "duration_s": 0.04
+        }
+      ]
+    },
+    {
+      "word": "hand",
+      "start_s": 1.46,
+      "end_s": 1.85,
+      "phones": [
+        {
+          "phone": "HH",
+          "start_s": 1.46,
+          "end_s": 1.56
+        },
+        {
+          "phone": "AE",
+          "start_s": 1.56,
+          "end_s": 1.69
+        },
+        {
+          "phone": "N",
+          "start_s": 1.69,
+          "end_s": 1.77
+        },
+        {
+          "phone": "D",
+          "start_s": 1.77,
+          "end_s": 1.85
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 1.625,
+          "vowel": "AE",
+          "rms": 0.143416,
+          "duration_s": 0.13
+        }
+      ]
+    },
+    {
+      "word": "much",
+      "start_s": 1.85,
+      "end_s": 2.2,
+      "phones": [
+        {
+          "phone": "M",
+          "start_s": 1.85,
+          "end_s": 2.01
+        },
+        {
+          "phone": "AH",
+          "start_s": 2.01,
+          "end_s": 2.09
+        },
+        {
+          "phone": "CH",
+          "start_s": 2.09,
+          "end_s": 2.2
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 2.05,
+          "vowel": "AH",
+          "rms": 0.196837,
+          "duration_s": 0.08
+        }
+      ]
+    },
+    {
+      "word": "faster",
+      "start_s": 2.2,
+      "end_s": 2.6,
+      "phones": [
+        {
+          "phone": "F",
+          "start_s": 2.2,
+          "end_s": 2.26
+        },
+        {
+          "phone": "AE",
+          "start_s": 2.26,
+          "end_s": 2.4
+        },
+        {
+          "phone": "S",
+          "start_s": 2.4,
+          "end_s": 2.46
+        },
+        {
+          "phone": "T",
+          "start_s": 2.46,
+          "end_s": 2.51
+        },
+        {
+          "phone": "ER",
+          "start_s": 2.51,
+          "end_s": 2.6
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 2.33,
+          "vowel": "AE",
+          "rms": 0.164799,
+          "duration_s": 0.14
+        },
+        {
+          "at_s": 2.555,
+          "vowel": "ER",
+          "rms": 0.106109,
+          "duration_s": 0.09
+        }
+      ]
+    },
+    {
+      "word": "than",
+      "start_s": 2.6,
+      "end_s": 2.81,
+      "phones": [
+        {
+          "phone": "DH",
+          "start_s": 2.6,
+          "end_s": 2.66
+        },
+        {
+          "phone": "AH",
+          "start_s": 2.66,
+          "end_s": 2.7
+        },
+        {
+          "phone": "N",
+          "start_s": 2.7,
+          "end_s": 2.81
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 2.68,
+          "vowel": "AH",
+          "rms": 0.111123,
+          "duration_s": 0.04
+        }
+      ]
+    },
+    {
+      "word": "wood",
+      "start_s": 2.81,
+      "end_s": 3.12,
+      "phones": [
+        {
+          "phone": "W",
+          "start_s": 2.81,
+          "end_s": 2.9
+        },
+        {
+          "phone": "UH",
+          "start_s": 2.9,
+          "end_s": 3.02
+        },
+        {
+          "phone": "D",
+          "start_s": 3.02,
+          "end_s": 3.12
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 2.96,
+          "vowel": "UH",
+          "rms": 0.159593,
+          "duration_s": 0.12
+        }
+      ]
+    },
+    {
+      "word": "so",
+      "start_s": 3.45,
+      "end_s": 3.57,
+      "phones": [
+        {
+          "phone": "S",
+          "start_s": 3.45,
+          "end_s": 3.52
+        },
+        {
+          "phone": "OW",
+          "start_s": 3.52,
+          "end_s": 3.57
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 3.545,
+          "vowel": "OW",
+          "rms": 0.292968,
+          "duration_s": 0.05
+        }
+      ]
+    },
+    {
+      "word": "your",
+      "start_s": 3.57,
+      "end_s": 3.73,
+      "phones": [
+        {
+          "phone": "Y",
+          "start_s": 3.57,
+          "end_s": 3.66
+        },
+        {
+          "phone": "UH",
+          "start_s": 3.66,
+          "end_s": 3.69
+        },
+        {
+          "phone": "R",
+          "start_s": 3.69,
+          "end_s": 3.73
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 3.675,
+          "vowel": "UH",
+          "rms": 0.159825,
+          "duration_s": 0.03
+        }
+      ]
+    },
+    {
+      "word": "skin",
+      "start_s": 3.73,
+      "end_s": 4.13,
+      "phones": [
+        {
+          "phone": "S",
+          "start_s": 3.73,
+          "end_s": 3.84
+        },
+        {
+          "phone": "K",
+          "start_s": 3.84,
+          "end_s": 3.91
+        },
+        {
+          "phone": "IH",
+          "start_s": 3.91,
+          "end_s": 3.98
+        },
+        {
+          "phone": "N",
+          "start_s": 3.98,
+          "end_s": 4.13
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 3.945,
+          "vowel": "IH",
+          "rms": 0.182704,
+          "duration_s": 0.07
+        }
+      ]
+    },
+    {
+      "word": "cools",
+      "start_s": 4.13,
+      "end_s": 4.49,
+      "phones": [
+        {
+          "phone": "K",
+          "start_s": 4.13,
+          "end_s": 4.25
+        },
+        {
+          "phone": "UW",
+          "start_s": 4.25,
+          "end_s": 4.3
+        },
+        {
+          "phone": "L",
+          "start_s": 4.3,
+          "end_s": 4.43
+        },
+        {
+          "phone": "Z",
+          "start_s": 4.43,
+          "end_s": 4.49
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 4.275,
+          "vowel": "UW",
+          "rms": 0.169615,
+          "duration_s": 0.05
+        }
+      ]
+    },
+    {
+      "word": "quickly",
+      "start_s": 4.49,
+      "end_s": 5.0,
+      "phones": [
+        {
+          "phone": "K",
+          "start_s": 4.49,
+          "end_s": 4.6
+        },
+        {
+          "phone": "W",
+          "start_s": 4.6,
+          "end_s": 4.63
+        },
+        {
+          "phone": "IH",
+          "start_s": 4.63,
+          "end_s": 4.69
+        },
+        {
+          "phone": "K",
+          "start_s": 4.69,
+          "end_s": 4.77
+        },
+        {
+          "phone": "L",
+          "start_s": 4.77,
+          "end_s": 4.86
+        },
+        {
+          "phone": "IY",
+          "start_s": 4.86,
+          "end_s": 5.0
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 4.66,
+          "vowel": "IH",
+          "rms": 0.107628,
+          "duration_s": 0.06
+        },
+        {
+          "at_s": 4.93,
+          "vowel": "IY",
+          "rms": 0.152404,
+          "duration_s": 0.14
+        }
+      ]
+    },
+    {
+      "word": "and",
+      "start_s": 5.28,
+      "end_s": 5.4,
+      "phones": [
+        {
+          "phone": "AE",
+          "start_s": 5.28,
+          "end_s": 5.34
+        },
+        {
+          "phone": "N",
+          "start_s": 5.34,
+          "end_s": 5.37
+        },
+        {
+          "phone": "D",
+          "start_s": 5.37,
+          "end_s": 5.4
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 5.31,
+          "vowel": "AE",
+          "rms": 0.06516,
+          "duration_s": 0.06
+        }
+      ]
+    },
+    {
+      "word": "the",
+      "start_s": 5.4,
+      "end_s": 5.46,
+      "phones": [
+        {
+          "phone": "DH",
+          "start_s": 5.4,
+          "end_s": 5.43
+        },
+        {
+          "phone": "AH",
+          "start_s": 5.43,
+          "end_s": 5.46
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 5.445,
+          "vowel": "AH",
+          "rms": 0.226952,
+          "duration_s": 0.03
+        }
+      ]
+    },
+    {
+      "word": "spoon",
+      "start_s": 5.46,
+      "end_s": 5.91,
+      "phones": [
+        {
+          "phone": "S",
+          "start_s": 5.46,
+          "end_s": 5.57
+        },
+        {
+          "phone": "P",
+          "start_s": 5.57,
+          "end_s": 5.66
+        },
+        {
+          "phone": "UW",
+          "start_s": 5.66,
+          "end_s": 5.81
+        },
+        {
+          "phone": "N",
+          "start_s": 5.81,
+          "end_s": 5.91
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 5.735,
+          "vowel": "UW",
+          "rms": 0.215301,
+          "duration_s": 0.15
+        }
+      ]
+    },
+    {
+      "word": "feels",
+      "start_s": 5.91,
+      "end_s": 6.23,
+      "phones": [
+        {
+          "phone": "F",
+          "start_s": 5.91,
+          "end_s": 5.98
+        },
+        {
+          "phone": "IY",
+          "start_s": 5.98,
+          "end_s": 6.07
+        },
+        {
+          "phone": "L",
+          "start_s": 6.07,
+          "end_s": 6.17
+        },
+        {
+          "phone": "Z",
+          "start_s": 6.17,
+          "end_s": 6.23
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 6.025,
+          "vowel": "IY",
+          "rms": 0.182621,
+          "duration_s": 0.09
+        }
+      ]
+    },
+    {
+      "word": "colder",
+      "start_s": 6.23,
+      "end_s": 6.75,
+      "phones": [
+        {
+          "phone": "K",
+          "start_s": 6.23,
+          "end_s": 6.37
+        },
+        {
+          "phone": "OW",
+          "start_s": 6.37,
+          "end_s": 6.45
+        },
+        {
+          "phone": "L",
+          "start_s": 6.45,
+          "end_s": 6.55
+        },
+        {
+          "phone": "D",
+          "start_s": 6.55,
+          "end_s": 6.59
+        },
+        {
+          "phone": "ER",
+          "start_s": 6.59,
+          "end_s": 6.75
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 6.41,
+          "vowel": "OW",
+          "rms": 0.127605,
+          "duration_s": 0.08
+        },
+        {
+          "at_s": 6.67,
+          "vowel": "ER",
+          "rms": 0.085303,
+          "duration_s": 0.16
+        }
+      ]
+    },
+    {
+      "word": "wood",
+      "start_s": 7.46,
+      "end_s": 7.63,
+      "phones": [
+        {
+          "phone": "W",
+          "start_s": 7.46,
+          "end_s": 7.54
+        },
+        {
+          "phone": "UH",
+          "start_s": 7.54,
+          "end_s": 7.58
+        },
+        {
+          "phone": "D",
+          "start_s": 7.58,
+          "end_s": 7.63
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 7.56,
+          "vowel": "UH",
+          "rms": 0.399796,
+          "duration_s": 0.04
+        }
+      ]
+    },
+    {
+      "word": "is",
+      "start_s": 7.63,
+      "end_s": 7.76,
+      "phones": [
+        {
+          "phone": "IH",
+          "start_s": 7.63,
+          "end_s": 7.68
+        },
+        {
+          "phone": "Z",
+          "start_s": 7.68,
+          "end_s": 7.76
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 7.655,
+          "vowel": "IH",
+          "rms": 0.316836,
+          "duration_s": 0.05
+        }
+      ]
+    },
+    {
+      "word": "a",
+      "start_s": 7.76,
+      "end_s": 7.87,
+      "phones": [
+        {
+          "phone": "AH",
+          "start_s": 7.76,
+          "end_s": 7.87
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 7.815,
+          "vowel": "AH",
+          "rms": 0.168558,
+          "duration_s": 0.11
+        }
+      ]
+    },
+    {
+      "word": "poor",
+      "start_s": 7.87,
+      "end_s": 8.29,
+      "phones": [
+        {
+          "phone": "P",
+          "start_s": 7.87,
+          "end_s": 8.05
+        },
+        {
+          "phone": "UW",
+          "start_s": 8.05,
+          "end_s": 8.16
+        },
+        {
+          "phone": "R",
+          "start_s": 8.16,
+          "end_s": 8.29
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 8.105,
+          "vowel": "UW",
+          "rms": 0.267666,
+          "duration_s": 0.11
+        }
+      ]
+    },
+    {
+      "word": "heat",
+      "start_s": 8.29,
+      "end_s": 8.53,
+      "phones": [
+        {
+          "phone": "HH",
+          "start_s": 8.29,
+          "end_s": 8.39
+        },
+        {
+          "phone": "IY",
+          "start_s": 8.39,
+          "end_s": 8.49
+        },
+        {
+          "phone": "T",
+          "start_s": 8.49,
+          "end_s": 8.53
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 8.44,
+          "vowel": "IY",
+          "rms": 0.139048,
+          "duration_s": 0.1
+        }
+      ]
+    },
+    {
+      "word": "conductor",
+      "start_s": 8.53,
+      "end_s": 9.15,
+      "phones": [
+        {
+          "phone": "K",
+          "start_s": 8.53,
+          "end_s": 8.62
+        },
+        {
+          "phone": "AH",
+          "start_s": 8.62,
+          "end_s": 8.65
+        },
+        {
+          "phone": "N",
+          "start_s": 8.65,
+          "end_s": 8.74
+        },
+        {
+          "phone": "D",
+          "start_s": 8.74,
+          "end_s": 8.78
+        },
+        {
+          "phone": "AH",
+          "start_s": 8.78,
+          "end_s": 8.89
+        },
+        {
+          "phone": "K",
+          "start_s": 8.89,
+          "end_s": 8.95
+        },
+        {
+          "phone": "T",
+          "start_s": 8.95,
+          "end_s": 9.02
+        },
+        {
+          "phone": "ER",
+          "start_s": 9.02,
+          "end_s": 9.15
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 8.635,
+          "vowel": "AH",
+          "rms": 0.083257,
+          "duration_s": 0.03
+        },
+        {
+          "at_s": 8.835,
+          "vowel": "AH",
+          "rms": 0.112694,
+          "duration_s": 0.11
+        },
+        {
+          "at_s": 9.085,
+          "vowel": "ER",
+          "rms": 0.05402,
+          "duration_s": 0.13
+        }
+      ]
+    },
+    {
+      "word": "so",
+      "start_s": 9.52,
+      "end_s": 9.65,
+      "phones": [
+        {
+          "phone": "S",
+          "start_s": 9.52,
+          "end_s": 9.59
+        },
+        {
+          "phone": "OW",
+          "start_s": 9.59,
+          "end_s": 9.65
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 9.62,
+          "vowel": "OW",
+          "rms": 0.202884,
+          "duration_s": 0.06
+        }
+      ]
+    },
+    {
+      "word": "it",
+      "start_s": 9.65,
+      "end_s": 9.74,
+      "phones": [
+        {
+          "phone": "IH",
+          "start_s": 9.65,
+          "end_s": 9.69
+        },
+        {
+          "phone": "T",
+          "start_s": 9.69,
+          "end_s": 9.74
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 9.67,
+          "vowel": "IH",
+          "rms": 0.224636,
+          "duration_s": 0.04
+        }
+      ]
+    },
+    {
+      "word": "takes",
+      "start_s": 9.74,
+      "end_s": 10.05,
+      "phones": [
+        {
+          "phone": "T",
+          "start_s": 9.74,
+          "end_s": 9.81
+        },
+        {
+          "phone": "EY",
+          "start_s": 9.81,
+          "end_s": 9.92
+        },
+        {
+          "phone": "K",
+          "start_s": 9.92,
+          "end_s": 9.97
+        },
+        {
+          "phone": "S",
+          "start_s": 9.97,
+          "end_s": 10.05
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 9.865,
+          "vowel": "EY",
+          "rms": 0.138681,
+          "duration_s": 0.11
+        }
+      ]
+    },
+    {
+      "word": "heat",
+      "start_s": 10.05,
+      "end_s": 10.31,
+      "phones": [
+        {
+          "phone": "HH",
+          "start_s": 10.05,
+          "end_s": 10.17
+        },
+        {
+          "phone": "IY",
+          "start_s": 10.17,
+          "end_s": 10.28
+        },
+        {
+          "phone": "T",
+          "start_s": 10.28,
+          "end_s": 10.31
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 10.225,
+          "vowel": "IY",
+          "rms": 0.139504,
+          "duration_s": 0.11
+        }
+      ]
+    },
+    {
+      "word": "from",
+      "start_s": 10.31,
+      "end_s": 10.53,
+      "phones": [
+        {
+          "phone": "F",
+          "start_s": 10.31,
+          "end_s": 10.4
+        },
+        {
+          "phone": "R",
+          "start_s": 10.4,
+          "end_s": 10.43
+        },
+        {
+          "phone": "AH",
+          "start_s": 10.43,
+          "end_s": 10.46
+        },
+        {
+          "phone": "M",
+          "start_s": 10.46,
+          "end_s": 10.53
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 10.445,
+          "vowel": "AH",
+          "rms": 0.111579,
+          "duration_s": 0.03
+        }
+      ]
+    },
+    {
+      "word": "your",
+      "start_s": 10.53,
+      "end_s": 10.67,
+      "phones": [
+        {
+          "phone": "Y",
+          "start_s": 10.53,
+          "end_s": 10.58
+        },
+        {
+          "phone": "UH",
+          "start_s": 10.58,
+          "end_s": 10.62
+        },
+        {
+          "phone": "R",
+          "start_s": 10.62,
+          "end_s": 10.67
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 10.6,
+          "vowel": "UH",
+          "rms": 0.090913,
+          "duration_s": 0.04
+        }
+      ]
+    },
+    {
+      "word": "hand",
+      "start_s": 10.67,
+      "end_s": 11.05,
+      "phones": [
+        {
+          "phone": "HH",
+          "start_s": 10.67,
+          "end_s": 10.78
+        },
+        {
+          "phone": "AE",
+          "start_s": 10.78,
+          "end_s": 10.93
+        },
+        {
+          "phone": "N",
+          "start_s": 10.93,
+          "end_s": 11.0
+        },
+        {
+          "phone": "D",
+          "start_s": 11.0,
+          "end_s": 11.05
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 10.855,
+          "vowel": "AE",
+          "rms": 0.110289,
+          "duration_s": 0.15
+        }
+      ]
+    },
+    {
+      "word": "more",
+      "start_s": 11.05,
+      "end_s": 11.31,
+      "phones": [
+        {
+          "phone": "M",
+          "start_s": 11.05,
+          "end_s": 11.17
+        },
+        {
+          "phone": "AO",
+          "start_s": 11.17,
+          "end_s": 11.25
+        },
+        {
+          "phone": "R",
+          "start_s": 11.25,
+          "end_s": 11.31
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 11.21,
+          "vowel": "AO",
+          "rms": 0.098463,
+          "duration_s": 0.08
+        }
+      ]
+    },
+    {
+      "word": "slowly",
+      "start_s": 11.31,
+      "end_s": 11.89,
+      "phones": [
+        {
+          "phone": "S",
+          "start_s": 11.31,
+          "end_s": 11.47
+        },
+        {
+          "phone": "L",
+          "start_s": 11.47,
+          "end_s": 11.58
+        },
+        {
+          "phone": "OW",
+          "start_s": 11.58,
+          "end_s": 11.67
+        },
+        {
+          "phone": "L",
+          "start_s": 11.67,
+          "end_s": 11.76
+        },
+        {
+          "phone": "IY",
+          "start_s": 11.76,
+          "end_s": 11.89
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 11.625,
+          "vowel": "OW",
+          "rms": 0.183411,
+          "duration_s": 0.09
+        },
+        {
+          "at_s": 11.825,
+          "vowel": "IY",
+          "rms": 0.056005,
+          "duration_s": 0.13
+        }
+      ]
+    },
+    {
+      "word": "even",
+      "start_s": 12.28,
+      "end_s": 12.56,
+      "phones": [
+        {
+          "phone": "IY",
+          "start_s": 12.28,
+          "end_s": 12.38
+        },
+        {
+          "phone": "V",
+          "start_s": 12.38,
+          "end_s": 12.43
+        },
+        {
+          "phone": "IH",
+          "start_s": 12.43,
+          "end_s": 12.46
+        },
+        {
+          "phone": "N",
+          "start_s": 12.46,
+          "end_s": 12.56
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 12.33,
+          "vowel": "IY",
+          "rms": 0.149591,
+          "duration_s": 0.1
+        },
+        {
+          "at_s": 12.445,
+          "vowel": "IH",
+          "rms": 0.185569,
+          "duration_s": 0.03
+        }
+      ]
+    },
+    {
+      "word": "when",
+      "start_s": 12.56,
+      "end_s": 12.8,
+      "phones": [
+        {
+          "phone": "W",
+          "start_s": 12.56,
+          "end_s": 12.62
+        },
+        {
+          "phone": "EH",
+          "start_s": 12.62,
+          "end_s": 12.69
+        },
+        {
+          "phone": "N",
+          "start_s": 12.69,
+          "end_s": 12.8
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 12.655,
+          "vowel": "EH",
+          "rms": 0.154368,
+          "duration_s": 0.07
+        }
+      ]
+    },
+    {
+      "word": "both",
+      "start_s": 12.8,
+      "end_s": 13.06,
+      "phones": [
+        {
+          "phone": "B",
+          "start_s": 12.8,
+          "end_s": 12.85
+        },
+        {
+          "phone": "OW",
+          "start_s": 12.85,
+          "end_s": 12.98
+        },
+        {
+          "phone": "TH",
+          "start_s": 12.98,
+          "end_s": 13.06
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 12.915,
+          "vowel": "OW",
+          "rms": 0.135406,
+          "duration_s": 0.13
+        }
+      ]
+    },
+    {
+      "word": "spoons",
+      "start_s": 13.06,
+      "end_s": 13.59,
+      "phones": [
+        {
+          "phone": "S",
+          "start_s": 13.06,
+          "end_s": 13.17
+        },
+        {
+          "phone": "P",
+          "start_s": 13.17,
+          "end_s": 13.26
+        },
+        {
+          "phone": "UW",
+          "start_s": 13.26,
+          "end_s": 13.41
+        },
+        {
+          "phone": "N",
+          "start_s": 13.41,
+          "end_s": 13.52
+        },
+        {
+          "phone": "Z",
+          "start_s": 13.52,
+          "end_s": 13.59
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 13.335,
+          "vowel": "UW",
+          "rms": 0.143963,
+          "duration_s": 0.15
+        }
+      ]
+    },
+    {
+      "word": "are",
+      "start_s": 13.59,
+      "end_s": 13.7,
+      "phones": [
+        {
+          "phone": "ER",
+          "start_s": 13.59,
+          "end_s": 13.7
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 13.645,
+          "vowel": "ER",
+          "rms": 0.105249,
+          "duration_s": 0.11
+        }
+      ]
+    },
+    {
+      "word": "at",
+      "start_s": 13.7,
+      "end_s": 13.82,
+      "phones": [
+        {
+          "phone": "AE",
+          "start_s": 13.7,
+          "end_s": 13.77
+        },
+        {
+          "phone": "T",
+          "start_s": 13.77,
+          "end_s": 13.82
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 13.735,
+          "vowel": "AE",
+          "rms": 0.104542,
+          "duration_s": 0.07
+        }
+      ]
+    },
+    {
+      "word": "the",
+      "start_s": 13.82,
+      "end_s": 13.97,
+      "phones": [
+        {
+          "phone": "DH",
+          "start_s": 13.82,
+          "end_s": 13.88
+        },
+        {
+          "phone": "AH",
+          "start_s": 13.88,
+          "end_s": 13.97
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 13.925,
+          "vowel": "AH",
+          "rms": 0.05551,
+          "duration_s": 0.09
+        }
+      ]
+    },
+    {
+      "word": "same",
+      "start_s": 13.97,
+      "end_s": 14.42,
+      "phones": [
+        {
+          "phone": "S",
+          "start_s": 13.97,
+          "end_s": 14.16
+        },
+        {
+          "phone": "EY",
+          "start_s": 14.16,
+          "end_s": 14.29
+        },
+        {
+          "phone": "M",
+          "start_s": 14.29,
+          "end_s": 14.42
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 14.225,
+          "vowel": "EY",
+          "rms": 0.129424,
+          "duration_s": 0.13
+        }
+      ]
+    },
+    {
+      "word": "temperature",
+      "start_s": 14.42,
+      "end_s": 14.95,
+      "phones": [
+        {
+          "phone": "T",
+          "start_s": 14.42,
+          "end_s": 14.5
+        },
+        {
+          "phone": "EH",
+          "start_s": 14.5,
+          "end_s": 14.56
+        },
+        {
+          "phone": "M",
+          "start_s": 14.56,
+          "end_s": 14.62
+        },
+        {
+          "phone": "P",
+          "start_s": 14.62,
+          "end_s": 14.65
+        },
+        {
+          "phone": "R",
+          "start_s": 14.65,
+          "end_s": 14.68
+        },
+        {
+          "phone": "AH",
+          "start_s": 14.68,
+          "end_s": 14.71
+        },
+        {
+          "phone": "CH",
+          "start_s": 14.71,
+          "end_s": 14.8
+        },
+        {
+          "phone": "ER",
+          "start_s": 14.8,
+          "end_s": 14.95
+        }
+      ],
+      "syllables": [
+        {
+          "at_s": 14.53,
+          "vowel": "EH",
+          "rms": 0.114778,
+          "duration_s": 0.06
+        },
+        {
+          "at_s": 14.695,
+          "vowel": "AH",
+          "rms": 0.073554,
+          "duration_s": 0.03
+        },
+        {
+          "at_s": 14.875,
+          "vowel": "ER",
+          "rms": 0.048478,
+          "duration_s": 0.15
+        }
+      ]
+    }
+  ]
+}

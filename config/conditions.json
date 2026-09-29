@@ -1,0 +1,12 @@
+{
+  "study_version": "expressive-performance-v2",
+  "parameter": "expressive_motion",
+  "units": "binary: 0 brief cue only, 1 sustained emotional performance",
+  "conditions": {"A": 0, "B": 1},
+  "labels": {"A": "Brief cue", "B": "Expressive performance"},
+  "cue_start_s": 0.5,
+  "cue_duration_s": 1.0,
+  "speech_target_s": 5.0,
+  "timing_tolerance_s": 0.1,
+  "gesture": "assets/motion/processing.json"
+}

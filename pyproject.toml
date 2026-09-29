@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools==84.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reachy-lab2-custom"
+version = "0.1.0"
+description = "Reachy Mini live conversation and controlled emotional-performance experiment"
+requires-python = ">=3.12,<3.13"
+dependencies = ["reachy-mini==1.11.0", "numpy==2.5.3", "sounddevice==0.5.3", "pocketsphinx==5.1.1"]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.2"]
+analysis = ["matplotlib==3.10.8"]
+conversation = ["reachy-mini-conversation-app @ https://github.com/pollen-robotics/reachy_mini_conversation_app/archive/b9f58a3587d79a3275d4402d1a8d210649d62d50.zip"]
+
+[tool.setuptools]
+packages = ["reachy_lab2"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

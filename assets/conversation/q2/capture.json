@@ -1,0 +1,19 @@
+{
+  "source": "actual Conversation App HuggingFaceRealtimeHandler",
+  "revision": "b9f58a3587d79a3275d4402d1a8d210649d62d50",
+  "input_mode": "text",
+  "question": "Why do we see lightning before we hear thunder?",
+  "answer": "Lightning's light travels almost instantly to your eyes, while thunder is sound moving through air at about 340 meters per second. That delay lets you estimate distance: roughly three seconds between flash and thunder means the storm is about one kilometer away.",
+  "duration_s": 17.376,
+  "voice": "Aiden",
+  "sample_rate": 16000,
+  "sha256": "7f338c06674fc17c152a7ab4693dcc9d11cf5aae0bf3eab0f92e95cba9bc39a3",
+  "response": {
+    "id": "resp_aab6c6ac65f7454b95c5d64ef37d96a4",
+    "status": "completed"
+  },
+  "choreography_reviewed": false,
+  "network_capture_elapsed_s": 6.381983600003878,
+  "event_log_format": "metadata-only; PCM audio is stored once in answer.wav",
+  "original_event_log_sha256": "30c4d7b9511af4b4fe4facf069238a96573188be8be02859ec923e74d161674c"
+}
