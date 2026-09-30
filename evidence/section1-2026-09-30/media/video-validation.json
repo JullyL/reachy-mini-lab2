@@ -1,0 +1,72 @@
+[
+  {
+    "file": "SIMULATION-B-30deg-interrupted-24459028.mp4",
+    "duration_s": 3.919333333,
+    "decoded_frames": 56,
+    "snapshots": 4,
+    "video_only": true
+  },
+  {
+    "file": "SIMULATION-Telepresence-robot.mp4",
+    "duration_s": 86.441333333,
+    "decoded_frames": 1229,
+    "snapshots": 4,
+    "video_only": true
+  },
+  {
+    "file": "SIMULATION-A-10deg-completed-1da29572.mp4",
+    "duration_s": 9.649333333,
+    "decoded_frames": 138,
+    "snapshots": 4,
+    "video_only": true
+  },
+  {
+    "file": "SIMULATION-standalone-neutral-recovery.mp4",
+    "duration_s": 8.974666666,
+    "decoded_frames": 127,
+    "snapshots": 4,
+    "video_only": true
+  },
+  {
+    "file": "SIMULATION-Telepresence-UI.mp4",
+    "duration_s": 40.832666666,
+    "decoded_frames": 112,
+    "snapshots": 4,
+    "video_only": true
+  },
+  {
+    "file": "SIMULATION-B-15deg-completed-37a1571f.mp4",
+    "duration_s": 9.485333333,
+    "decoded_frames": 135,
+    "snapshots": 4,
+    "video_only": true
+  },
+  {
+    "file": "SIMULATION-B-30deg-interrupted-cd109e59.mp4",
+    "duration_s": 9.030666666,
+    "decoded_frames": 129,
+    "snapshots": 4,
+    "video_only": true
+  },
+  {
+    "file": "SIMULATION-A-5deg-completed-8f07cb72.mp4",
+    "duration_s": 9.59,
+    "decoded_frames": 136,
+    "snapshots": 4,
+    "video_only": true
+  },
+  {
+    "file": "SIMULATION-B-30deg-completed-5fee46d0.mp4",
+    "duration_s": 9.585333333,
+    "decoded_frames": 137,
+    "snapshots": 4,
+    "video_only": true
+  },
+  {
+    "file": "SIMULATION-B-30deg-interrupted-14c983bd.mp4",
+    "duration_s": 6.072666666,
+    "decoded_frames": 87,
+    "snapshots": 4,
+    "video_only": true
+  }
+]

@@ -1,0 +1,12 @@
+usage: simulation_evidence.py [-h] [--runs RUNS] [--frames FRAMES] --out OUT
+                              [--capture-only]
+
+Summarize real trial logs and encode timestamped LIVE MuJoCo capture frames.
+
+options:
+  -h, --help       show this help message and exit
+  --runs RUNS
+  --frames FRAMES
+  --out OUT
+  --capture-only   Encode a complete live capture (e.g. Telepresence), without
+                   greeting-trial analysis

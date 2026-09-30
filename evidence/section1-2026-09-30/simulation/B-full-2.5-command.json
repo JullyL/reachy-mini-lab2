@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/Users/pandora2/Documents/GitHub/reachy-mini-lab2/.venv/bin/python",
+    "-m",
+    "reachy_lab2",
+    "trial",
+    "--condition",
+    "B",
+    "--backend",
+    "sim",
+    "--auto-accept",
+    "--log-dir",
+    "/Users/pandora2/Documents/GitHub/reachy-mini-lab2/evidence/section1-2026-09-30/simulation",
+    "--audio-device",
+    "2",
+    "--stop-after",
+    "2.5"
+  ],
+  "cwd": "/Users/pandora2/Documents/GitHub/reachy-mini-lab2",
+  "exit_code": 2
+}

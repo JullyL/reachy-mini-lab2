@@ -1,0 +1,92 @@
+[
+  {
+    "frame": 0,
+    "request_utc_ms": 1790803835764,
+    "received_utc_ms": 1790803837672
+  },
+  {
+    "frame": 1,
+    "request_utc_ms": 1790803837672,
+    "received_utc_ms": 1790803839171
+  },
+  {
+    "frame": 2,
+    "request_utc_ms": 1790803839171,
+    "received_utc_ms": 1790803840663
+  },
+  {
+    "frame": 3,
+    "request_utc_ms": 1790803840663,
+    "received_utc_ms": 1790803842146
+  },
+  {
+    "frame": 4,
+    "request_utc_ms": 1790803842146,
+    "received_utc_ms": 1790803843655
+  },
+  {
+    "frame": 5,
+    "request_utc_ms": 1790803843655,
+    "received_utc_ms": 1790803845655
+  },
+  {
+    "frame": 6,
+    "request_utc_ms": 1790803845655,
+    "received_utc_ms": 1790803847262
+  },
+  {
+    "frame": 7,
+    "request_utc_ms": 1790803847262,
+    "received_utc_ms": 1790803849155
+  },
+  {
+    "frame": 8,
+    "request_utc_ms": 1790803849155,
+    "received_utc_ms": 1790803850763
+  },
+  {
+    "frame": 9,
+    "request_utc_ms": 1790803850763,
+    "received_utc_ms": 1790803852255
+  },
+  {
+    "frame": 10,
+    "request_utc_ms": 1790803852255,
+    "received_utc_ms": 1790803853729
+  },
+  {
+    "frame": 11,
+    "request_utc_ms": 1790803853729,
+    "received_utc_ms": 1790803855205
+  },
+  {
+    "frame": 12,
+    "request_utc_ms": 1790803855205,
+    "received_utc_ms": 1790803856679
+  },
+  {
+    "frame": 13,
+    "request_utc_ms": 1790803856679,
+    "received_utc_ms": 1790803858154
+  },
+  {
+    "frame": 14,
+    "request_utc_ms": 1790803858154,
+    "received_utc_ms": 1790803859646
+  },
+  {
+    "frame": 15,
+    "request_utc_ms": 1790803859646,
+    "received_utc_ms": 1790803861192
+  },
+  {
+    "frame": 16,
+    "request_utc_ms": 1790803861192,
+    "received_utc_ms": 1790803862680
+  },
+  {
+    "frame": 17,
+    "request_utc_ms": 1790803862680,
+    "received_utc_ms": 1790803864156
+  }
+]

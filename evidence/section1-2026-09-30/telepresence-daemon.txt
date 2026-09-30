@@ -1,0 +1,34 @@
+reachy_mini.media.media_server - WARNING - No audio source available. Streaming video only; audio will be unavailable.
+reachy_mini.media.audio_control_utils - ERROR - No Reachy Mini Audio USB device found!
+reachy_mini.media.media_server - WARNING - No audio source available. Streaming video only; audio will be unavailable.
+2026-09-30T21:35:16.832713Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: New WebSocket connection this_id=9d60aad6-4906-4364-9d2d-984eb34a2439
+2026-09-30T21:35:16.838959Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Text(Utf8Bytes(b"{\"type\": \"setPeerStatus\", \"roles\": [\"listener\"], \"meta\": {\"name\": \"central-relay\"}}")))
+2026-09-30T21:35:16.839746Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::handlers: registered as [Listener] peer_id=9d60aad6-4906-4364-9d2d-984eb34a2439
+2026-09-30T21:35:18.278412Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: New WebSocket connection this_id=95e78a5a-fbf2-47d4-aa5b-a6fe670d2def
+2026-09-30T21:35:18.278699Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Text(Utf8Bytes(b"{\"type\":\"setPeerStatus\",\"roles\":[\"producer\"],\"meta\":{\"name\":\"reachymini\"},\"peerId\":\"95e78a5a-fbf2-47d4-aa5b-a6fe670d2def\"}")))
+2026-09-30T21:35:18.278750Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::handlers: registered as [Producer] peer_id=95e78a5a-fbf2-47d4-aa5b-a6fe670d2def
+reachy_mini.media.device_detection - WARNING - No Reachy Mini Audio Sink card found.
+reachy_mini.media.device_detection - WARNING - No Reachy Mini Audio Sink card found.
+2026-09-30T21:35:48.280987Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Pong(b""))
+2026-09-30T21:35:48.281439Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Pong(b""))
+2026-09-30T21:36:17.181845Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Close(Some(CloseFrame { code: Normal, reason: Utf8Bytes(b"") })))
+2026-09-30T21:36:17.181919Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: connection closed: Some(CloseFrame { code: Normal, reason: Utf8Bytes(b"") }) this_id=9d60aad6-4906-4364-9d2d-984eb34a2439
+2026-09-30T21:36:17.182359Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::handlers: removing peer peer_id=9d60aad6-4906-4364-9d2d-984eb34a2439
+2026-09-30T21:36:17.184128Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: New WebSocket connection this_id=1c00c976-8b9c-4c55-a389-7837c300cd32
+2026-09-30T21:36:17.184492Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Text(Utf8Bytes(b"{\"type\": \"setPeerStatus\", \"roles\": [\"listener\"], \"meta\": {\"name\": \"central-relay\"}}")))
+2026-09-30T21:36:17.184557Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::handlers: registered as [Listener] peer_id=1c00c976-8b9c-4c55-a389-7837c300cd32
+2026-09-30T21:36:18.282345Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Pong(b""))
+2026-09-30T21:36:47.186164Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Pong(b""))
+2026-09-30T21:36:47.247243Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Close(Some(CloseFrame { code: Normal, reason: Utf8Bytes(b"") })))
+2026-09-30T21:36:47.247333Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: connection closed: Some(CloseFrame { code: Normal, reason: Utf8Bytes(b"") }) this_id=1c00c976-8b9c-4c55-a389-7837c300cd32
+2026-09-30T21:36:47.247417Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::handlers: removing peer peer_id=1c00c976-8b9c-4c55-a389-7837c300cd32
+2026-09-30T21:36:47.249372Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: New WebSocket connection this_id=b734e5b9-2cda-44fd-b208-3522f3b29989
+2026-09-30T21:36:47.249780Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Text(Utf8Bytes(b"{\"type\": \"setPeerStatus\", \"roles\": [\"listener\"], \"meta\": {\"name\": \"central-relay\"}}")))
+2026-09-30T21:36:47.249839Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::handlers: registered as [Listener] peer_id=b734e5b9-2cda-44fd-b208-3522f3b29989
+2026-09-30T21:36:48.284402Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Pong(b""))
+2026-09-30T21:36:54.476169Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Close(None))
+2026-09-30T21:36:54.476277Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: connection closed: None this_id=95e78a5a-fbf2-47d4-aa5b-a6fe670d2def
+2026-09-30T21:36:54.476367Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::handlers: removing peer peer_id=95e78a5a-fbf2-47d4-aa5b-a6fe670d2def
+2026-09-30T21:36:54.478694Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: Received message Ok(Close(Some(CloseFrame { code: Normal, reason: Utf8Bytes(b"") })))
+2026-09-30T21:36:54.478739Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::server: connection closed: Some(CloseFrame { code: Normal, reason: Utf8Bytes(b"") }) this_id=b734e5b9-2cda-44fd-b208-3522f3b29989
+2026-09-30T21:36:54.478783Z  INFO ThreadId(01) gst_plugin_webrtc_signalling::handlers: removing peer peer_id=b734e5b9-2cda-44fd-b208-3522f3b29989

@@ -1,0 +1,952 @@
+{
+  "basis": "Live running MuJoCo renderer; no replay or interpolation; no recorded audio",
+  "source_frames": "/tmp/section1-live-frames",
+  "frames": [
+    {
+      "file": "001073.jpg",
+      "utc_s": 1790804067.0489411,
+      "monotonic_s": 1633286.642772875,
+      "simulation_time_s": 60.78200000002832,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001074.jpg",
+      "utc_s": 1790804067.119871,
+      "monotonic_s": 1633286.71370325,
+      "simulation_time_s": 60.83800000002839,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001075.jpg",
+      "utc_s": 1790804067.190488,
+      "monotonic_s": 1633286.784321,
+      "simulation_time_s": 60.89600000002846,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001076.jpg",
+      "utc_s": 1790804067.2621849,
+      "monotonic_s": 1633286.856017666,
+      "simulation_time_s": 60.950000000028524,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001077.jpg",
+      "utc_s": 1790804067.3301299,
+      "monotonic_s": 1633286.923963291,
+      "simulation_time_s": 61.00200000002859,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001078.jpg",
+      "utc_s": 1790804067.3977768,
+      "monotonic_s": 1633286.991610208,
+      "simulation_time_s": 61.058000000028656,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001079.jpg",
+      "utc_s": 1790804067.469811,
+      "monotonic_s": 1633287.063644958,
+      "simulation_time_s": 61.11600000002873,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001080.jpg",
+      "utc_s": 1790804067.5408251,
+      "monotonic_s": 1633287.134658333,
+      "simulation_time_s": 61.1740000000288,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001081.jpg",
+      "utc_s": 1790804067.612524,
+      "monotonic_s": 1633287.20635825,
+      "simulation_time_s": 61.23400000002887,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001082.jpg",
+      "utc_s": 1790804067.6836648,
+      "monotonic_s": 1633287.277498958,
+      "simulation_time_s": 61.29000000002894,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001083.jpg",
+      "utc_s": 1790804067.752613,
+      "monotonic_s": 1633287.346447458,
+      "simulation_time_s": 61.344000000029006,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001084.jpg",
+      "utc_s": 1790804067.8243,
+      "monotonic_s": 1633287.418134458,
+      "simulation_time_s": 61.402000000029076,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001085.jpg",
+      "utc_s": 1790804067.8915,
+      "monotonic_s": 1633287.485335541,
+      "simulation_time_s": 61.45400000002914,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001086.jpg",
+      "utc_s": 1790804067.9610062,
+      "monotonic_s": 1633287.5548405,
+      "simulation_time_s": 61.51200000002921,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001087.jpg",
+      "utc_s": 1790804068.032696,
+      "monotonic_s": 1633287.626532,
+      "simulation_time_s": 61.56600000002928,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001088.jpg",
+      "utc_s": 1790804068.104398,
+      "monotonic_s": 1633287.698232833,
+      "simulation_time_s": 61.622000000029345,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001089.jpg",
+      "utc_s": 1790804068.17611,
+      "monotonic_s": 1633287.769945875,
+      "simulation_time_s": 61.68400000002942,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001090.jpg",
+      "utc_s": 1790804068.247808,
+      "monotonic_s": 1633287.841644541,
+      "simulation_time_s": 61.74000000002949,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001091.jpg",
+      "utc_s": 1790804068.319502,
+      "monotonic_s": 1633287.913338541,
+      "simulation_time_s": 61.79800000002956,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001092.jpg",
+      "utc_s": 1790804068.391215,
+      "monotonic_s": 1633287.985050916,
+      "simulation_time_s": 61.858000000029634,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001093.jpg",
+      "utc_s": 1790804068.462909,
+      "monotonic_s": 1633288.056745708,
+      "simulation_time_s": 61.9140000000297,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001094.jpg",
+      "utc_s": 1790804068.5346088,
+      "monotonic_s": 1633288.128446583,
+      "simulation_time_s": 61.97000000002977,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001095.jpg",
+      "utc_s": 1790804068.6019242,
+      "monotonic_s": 1633288.195762125,
+      "simulation_time_s": 62.02600000002984,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001096.jpg",
+      "utc_s": 1790804068.673614,
+      "monotonic_s": 1633288.26745225,
+      "simulation_time_s": 62.080000000029905,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001097.jpg",
+      "utc_s": 1790804068.74419,
+      "monotonic_s": 1633288.338028083,
+      "simulation_time_s": 62.138000000029976,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001098.jpg",
+      "utc_s": 1790804068.811032,
+      "monotonic_s": 1633288.4048705,
+      "simulation_time_s": 62.19200000003004,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001099.jpg",
+      "utc_s": 1790804068.879829,
+      "monotonic_s": 1633288.473667791,
+      "simulation_time_s": 62.2420000000301,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001100.jpg",
+      "utc_s": 1790804068.9485388,
+      "monotonic_s": 1633288.542377875,
+      "simulation_time_s": 62.302000000030176,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001101.jpg",
+      "utc_s": 1790804069.018943,
+      "monotonic_s": 1633288.612782583,
+      "simulation_time_s": 62.36000000003025,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001102.jpg",
+      "utc_s": 1790804069.086977,
+      "monotonic_s": 1633288.680816583,
+      "simulation_time_s": 62.41200000003031,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001103.jpg",
+      "utc_s": 1790804069.1586719,
+      "monotonic_s": 1633288.752512,
+      "simulation_time_s": 62.47400000003039,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001104.jpg",
+      "utc_s": 1790804069.2273762,
+      "monotonic_s": 1633288.821216125,
+      "simulation_time_s": 62.530000000030455,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001105.jpg",
+      "utc_s": 1790804069.2990808,
+      "monotonic_s": 1633288.892920791,
+      "simulation_time_s": 62.58600000003052,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001106.jpg",
+      "utc_s": 1790804069.37079,
+      "monotonic_s": 1633288.964630458,
+      "simulation_time_s": 62.6460000000306,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001107.jpg",
+      "utc_s": 1790804069.442485,
+      "monotonic_s": 1633289.036325333,
+      "simulation_time_s": 62.702000000030665,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001108.jpg",
+      "utc_s": 1790804069.514176,
+      "monotonic_s": 1633289.108016541,
+      "simulation_time_s": 62.76200000003074,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001109.jpg",
+      "utc_s": 1790804069.585865,
+      "monotonic_s": 1633289.179706208,
+      "simulation_time_s": 62.82000000003081,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001110.jpg",
+      "utc_s": 1790804069.6526022,
+      "monotonic_s": 1633289.246443625,
+      "simulation_time_s": 62.87600000003088,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001111.jpg",
+      "utc_s": 1790804069.719502,
+      "monotonic_s": 1633289.313343125,
+      "simulation_time_s": 62.92600000003094,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001112.jpg",
+      "utc_s": 1790804069.789584,
+      "monotonic_s": 1633289.383426,
+      "simulation_time_s": 62.988000000031015,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001113.jpg",
+      "utc_s": 1790804069.8612711,
+      "monotonic_s": 1633289.455113291,
+      "simulation_time_s": 63.046000000031086,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001114.jpg",
+      "utc_s": 1790804069.9329631,
+      "monotonic_s": 1633289.526805708,
+      "simulation_time_s": 63.10000000003115,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001115.jpg",
+      "utc_s": 1790804070.001939,
+      "monotonic_s": 1633289.595781916,
+      "simulation_time_s": 63.15800000003122,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001116.jpg",
+      "utc_s": 1790804070.069283,
+      "monotonic_s": 1633289.663125791,
+      "simulation_time_s": 63.210000000031286,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001117.jpg",
+      "utc_s": 1790804070.13619,
+      "monotonic_s": 1633289.730033,
+      "simulation_time_s": 63.266000000031354,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001118.jpg",
+      "utc_s": 1790804070.202903,
+      "monotonic_s": 1633289.796746375,
+      "simulation_time_s": 63.31800000003142,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001119.jpg",
+      "utc_s": 1790804070.274598,
+      "monotonic_s": 1633289.868441333,
+      "simulation_time_s": 63.37600000003149,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001120.jpg",
+      "utc_s": 1790804070.343489,
+      "monotonic_s": 1633289.937332583,
+      "simulation_time_s": 63.43600000003156,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001121.jpg",
+      "utc_s": 1790804070.415179,
+      "monotonic_s": 1633290.009023333,
+      "simulation_time_s": 63.49200000003163,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001122.jpg",
+      "utc_s": 1790804070.485088,
+      "monotonic_s": 1633290.078932083,
+      "simulation_time_s": 63.5500000000317,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001123.jpg",
+      "utc_s": 1790804070.552311,
+      "monotonic_s": 1633290.146155416,
+      "simulation_time_s": 63.602000000031765,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001124.jpg",
+      "utc_s": 1790804070.623994,
+      "monotonic_s": 1633290.217839083,
+      "simulation_time_s": 63.66200000003184,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001125.jpg",
+      "utc_s": 1790804070.695692,
+      "monotonic_s": 1633290.2895365,
+      "simulation_time_s": 63.724000000031914,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001126.jpg",
+      "utc_s": 1790804070.763299,
+      "monotonic_s": 1633290.35714475,
+      "simulation_time_s": 63.77800000003198,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001127.jpg",
+      "utc_s": 1790804070.833837,
+      "monotonic_s": 1633290.427682583,
+      "simulation_time_s": 63.822000000032034,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001128.jpg",
+      "utc_s": 1790804070.902594,
+      "monotonic_s": 1633290.496439833,
+      "simulation_time_s": 63.8780000000321,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001129.jpg",
+      "utc_s": 1790804070.9694579,
+      "monotonic_s": 1633290.563304458,
+      "simulation_time_s": 63.930000000032166,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001130.jpg",
+      "utc_s": 1790804071.036565,
+      "monotonic_s": 1633290.6304115,
+      "simulation_time_s": 63.986000000032234,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001131.jpg",
+      "utc_s": 1790804071.103712,
+      "monotonic_s": 1633290.697558791,
+      "simulation_time_s": 64.04000000003215,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001132.jpg",
+      "utc_s": 1790804071.1753988,
+      "monotonic_s": 1633290.7692465,
+      "simulation_time_s": 64.09800000003202,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001133.jpg",
+      "utc_s": 1790804071.247099,
+      "monotonic_s": 1633290.84094625,
+      "simulation_time_s": 64.15200000003189,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001134.jpg",
+      "utc_s": 1790804071.318814,
+      "monotonic_s": 1633290.912660416,
+      "simulation_time_s": 64.21400000003175,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001135.jpg",
+      "utc_s": 1790804071.390501,
+      "monotonic_s": 1633290.9843485,
+      "simulation_time_s": 64.27000000003162,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001136.jpg",
+      "utc_s": 1790804071.462212,
+      "monotonic_s": 1633291.056060541,
+      "simulation_time_s": 64.33000000003148,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001137.jpg",
+      "utc_s": 1790804071.533899,
+      "monotonic_s": 1633291.127747,
+      "simulation_time_s": 64.39000000003134,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001138.jpg",
+      "utc_s": 1790804071.605592,
+      "monotonic_s": 1633291.199440416,
+      "simulation_time_s": 64.4460000000312,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001139.jpg",
+      "utc_s": 1790804071.677293,
+      "monotonic_s": 1633291.271141333,
+      "simulation_time_s": 64.50600000003107,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001140.jpg",
+      "utc_s": 1790804071.748987,
+      "monotonic_s": 1633291.342835666,
+      "simulation_time_s": 64.56200000003093,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001141.jpg",
+      "utc_s": 1790804071.82067,
+      "monotonic_s": 1633291.414519166,
+      "simulation_time_s": 64.6200000000308,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001142.jpg",
+      "utc_s": 1790804071.889457,
+      "monotonic_s": 1633291.483307041,
+      "simulation_time_s": 64.67600000003067,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001143.jpg",
+      "utc_s": 1790804071.961149,
+      "monotonic_s": 1633291.554998583,
+      "simulation_time_s": 64.73600000003053,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001144.jpg",
+      "utc_s": 1790804072.028959,
+      "monotonic_s": 1633291.622809083,
+      "simulation_time_s": 64.78800000003041,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001145.jpg",
+      "utc_s": 1790804072.096328,
+      "monotonic_s": 1633291.690178125,
+      "simulation_time_s": 64.84400000003028,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001146.jpg",
+      "utc_s": 1790804072.168044,
+      "monotonic_s": 1633291.761894541,
+      "simulation_time_s": 64.90200000003014,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001147.jpg",
+      "utc_s": 1790804072.239742,
+      "monotonic_s": 1633291.83359275,
+      "simulation_time_s": 64.96200000003,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001148.jpg",
+      "utc_s": 1790804072.310994,
+      "monotonic_s": 1633291.904845041,
+      "simulation_time_s": 65.01800000002987,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001149.jpg",
+      "utc_s": 1790804072.3826811,
+      "monotonic_s": 1633291.976532958,
+      "simulation_time_s": 65.08000000002973,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001150.jpg",
+      "utc_s": 1790804072.454377,
+      "monotonic_s": 1633292.04822925,
+      "simulation_time_s": 65.1340000000296,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001151.jpg",
+      "utc_s": 1790804072.521255,
+      "monotonic_s": 1633292.115107041,
+      "simulation_time_s": 65.19000000002947,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001152.jpg",
+      "utc_s": 1790804072.59302,
+      "monotonic_s": 1633292.186872083,
+      "simulation_time_s": 65.24800000002934,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001153.jpg",
+      "utc_s": 1790804072.664701,
+      "monotonic_s": 1633292.258553541,
+      "simulation_time_s": 65.3060000000292,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001154.jpg",
+      "utc_s": 1790804072.736445,
+      "monotonic_s": 1633292.33029825,
+      "simulation_time_s": 65.36600000002906,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001155.jpg",
+      "utc_s": 1790804072.8054159,
+      "monotonic_s": 1633292.399268083,
+      "simulation_time_s": 65.42400000002893,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001156.jpg",
+      "utc_s": 1790804072.873535,
+      "monotonic_s": 1633292.467387958,
+      "simulation_time_s": 65.4760000000288,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001157.jpg",
+      "utc_s": 1790804072.9452312,
+      "monotonic_s": 1633292.539084916,
+      "simulation_time_s": 65.53600000002866,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001158.jpg",
+      "utc_s": 1790804073.0169249,
+      "monotonic_s": 1633292.610778875,
+      "simulation_time_s": 65.59600000002852,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001159.jpg",
+      "utc_s": 1790804073.086163,
+      "monotonic_s": 1633292.680016708,
+      "simulation_time_s": 65.6520000000284,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001160.jpg",
+      "utc_s": 1790804073.152965,
+      "monotonic_s": 1633292.746818875,
+      "simulation_time_s": 65.70600000002827,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001161.jpg",
+      "utc_s": 1790804073.2246568,
+      "monotonic_s": 1633292.818511458,
+      "simulation_time_s": 65.76800000002812,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001162.jpg",
+      "utc_s": 1790804073.291397,
+      "monotonic_s": 1633292.885252208,
+      "simulation_time_s": 65.81800000002801,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001163.jpg",
+      "utc_s": 1790804073.358268,
+      "monotonic_s": 1633292.9521235,
+      "simulation_time_s": 65.87600000002787,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001164.jpg",
+      "utc_s": 1790804073.4262762,
+      "monotonic_s": 1633293.020130541,
+      "simulation_time_s": 65.92800000002775,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001165.jpg",
+      "utc_s": 1790804073.49799,
+      "monotonic_s": 1633293.09184425,
+      "simulation_time_s": 65.98600000002762,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001166.jpg",
+      "utc_s": 1790804073.5692291,
+      "monotonic_s": 1633293.1630845,
+      "simulation_time_s": 66.04800000002747,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001167.jpg",
+      "utc_s": 1790804073.640918,
+      "monotonic_s": 1633293.23477425,
+      "simulation_time_s": 66.10200000002735,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001168.jpg",
+      "utc_s": 1790804073.712637,
+      "monotonic_s": 1633293.306492458,
+      "simulation_time_s": 66.15600000002722,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001169.jpg",
+      "utc_s": 1790804073.784328,
+      "monotonic_s": 1633293.378185,
+      "simulation_time_s": 66.21800000002708,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001170.jpg",
+      "utc_s": 1790804073.8560221,
+      "monotonic_s": 1633293.449879125,
+      "simulation_time_s": 66.27800000002694,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001171.jpg",
+      "utc_s": 1790804073.927655,
+      "monotonic_s": 1633293.52151225,
+      "simulation_time_s": 66.3340000000268,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001172.jpg",
+      "utc_s": 1790804073.9993489,
+      "monotonic_s": 1633293.593206625,
+      "simulation_time_s": 66.39400000002667,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001173.jpg",
+      "utc_s": 1790804074.0692968,
+      "monotonic_s": 1633293.663155041,
+      "simulation_time_s": 66.45000000002653,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001174.jpg",
+      "utc_s": 1790804074.139303,
+      "monotonic_s": 1633293.733160958,
+      "simulation_time_s": 66.5060000000264,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001175.jpg",
+      "utc_s": 1790804074.210733,
+      "monotonic_s": 1633293.804591083,
+      "simulation_time_s": 66.56800000002626,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001176.jpg",
+      "utc_s": 1790804074.279003,
+      "monotonic_s": 1633293.872860833,
+      "simulation_time_s": 66.61800000002614,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001177.jpg",
+      "utc_s": 1790804074.3507001,
+      "monotonic_s": 1633293.944558958,
+      "simulation_time_s": 66.68800000002598,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001178.jpg",
+      "utc_s": 1790804074.417492,
+      "monotonic_s": 1633294.011350791,
+      "simulation_time_s": 66.73600000002587,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001179.jpg",
+      "utc_s": 1790804074.4891798,
+      "monotonic_s": 1633294.083039416,
+      "simulation_time_s": 66.78800000002575,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001180.jpg",
+      "utc_s": 1790804074.560883,
+      "monotonic_s": 1633294.154742166,
+      "simulation_time_s": 66.84400000002562,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001181.jpg",
+      "utc_s": 1790804074.628115,
+      "monotonic_s": 1633294.221975083,
+      "simulation_time_s": 66.90200000002548,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001182.jpg",
+      "utc_s": 1790804074.695246,
+      "monotonic_s": 1633294.289105458,
+      "simulation_time_s": 66.95200000002536,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001183.jpg",
+      "utc_s": 1790804074.762356,
+      "monotonic_s": 1633294.356216416,
+      "simulation_time_s": 67.01000000002523,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001184.jpg",
+      "utc_s": 1790804074.8342102,
+      "monotonic_s": 1633294.428070125,
+      "simulation_time_s": 67.0660000000251,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001185.jpg",
+      "utc_s": 1790804074.905941,
+      "monotonic_s": 1633294.49980175,
+      "simulation_time_s": 67.12200000002497,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001186.jpg",
+      "utc_s": 1790804074.9775841,
+      "monotonic_s": 1633294.571445083,
+      "simulation_time_s": 67.18200000002483,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001187.jpg",
+      "utc_s": 1790804075.0492759,
+      "monotonic_s": 1633294.643137125,
+      "simulation_time_s": 67.2360000000247,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001188.jpg",
+      "utc_s": 1790804075.1209779,
+      "monotonic_s": 1633294.714839041,
+      "simulation_time_s": 67.29400000002457,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001189.jpg",
+      "utc_s": 1790804075.192178,
+      "monotonic_s": 1633294.7860395,
+      "simulation_time_s": 67.35400000002443,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001190.jpg",
+      "utc_s": 1790804075.2638762,
+      "monotonic_s": 1633294.857737958,
+      "simulation_time_s": 67.4080000000243,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001191.jpg",
+      "utc_s": 1790804075.3326452,
+      "monotonic_s": 1633294.926506666,
+      "simulation_time_s": 67.46200000002418,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001192.jpg",
+      "utc_s": 1790804075.402587,
+      "monotonic_s": 1633294.996448958,
+      "simulation_time_s": 67.52000000002404,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001193.jpg",
+      "utc_s": 1790804075.474334,
+      "monotonic_s": 1633295.068196958,
+      "simulation_time_s": 67.57400000002391,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001194.jpg",
+      "utc_s": 1790804075.546056,
+      "monotonic_s": 1633295.139918875,
+      "simulation_time_s": 67.63200000002378,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001195.jpg",
+      "utc_s": 1790804075.617759,
+      "monotonic_s": 1633295.211622083,
+      "simulation_time_s": 67.69000000002364,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001196.jpg",
+      "utc_s": 1790804075.6894479,
+      "monotonic_s": 1633295.283311791,
+      "simulation_time_s": 67.74600000002351,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001197.jpg",
+      "utc_s": 1790804075.757096,
+      "monotonic_s": 1633295.350960375,
+      "simulation_time_s": 67.80000000002339,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001198.jpg",
+      "utc_s": 1790804075.828821,
+      "monotonic_s": 1633295.422684875,
+      "simulation_time_s": 67.85800000002325,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001199.jpg",
+      "utc_s": 1790804075.9005172,
+      "monotonic_s": 1633295.494381416,
+      "simulation_time_s": 67.91600000002312,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001200.jpg",
+      "utc_s": 1790804075.972223,
+      "monotonic_s": 1633295.566087125,
+      "simulation_time_s": 67.97000000002299,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001201.jpg",
+      "utc_s": 1790804076.0408268,
+      "monotonic_s": 1633295.634691291,
+      "simulation_time_s": 68.02600000002286,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001202.jpg",
+      "utc_s": 1790804076.112521,
+      "monotonic_s": 1633295.706386541,
+      "simulation_time_s": 68.08200000002273,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001203.jpg",
+      "utc_s": 1790804076.1842198,
+      "monotonic_s": 1633295.778085,
+      "simulation_time_s": 68.14200000002259,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001204.jpg",
+      "utc_s": 1790804076.2559261,
+      "monotonic_s": 1633295.849791333,
+      "simulation_time_s": 68.20000000002246,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001205.jpg",
+      "utc_s": 1790804076.327612,
+      "monotonic_s": 1633295.921478166,
+      "simulation_time_s": 68.25800000002232,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001206.jpg",
+      "utc_s": 1790804076.3960938,
+      "monotonic_s": 1633295.989960166,
+      "simulation_time_s": 68.3120000000222,
+      "basis": "live MuJoCo renderer"
+    },
+    {
+      "file": "001207.jpg",
+      "utc_s": 1790804076.4677901,
+      "monotonic_s": 1633296.061656458,
+      "simulation_time_s": 68.37000000002206,
+      "basis": "live MuJoCo renderer"
+    }
+  ],
+  "trial_log": "evidence/section1-2026-09-30/recorded-simulation/37a1571f-3d9e-46c6-8f6d-fe7afed51b3c.jsonl"
+}

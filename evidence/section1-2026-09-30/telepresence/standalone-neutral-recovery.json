@@ -1,0 +1,109 @@
+{
+  "utc_s": 1790804661.607536,
+  "backend": "simulation",
+  "purpose": "Standalone neutral recovery after Telepresence sleep and tab closure",
+  "status": {
+    "type": "daemon_status",
+    "robot_name": "lab2-simulation",
+    "state": "running",
+    "wireless_version": false,
+    "desktop_app_daemon": false,
+    "simulation_enabled": true,
+    "mockup_sim_enabled": false,
+    "no_media": false,
+    "media_released": false,
+    "camera_specs_name": "mujoco",
+    "backend_status": {
+      "motor_control_mode": "enabled",
+      "error": null
+    },
+    "error": null,
+    "wlan_ip": null,
+    "version": "1.11.0",
+    "hardware_id": null,
+    "face_target": {
+      "detected": false,
+      "x": null,
+      "y": null,
+      "roll": null,
+      "ts": null
+    }
+  },
+  "before": {
+    "head": [
+      [
+        0.8746517066557314,
+        -0.03921563914411894,
+        0.48316304255471915,
+        -0.019736252770504562
+      ],
+      [
+        0.022429223545117463,
+        0.9989287911249477,
+        0.04047468582722212,
+        0.0005958158297447343
+      ],
+      [
+        -0.48423271468930956,
+        -0.024564281144935488,
+        0.8745943483218109,
+        -0.04333964598810586
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "antennas_rad_right_left": [
+      -3.0499231758702807,
+      3.049906850931393
+    ],
+    "body_yaw": -6.940807885007129e-10
+  },
+  "result": {
+    "succeeded": true,
+    "basis": "five SDK feedback polls within tolerance",
+    "head_translation_m": 0.0016885084767708565,
+    "head_rotation_deg": 1.635949094844322,
+    "antenna_error_deg_right_left": [
+      -0.17985884471142943,
+      0.17942263018074922
+    ],
+    "body_yaw_deg": -0.0004334753246343195
+  },
+  "after": {
+    "head": [
+      [
+        0.9996164501193461,
+        0.008118391482293378,
+        0.026477242502575132,
+        -0.0014331551812955465
+      ],
+      [
+        -0.007934546270426404,
+        0.9999437306214922,
+        -0.007041204886827434,
+        0.0003865507815823052
+      ],
+      [
+        -0.026532915902373173,
+        0.006828419327783439,
+        0.9996246180758077,
+        -0.0008048015877909764
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "antennas_rad_right_left": [
+      -0.003139129029047634,
+      0.0031315156492422226
+    ],
+    "body_yaw": -7.56557164102016e-06
+  }
+}

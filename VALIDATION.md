@@ -46,3 +46,7 @@ The updated DOCX changes only section 3, including 3.1–3.3. `docx-preservation
 ## Final cleanup regression
 
 After removing legacy study files, unused in-memory log storage and stale comments, all 16 tests passed (26.78 s). Both full A/B cycles and three interruption/neutral-recovery checks passed again in MuJoCo with audio. `evidence/antenna-greeting/cleanup-verification.json` records the final code fingerprints and simulation outcomes; `cleanup-pytest.txt` records the test result. Upstream source hashes and installed dependency consistency also passed. The report is unchanged by cleanup; its numerical results refer to the earlier retained traces. Physical verification remains pending.
+
+## Section 1 Mac preparation — 2026-09-30
+
+New results, including actual official Telepresence/MuJoCo operation and recordings, are indexed in [the Section 1 evidence package](evidence/section1-2026-09-30/README.md). Two new seven-run greeting batches passed; the recorded batch supplies Section 1 values. Earlier results above and Section 3 are unchanged. The serial suite passed all 16 tests after an overlapping-run lock failure was retained. Telepresence lacks an independent antenna control in the inspected revision and required tab closure to release manual control. Physical requirements remain pending.

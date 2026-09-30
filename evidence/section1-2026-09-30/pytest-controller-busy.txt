@@ -1,0 +1,300 @@
+.......FFFFFFFF.                                                         [100%]
+=================================== FAILURES ===================================
+________________________ test_trials_and_stops[A-None] _________________________
+
+tmp_path = PosixPath('/private/var/folders/qh/7vnlgwn15fx6rsf12ht0kyh80000gn/T/pytest-of-pandora2/pytest-4/test_trials_and_stops_A_None_0')
+condition = 'A', stop = None
+
+    @pytest.mark.parametrize("condition,stop", [("A",None),("B",None),("A",.2),("B",1.5),("B",5.3)])
+    def test_trials_and_stops(tmp_path,condition,stop):
+>       with Controller() as control:
+             ^^^^^^^^^^^^
+
+tests/test_greeting.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <reachy_lab2.trial.Controller object at 0x105ddab10>
+
+    def __enter__(self):
+        self.stop = threading.Event()
+        self.events = queue.SimpleQueue()
+        self.closed = threading.Event()
+        self.server = socket.socket()
+        if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        else:
+            # Reopen after TCP TIME_WAIT; an active listening socket still excludes us.
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        try:
+            self.server.bind(("127.0.0.1", CONTROL_PORT))
+            self.server.listen(4)
+            self.server.settimeout(.1)
+        except OSError as exc:
+            self.server.close()
+            if exc.errno == errno.EADDRINUSE:
+>               raise RuntimeError("Another trial controller is active (port 18731)") from None
+E               RuntimeError: Another trial controller is active (port 18731)
+
+reachy_lab2/trial.py:55: RuntimeError
+________________________ test_trials_and_stops[B-None] _________________________
+
+tmp_path = PosixPath('/private/var/folders/qh/7vnlgwn15fx6rsf12ht0kyh80000gn/T/pytest-of-pandora2/pytest-4/test_trials_and_stops_B_None_0')
+condition = 'B', stop = None
+
+    @pytest.mark.parametrize("condition,stop", [("A",None),("B",None),("A",.2),("B",1.5),("B",5.3)])
+    def test_trials_and_stops(tmp_path,condition,stop):
+>       with Controller() as control:
+             ^^^^^^^^^^^^
+
+tests/test_greeting.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <reachy_lab2.trial.Controller object at 0x1063a7050>
+
+    def __enter__(self):
+        self.stop = threading.Event()
+        self.events = queue.SimpleQueue()
+        self.closed = threading.Event()
+        self.server = socket.socket()
+        if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        else:
+            # Reopen after TCP TIME_WAIT; an active listening socket still excludes us.
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        try:
+            self.server.bind(("127.0.0.1", CONTROL_PORT))
+            self.server.listen(4)
+            self.server.settimeout(.1)
+        except OSError as exc:
+            self.server.close()
+            if exc.errno == errno.EADDRINUSE:
+>               raise RuntimeError("Another trial controller is active (port 18731)") from None
+E               RuntimeError: Another trial controller is active (port 18731)
+
+reachy_lab2/trial.py:55: RuntimeError
+_________________________ test_trials_and_stops[A-0.2] _________________________
+
+tmp_path = PosixPath('/private/var/folders/qh/7vnlgwn15fx6rsf12ht0kyh80000gn/T/pytest-of-pandora2/pytest-4/test_trials_and_stops_A_0_2_0')
+condition = 'A', stop = 0.2
+
+    @pytest.mark.parametrize("condition,stop", [("A",None),("B",None),("A",.2),("B",1.5),("B",5.3)])
+    def test_trials_and_stops(tmp_path,condition,stop):
+>       with Controller() as control:
+             ^^^^^^^^^^^^
+
+tests/test_greeting.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <reachy_lab2.trial.Controller object at 0x1063a7350>
+
+    def __enter__(self):
+        self.stop = threading.Event()
+        self.events = queue.SimpleQueue()
+        self.closed = threading.Event()
+        self.server = socket.socket()
+        if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        else:
+            # Reopen after TCP TIME_WAIT; an active listening socket still excludes us.
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        try:
+            self.server.bind(("127.0.0.1", CONTROL_PORT))
+            self.server.listen(4)
+            self.server.settimeout(.1)
+        except OSError as exc:
+            self.server.close()
+            if exc.errno == errno.EADDRINUSE:
+>               raise RuntimeError("Another trial controller is active (port 18731)") from None
+E               RuntimeError: Another trial controller is active (port 18731)
+
+reachy_lab2/trial.py:55: RuntimeError
+_________________________ test_trials_and_stops[B-1.5] _________________________
+
+tmp_path = PosixPath('/private/var/folders/qh/7vnlgwn15fx6rsf12ht0kyh80000gn/T/pytest-of-pandora2/pytest-4/test_trials_and_stops_B_1_5_0')
+condition = 'B', stop = 1.5
+
+    @pytest.mark.parametrize("condition,stop", [("A",None),("B",None),("A",.2),("B",1.5),("B",5.3)])
+    def test_trials_and_stops(tmp_path,condition,stop):
+>       with Controller() as control:
+             ^^^^^^^^^^^^
+
+tests/test_greeting.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <reachy_lab2.trial.Controller object at 0x1063a7d70>
+
+    def __enter__(self):
+        self.stop = threading.Event()
+        self.events = queue.SimpleQueue()
+        self.closed = threading.Event()
+        self.server = socket.socket()
+        if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        else:
+            # Reopen after TCP TIME_WAIT; an active listening socket still excludes us.
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        try:
+            self.server.bind(("127.0.0.1", CONTROL_PORT))
+            self.server.listen(4)
+            self.server.settimeout(.1)
+        except OSError as exc:
+            self.server.close()
+            if exc.errno == errno.EADDRINUSE:
+>               raise RuntimeError("Another trial controller is active (port 18731)") from None
+E               RuntimeError: Another trial controller is active (port 18731)
+
+reachy_lab2/trial.py:55: RuntimeError
+_________________________ test_trials_and_stops[B-5.3] _________________________
+
+tmp_path = PosixPath('/private/var/folders/qh/7vnlgwn15fx6rsf12ht0kyh80000gn/T/pytest-of-pandora2/pytest-4/test_trials_and_stops_B_5_3_0')
+condition = 'B', stop = 5.3
+
+    @pytest.mark.parametrize("condition,stop", [("A",None),("B",None),("A",.2),("B",1.5),("B",5.3)])
+    def test_trials_and_stops(tmp_path,condition,stop):
+>       with Controller() as control:
+             ^^^^^^^^^^^^
+
+tests/test_greeting.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <reachy_lab2.trial.Controller object at 0x105e382f0>
+
+    def __enter__(self):
+        self.stop = threading.Event()
+        self.events = queue.SimpleQueue()
+        self.closed = threading.Event()
+        self.server = socket.socket()
+        if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        else:
+            # Reopen after TCP TIME_WAIT; an active listening socket still excludes us.
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        try:
+            self.server.bind(("127.0.0.1", CONTROL_PORT))
+            self.server.listen(4)
+            self.server.settimeout(.1)
+        except OSError as exc:
+            self.server.close()
+            if exc.errno == errno.EADDRINUSE:
+>               raise RuntimeError("Another trial controller is active (port 18731)") from None
+E               RuntimeError: Another trial controller is active (port 18731)
+
+reachy_lab2/trial.py:55: RuntimeError
+____________________ test_tcp_stop_and_exclusive_controller ____________________
+
+    def test_tcp_stop_and_exclusive_controller():
+>       with Controller() as control:
+             ^^^^^^^^^^^^
+
+tests/test_greeting.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <reachy_lab2.trial.Controller object at 0x1059622a0>
+
+    def __enter__(self):
+        self.stop = threading.Event()
+        self.events = queue.SimpleQueue()
+        self.closed = threading.Event()
+        self.server = socket.socket()
+        if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        else:
+            # Reopen after TCP TIME_WAIT; an active listening socket still excludes us.
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        try:
+            self.server.bind(("127.0.0.1", CONTROL_PORT))
+            self.server.listen(4)
+            self.server.settimeout(.1)
+        except OSError as exc:
+            self.server.close()
+            if exc.errno == errno.EADDRINUSE:
+>               raise RuntimeError("Another trial controller is active (port 18731)") from None
+E               RuntimeError: Another trial controller is active (port 18731)
+
+reachy_lab2/trial.py:55: RuntimeError
+_________________ test_stuck_feedback_fails_not_false_success __________________
+
+tmp_path = PosixPath('/private/var/folders/qh/7vnlgwn15fx6rsf12ht0kyh80000gn/T/pytest-of-pandora2/pytest-4/test_stuck_feedback_fails_not_0')
+
+    def test_stuck_feedback_fails_not_false_success(tmp_path):
+        class Stuck(MockRobot):
+            def send(self,frame): pass
+>       with Controller() as control:
+             ^^^^^^^^^^^^
+
+tests/test_greeting.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <reachy_lab2.trial.Controller object at 0x1063a76b0>
+
+    def __enter__(self):
+        self.stop = threading.Event()
+        self.events = queue.SimpleQueue()
+        self.closed = threading.Event()
+        self.server = socket.socket()
+        if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        else:
+            # Reopen after TCP TIME_WAIT; an active listening socket still excludes us.
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        try:
+            self.server.bind(("127.0.0.1", CONTROL_PORT))
+            self.server.listen(4)
+            self.server.settimeout(.1)
+        except OSError as exc:
+            self.server.close()
+            if exc.errno == errno.EADDRINUSE:
+>               raise RuntimeError("Another trial controller is active (port 18731)") from None
+E               RuntimeError: Another trial controller is active (port 18731)
+
+reachy_lab2/trial.py:55: RuntimeError
+_________________ test_disconnect_and_failed_recovery_retained _________________
+
+tmp_path = PosixPath('/private/var/folders/qh/7vnlgwn15fx6rsf12ht0kyh80000gn/T/pytest-of-pandora2/pytest-4/test_disconnect_and_failed_rec0')
+
+    def test_disconnect_and_failed_recovery_retained(tmp_path):
+        class Broken(MockRobot):
+            def send(self,frame): raise ConnectionError("test disconnect")
+            def neutral(self,stop=None):
+                if getattr(self,"initialized",False): raise ConnectionError("test recovery failure")
+                self.initialized=True
+                return super().neutral(stop)
+>       with Controller() as control:
+             ^^^^^^^^^^^^
+
+tests/test_greeting.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <reachy_lab2.trial.Controller object at 0x1063a6840>
+
+    def __enter__(self):
+        self.stop = threading.Event()
+        self.events = queue.SimpleQueue()
+        self.closed = threading.Event()
+        self.server = socket.socket()
+        if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        else:
+            # Reopen after TCP TIME_WAIT; an active listening socket still excludes us.
+            self.server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        try:
+            self.server.bind(("127.0.0.1", CONTROL_PORT))
+            self.server.listen(4)
+            self.server.settimeout(.1)
+        except OSError as exc:
+            self.server.close()
+            if exc.errno == errno.EADDRINUSE:
+>               raise RuntimeError("Another trial controller is active (port 18731)") from None
+E               RuntimeError: Another trial controller is active (port 18731)
+
+reachy_lab2/trial.py:55: RuntimeError
+=========================== short test summary info ============================
+FAILED tests/test_greeting.py::test_trials_and_stops[A-None] - RuntimeError: ...
+FAILED tests/test_greeting.py::test_trials_and_stops[B-None] - RuntimeError: ...
+FAILED tests/test_greeting.py::test_trials_and_stops[A-0.2] - RuntimeError: A...
+FAILED tests/test_greeting.py::test_trials_and_stops[B-1.5] - RuntimeError: A...
+FAILED tests/test_greeting.py::test_trials_and_stops[B-5.3] - RuntimeError: A...
+FAILED tests/test_greeting.py::test_tcp_stop_and_exclusive_controller - Runti...
+FAILED tests/test_greeting.py::test_stuck_feedback_fails_not_false_success - ...
+FAILED tests/test_greeting.py::test_disconnect_and_failed_recovery_retained
+8 failed, 8 passed in 0.67s

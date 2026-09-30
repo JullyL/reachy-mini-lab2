@@ -1,0 +1,17 @@
+{"type": "daemon_status", "robot_name": "reachy_mini", "state": "running", "wireless_version": false, "desktop_app_daemon": false, "simulation_enabled": true, "mockup_sim_enabled": false, "no_media": true, "media_released": false, "camera_specs_name": "", "backend_status": {"motor_control_mode": "enabled", "error": null}, "error": null, "wlan_ip": null, "version": "1.11.0", "hardware_id": null, "face_target": {"detected": false, "x": null, "y": null, "roll": null, "ts": null}}
+2026-09-30T21:25:20.915370+00:00 TRIAL_START pre
+2026-09-30T21:25:21.515231+00:00 INITIAL_NEUTRAL pre
+2026-09-30T21:25:21.636954+00:00 BASELINE pre
+2026-09-30T21:25:21.802009+00:00 AUDIO_DEVICE pre
+2026-09-30T21:25:21.802158+00:00 PRE_HOLD_START 0.000s
+2026-09-30T21:25:22.802176+00:00 SPEECH_START 1.000s
+2026-09-30T21:25:22.802865+00:00 MOVEMENT_START 1.001s
+2026-09-30T21:25:23.141401+00:00 MOVEMENT_OBSERVED 1.339s
+2026-09-30T21:25:24.552784+00:00 SPEECH_END 2.751s
+2026-09-30T21:25:26.802378+00:00 MOVEMENT_END 5.000s
+2026-09-30T21:25:26.802378+00:00 POST_HOLD_START 5.000s
+2026-09-30T21:25:27.803571+00:00 CYCLE_END 6.001s
+2026-09-30T21:25:27.911164+00:00 RETURN_TO_NEUTRAL 6.109s
+2026-09-30T21:25:28.511960+00:00 NEUTRAL_RESULT 6.710s
+2026-09-30T21:25:28.513057+00:00 TRIAL_END 6.711s
+completed: /Users/pandora2/Documents/GitHub/reachy-mini-lab2/evidence/section1-2026-09-30/simulation/630eb2dc-a122-400a-bd93-cc285e45f94a.jsonl

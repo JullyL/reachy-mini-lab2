@@ -1,0 +1,14 @@
+{"type": "daemon_status", "robot_name": "reachy_mini", "state": "running", "wireless_version": false, "desktop_app_daemon": false, "simulation_enabled": true, "mockup_sim_enabled": false, "no_media": true, "media_released": false, "camera_specs_name": "", "backend_status": {"motor_control_mode": "enabled", "error": null}, "error": null, "wlan_ip": null, "version": "1.11.0", "hardware_id": null, "face_target": {"detected": false, "x": null, "y": null, "roll": null, "ts": null}}
+2026-09-30T21:34:06.910185+00:00 TRIAL_START pre
+2026-09-30T21:34:07.517875+00:00 INITIAL_NEUTRAL pre
+2026-09-30T21:34:07.638359+00:00 BASELINE pre
+2026-09-30T21:34:07.761491+00:00 AUDIO_DEVICE pre
+2026-09-30T21:34:07.761629+00:00 PRE_HOLD_START 0.000s
+2026-09-30T21:34:08.761629+00:00 SPEECH_START 1.000s
+2026-09-30T21:34:08.762398+00:00 MOVEMENT_START 1.001s
+2026-09-30T21:34:08.999249+00:00 MOVEMENT_OBSERVED 1.238s
+2026-09-30T21:34:10.266842+00:00 STOP_REQUESTED 2.505s
+2026-09-30T21:34:10.371710+00:00 RETURN_TO_NEUTRAL 2.610s
+2026-09-30T21:34:10.973938+00:00 NEUTRAL_RESULT 3.212s
+2026-09-30T21:34:10.974377+00:00 TRIAL_END 3.213s
+interrupted: /Users/pandora2/Documents/GitHub/reachy-mini-lab2/evidence/section1-2026-09-30/recorded-simulation/14c983bd-9802-4418-aad4-7aad6e603e1e.jsonl

@@ -1,0 +1,11 @@
+/Users/pandora2/.matplotlib is not a writable directory
+Matplotlib created a temporary cache directory at /var/folders/qh/7vnlgwn15fx6rsf12ht0kyh80000gn/T/matplotlib-edfqefz9 because there was an issue with the default path (/Users/pandora2/.matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Matplotlib is building the font cache; this may take a moment.
+Traceback (most recent call last):
+  File "/Users/pandora2/Documents/GitHub/reachy-mini-lab2/scripts/simulation_evidence.py", line 112, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/pandora2/Documents/GitHub/reachy-mini-lab2/scripts/simulation_evidence.py", line 109, in main
+    m=r['movement'];table.append(f"| {r['condition']} | {r['amplitude_deg']:g}° | {r['status']} | {m['right']['maximum_abs_displacement_deg']:.3f}° / {m['left']['maximum_abs_displacement_deg']:.3f}° | {r['recovery']['succeeded']} | {m['achieved_poll_hz']:.2f} |")
+                                                                                                   ~^^^^^^^^^
+KeyError: 'right'

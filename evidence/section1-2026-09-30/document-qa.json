@@ -1,0 +1,83 @@
+{
+  "rendered_pages": 14,
+  "section_1_pages": [
+    1,
+    2
+  ],
+  "all_pages_visually_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "visual_review": "No clipping, overlap, broken tables, missing glyphs or unwanted blank pages observed. Section 2 formatting preserved with pagination shift; Section 3 onward pixel comparison attached.",
+  "section_3_onward_pixel_comparison": [
+    {
+      "original_page": 2,
+      "revised_page": 4,
+      "pixels_identical": true
+    },
+    {
+      "original_page": 3,
+      "revised_page": 5,
+      "pixels_identical": true
+    },
+    {
+      "original_page": 4,
+      "revised_page": 6,
+      "pixels_identical": true
+    },
+    {
+      "original_page": 5,
+      "revised_page": 7,
+      "pixels_identical": true
+    },
+    {
+      "original_page": 6,
+      "revised_page": 8,
+      "pixels_identical": true
+    },
+    {
+      "original_page": 7,
+      "revised_page": 9,
+      "pixels_identical": true
+    },
+    {
+      "original_page": 8,
+      "revised_page": 10,
+      "pixels_identical": true
+    },
+    {
+      "original_page": 9,
+      "revised_page": 11,
+      "pixels_identical": true
+    },
+    {
+      "original_page": 10,
+      "revised_page": 12,
+      "pixels_identical": true
+    },
+    {
+      "original_page": 11,
+      "revised_page": 13,
+      "pixels_identical": true
+    },
+    {
+      "original_page": 12,
+      "revised_page": 14,
+      "pixels_identical": true
+    }
+  ],
+  "outside_section_1_structural_audit": "docx-preservation.json",
+  "docx_sha256": "67a2318b76f18180997ef5bf7c83b10fcdfe148fdcf20267e938386e938c7a04"
+}

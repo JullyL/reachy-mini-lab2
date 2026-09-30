@@ -1,0 +1,26 @@
+{
+  "basis": "Read-only HTTP feedback from verified MuJoCo daemon while official Telepresence UI operated",
+  "samples": 1780,
+  "duration_s": 99.97304177284241,
+  "head_angle_extrema_deg": {
+    "roll": [
+      -1.8640073981713976,
+      1.08962124448256
+    ],
+    "pitch": [
+      -0.42450546472731904,
+      28.958753683409288
+    ],
+    "yaw": [
+      -2.4599535993259765,
+      1.7027814953196452
+    ]
+  },
+  "antenna_control_exposed": false,
+  "audio_tested": false,
+  "manual_control_released_after_tab_closed": {
+    "state": "free",
+    "holder_name": null
+  },
+  "end_session_issue": "End session showed sleep then returned to live UI with remote_session lock. Closing tab released lock. Sleep antenna motion is not manual antenna teleoperation."
+}

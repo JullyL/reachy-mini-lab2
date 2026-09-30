@@ -1,0 +1,26 @@
+[
+  {
+    "event": "recording_start",
+    "utc_ms": 1790804462506
+  },
+  {
+    "event": "joystick_drag_head",
+    "utc_ms": 1790804462959
+  },
+  {
+    "event": "recenter_head_and_body",
+    "utc_ms": 1790804476276
+  },
+  {
+    "event": "end_session",
+    "utc_ms": 1790804501757
+  },
+  {
+    "event": "recording_end",
+    "utc_ms": 1790804503305
+  },
+  {
+    "event": "end_session_returned_live_UI_close_tab",
+    "utc_ms": 1790804545952
+  }
+]

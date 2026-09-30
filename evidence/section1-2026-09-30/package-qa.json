@@ -1,0 +1,33 @@
+{
+  "raw_archive_frames_verified": 2093,
+  "gallery_local_links_checked": 40,
+  "missing_gallery_links": [],
+  "capture_only_cli": {
+    "exit_code": 0,
+    "actual_input_frames": 3,
+    "decoded_output_frames": 3
+  },
+  "protected_paths_unchanged": [
+    "reachy_lab2",
+    "config",
+    "assets",
+    "study",
+    "tests",
+    "third_party",
+    "evidence/antenna-greeting",
+    "output/documents/HRI Report Lab 2 Section 3 Revised.docx"
+  ],
+  "physical_review_approved": false,
+  "simulation_batches_passed": {
+    "simulation": 7,
+    "recorded-simulation": 7
+  },
+  "delivered_video_count": 10,
+  "credential_shape_scan_matches": 0,
+  "removed_task_temporary_capture_directories": [
+    "/tmp/section1-live-frames",
+    "/tmp/section1-telepresence-live",
+    "/tmp/section1-telepresence-frames",
+    "/tmp/section1-capture-cli-check"
+  ]
+}

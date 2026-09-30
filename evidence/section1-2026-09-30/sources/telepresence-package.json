@@ -1,0 +1,30 @@
+{
+  "name": "telepresence",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Telepresence app for Reachy Mini: live camera feed, bidirectional audio, and joystick head/body control - powered by the Reachy Mini WebRTC SDK.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^9.0.1",
+    "@mui/material": "^9.0.1",
+    "@pollen-robotics/reachy-mini-sdk": "1.10.0-rc.5",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.7.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react-swc": "^4.0.0",
+    "typescript": "^5.7.3",
+    "vite": "^7.2.1"
+  }
+}

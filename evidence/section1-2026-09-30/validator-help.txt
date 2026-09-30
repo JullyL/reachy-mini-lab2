@@ -1,0 +1,11 @@
+usage: validate_simulation.py [-h] --out OUT [--silent]
+                              [--audio-device AUDIO_DEVICE] [--commissioning]
+
+Actual MuJoCo feedback tests; never participant data or physical validation.
+
+options:
+  -h, --help            show this help message and exit
+  --out OUT
+  --silent              Motion-only check; cannot establish audio timing
+  --audio-device AUDIO_DEVICE
+  --commissioning       Also rehearse half-amplitude A/B in simulation

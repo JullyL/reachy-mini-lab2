@@ -1,0 +1,17 @@
+{"type": "daemon_status", "robot_name": "reachy_mini", "state": "running", "wireless_version": false, "desktop_app_daemon": false, "simulation_enabled": true, "mockup_sim_enabled": false, "no_media": true, "media_released": false, "camera_specs_name": "", "backend_status": {"motor_control_mode": "enabled", "error": null}, "error": null, "wlan_ip": null, "version": "1.11.0", "hardware_id": null, "face_target": {"detected": false, "x": null, "y": null, "roll": null, "ts": null}}
+2026-09-30T21:30:31.130386+00:00 TRIAL_START pre
+2026-09-30T21:30:31.726014+00:00 INITIAL_NEUTRAL pre
+2026-09-30T21:30:31.842269+00:00 BASELINE pre
+2026-09-30T21:30:31.976114+00:00 AUDIO_DEVICE pre
+2026-09-30T21:30:31.976245+00:00 PRE_HOLD_START 0.000s
+2026-09-30T21:30:32.976268+00:00 SPEECH_START 1.000s
+2026-09-30T21:30:32.976508+00:00 MOVEMENT_START 1.000s
+2026-09-30T21:30:33.311289+00:00 MOVEMENT_OBSERVED 1.335s
+2026-09-30T21:30:34.725571+00:00 SPEECH_END 2.749s
+2026-09-30T21:30:36.976621+00:00 MOVEMENT_END 5.000s
+2026-09-30T21:30:36.976621+00:00 POST_HOLD_START 5.000s
+2026-09-30T21:30:37.977677+00:00 CYCLE_END 6.001s
+2026-09-30T21:30:38.085673+00:00 RETURN_TO_NEUTRAL 6.109s
+2026-09-30T21:30:38.683712+00:00 NEUTRAL_RESULT 6.707s
+2026-09-30T21:30:38.684343+00:00 TRIAL_END 6.708s
+completed: evidence/section1-2026-09-30/capture-A/1663e49c-95f0-462c-8557-939fd42007d0.jsonl

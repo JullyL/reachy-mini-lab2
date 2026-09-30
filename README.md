@@ -1,5 +1,7 @@
 # Reachy Mini antenna-amplitude greeting study
 
+Section 1 is prepared for Mac execution: [workflow and physical checklist](docs/SECTION1_MAC.md), [evidence/status](evidence/section1-2026-09-30/README.md), and [simulation recordings](evidence/section1-2026-09-30/index.html). The latest report is `output/documents/HRI Report Lab 2 Section 1 Prepared.docx`; only Section 1 differs from the retained Section 3 Revised source.
+
 One reproducible greeting, one manipulation: `antenna_amplitude_deg`, provisionally **A=10°**, **B=30°** maximum displacement per antenna from calibrated neutral. SDK antenna array order is **right, left**. Left follows neutral → +A → −A → neutral; right signs are reversed. Segment durations are 1, 2, 1 s with minimum-jerk interpolation. One second of neutral precedes and follows the movement, giving a six-second cycle. The same prerecorded “Hello, nice to meet you” WAV starts at t=1 s. Increasing amplitude at fixed timing also increases speed and acceleration.
 
 The head target is identity and base yaw zero throughout the greeting. Wobbling, head tracking and automatic body yaw are disabled. There is no microphone, live LLM response, spontaneous emotion playback, or per-condition audio setting. Computer-speaker output is used; fix the device, speaker location and OS volume across A/B, and document these in the session sheet.
@@ -115,4 +117,4 @@ Empty raw templates intentionally fail with “No participant responses.” Anal
 
 `reachy_lab2/`, `config/`, and `assets/greeting/` contain the active app. `scripts/` and `tests/` support reproducibility; `study/` contains the protocol, survey, data dictionary, and empty data templates. `third_party/` retains the exact reused source and license evidence. `evidence/antenna-greeting/` retains the validation runs cited in the report, including the documented earlier failure.
 
-`output/documents/HRI Report Lab 2 Section 3 Revised.docx` is the current report. The Section 5 Draft is retained solely as the source baseline for the section-preservation audit; it is not the submission copy. The local `.venv/` remains installed for running the app and is excluded from Git.
+`output/documents/HRI Report Lab 2 Section 3 Revised.docx` is the preserved source for the Section 1 revision. The Section 5 Draft is retained solely as the source baseline for the section-preservation audit; it is not the submission copy. The local `.venv/` remains installed for running the app and is excluded from Git.
