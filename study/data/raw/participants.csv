@@ -1,6 +1,5 @@
-| participant_id | agreement | age_band | robot_experience | reachy_experience | assigned_order | actual_order | date | operator |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| P01 | yes | 18–24 | none | no | AB | AB | 2026-09-30 | Charlotte Ma |
-| P02 | yes | 18–24 | none | no | BA | BA | 2026-09-30 | Charlotte Ma |
-| P03 | yes | 18–24 | prior experience | no | AB | AB | 2026-09-30 | Jully Li |
-| P04 | yes | 18–24 | none | no | BA | BA | 2026-09-30 | Charlotte Ma |
+participant_id,agreement,age_band,robot_experience,reachy_experience,assigned_order,actual_order,date,operator
+P01,yes,18-24,none,no,AB,AB,2026-09-30,Charlotte Ma
+P02,yes,18-24,none,no,BA,BA,2026-09-30,Charlotte Ma
+P03,yes,18-24,prior experience,no,AB,AB,2026-09-30,Jully Li
+P04,yes,18-24,none,no,BA,BA,2026-09-30,Charlotte Ma
