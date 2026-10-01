@@ -1,1 +1,9 @@
-participant_id,trial_id,condition,attempt,date,kind,description,resolution,missing_reason
+participant_id,condition,deviation
+P01,A,none
+P01,B,none
+P02,A,none
+P02,B,none
+P03,A,none
+P03,B,none
+P04,A,none
+P04,B,none
