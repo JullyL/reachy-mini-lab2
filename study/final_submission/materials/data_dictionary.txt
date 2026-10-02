@@ -1,0 +1,53 @@
+Appendix D Data dictionary
+
+The canonical analysis file is study/final_submission/analysis/analysis_ready.csv. It contains eight participant-by-condition rows, with one A and one B row for P01–P04. Blank or NA means unobserved, not zero. No HRIES items are imputed; pairs require both conditions. Raw sources remain unchanged.
+
+Field or field group | Definition and coding
+
+participant_id | De-identified participant P01–P04
+
+gender and age_band | Workbook gender; register age band 18–24
+
+robot_experience | Register category none or prior experience
+
+reachy_experience | Register category yes/no; all no in this pilot
+
+agreement | Register participation agreement yes/no
+
+session_date and operator | From participants.csv; date 2026-09-30, facilitator/operator name
+
+condition | A = 10°; B = 30° maximum displacement per antenna
+
+antenna_amplitude_deg | Reported command setting 10.0 or 30.0 degrees
+
+order and greeting_number | AB/BA and presentation position 1/2
+
+study_version and survey_version | antenna-greeting-v1 and HRIES-greeting-v1
+
+soc_1–soc_4 | Warm, Likeable, Trustworthy, Friendly; integer 1–7
+
+ani_1–ani_4 | Alive, Natural, Real, Human-like; integer 1–7
+
+age_1–age_4 | Self-reliant, Rational, Intentional, Intelligent; integer 1–7. age here means agency, not participant age
+
+dis_1–dis_4 | Creepy, Scary, Uncanny, Weird; integer 1–7
+
+sociability, animacy, agency, disturbance | Mean of the respective four items only when all four exist; higher disturbance means more disturbance
+
+valence | 1 very negative; 4 neutral; 7 very positive
+
+arousal | 1 very low activation; 4 moderate; 7 very high activation
+
+movement_size | 1 very small; 7 very large; administered last
+
+qualitative_response | Verbatim workbook wording, including original apostrophe typography
+
+completion | 1 recorded completed; 0 interrupted/failed; missing if unobserved
+
+completion_source | Recorded worksheet outcome; physical logs unavailable
+
+failure_interruption_reason | Raw free text; blank where not recorded
+
+protocol_deviation | deviations.csv; none recorded for all eight records
+
+Output files add explicit labels: condition_summary.csv uses mean, sample_sd, median, and n; B_minus_A denotes paired differences. paired_differences.csv records A, B, and B_minus_A for each participant and measure. completion_summary.csv uses recorded_trials as its denominator. qualitative_coding.csv adds the descriptive category; audit.json records source hashes, missingness, and verification limits.

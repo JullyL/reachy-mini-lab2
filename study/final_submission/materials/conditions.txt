@@ -1,0 +1,37 @@
+Appendix A Conditions and implementation
+
+Study version antenna-greeting-v1. The parameter antenna_amplitude_deg is maximum displacement from calibrated neutral per antenna. These are reported study settings; the archived physical verification record remains pending.
+
+Property | Condition A | Condition B
+
+Maximum displacement | 10° = 0.174533 rad | 30° = 0.523599 rad
+
+Full excursion | 20° | 60°
+
+Left antenna waypoints | 0 → +10 → −10 → 0° | 0 → +30 → −30 → 0°
+
+Right antenna waypoints | 0 → −10 → +10 → 0° | 0 → −30 → +30 → 0°
+
+SDK array order | Right then left | Right then left
+
+Prehold and posthold | 1 s each | 1 s each
+
+Movement segment durations | 1 s, 2 s, 1 s | 1 s, 2 s, 1 s
+
+Interpolation and command rate | Minimum jerk at 50 Hz | Minimum jerk at 50 Hz
+
+Scheduled motion and audio start | t = 1 s | t = 1 s
+
+Scheduled motion end and cycle end | t = 5 s and t = 6 s | t = 5 s and t = 6 s
+
+Audio and software gain | hello.wav at gain 1.0 | Same file and gain
+
+Head target and base yaw | Identity pose and 0 rad | Identity pose and 0 rad
+
+Greeting exposure | One completed greeting | One completed greeting
+
+Neutral reset between conditions | 30 s after questionnaire | 30 s after questionnaire
+
+In both conditions, the participant first says “Hello”; the facilitator then triggers the prepared robot response. The six-second cycle measures the robot’s response, excluding the participant’s initiation and operator delay. The exact WAV is assets/greeting/hello.wav at 16,000 Hz. SHA-256: 87306852e02c15f481cc53773a3f28d1722a8dca5318194053fe30300a695c06. Replay this file rather than regenerating speech. Physical speaker device and operating-system volume must be recorded for a future replication; they are unavailable for the original sessions.
+
+Configuration tolerances specify a 50 Hz feedback-poll target, minimum 20 Hz, ±3° excursion tolerance, ±2° neutral/head rotation/base yaw tolerance, 2 mm head translation tolerance, and ±50 ms timing tolerance. These are engineering targets, not achieved measurements in the submitted participant data. Initial commissioning used half amplitudes of 5° and 15° in the protocol; those values are not participant conditions.

@@ -1,0 +1,44 @@
+Appendix C Post greeting questionnaire
+
+Participant code __________   Greeting number 1 / 2
+Survey version HRIES-greeting-v1
+
+“Based on the greeting you just experienced, rate how well each term describes Reachy Mini. Enter one number from 1 to 7 for each term.”
+
+1 Completely NOT capable   2 Moderately NOT capable
+3 Slightly NOT capable   4 Undecided   5 Slightly capable
+6 Moderately capable   7 Completely capable
+
+1 Warm  ______	2 Likeable  ______
+
+3 Trustworthy  ______	4 Friendly  ______
+
+5 Alive  ______	6 Natural  ______
+
+7 Real  ______	8 Human-like  ______
+
+9 Self-reliant  ______	10 Rational  ______
+
+11 Intentional  ______	12 Intelligent  ______
+
+13 Creepy  ______	14 Scary  ______
+
+15 Uncanny  ______	16 Weird  ______
+
+Additional questions in administration order
+
+Valence  “How positive or negative did Reachy Mini’s apparent emotional state seem?”
+1 very negative   4 neutral   7 very positive   Response ______
+
+Arousal  “How emotionally activated did Reachy Mini seem?”
+1 very low activation/sleepy   4 moderate activation   7 very high activation/aroused
+Activation may be positive or negative.   Response ______
+
+Open response  “How would you describe Reachy Mini during this greeting, and what influenced your impression?”
+____________________________________________________________________
+____________________________________________________________________
+
+Movement size  “How large were the antenna movements during this greeting?”
+1 very small   7 very large   Response ______
+
+Facilitator scoring note: items 1–4 sociability, 5–8 animacy, 9–12 agency, and 13–16 disturbance. Require all four items per mean; do not form a total score. The response label ordering is the documented study adaptation of Mauliana et al. (2025), Supplementary Table S1. Keep valence and arousal separate from HRIES.

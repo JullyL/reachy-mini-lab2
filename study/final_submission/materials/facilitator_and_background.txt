@@ -1,0 +1,30 @@
+Appendix B Facilitator and participant materials
+
+Preparation and enrollment
+
+Before enrollment, check robot state, unobstructed clearance, neutral return, the stop control, the frozen audio/configuration, and the questionnaire version. End other robot controllers. For new physical sessions, complete the repository’s commissioning and physical-review requirements; the archived gate must not be treated as approved. Prepare the assigned order without displaying A/B amplitudes to the participant.
+
+Read: “You will experience two robot greetings and answer questions about each. Participation is voluntary; you may skip questions or stop at any time. Responses use a participant code. Do you agree to participate?” Record agreement without storing participant names in the dataset. Written notes are used; participant recording requires separate agreement.
+
+Background form
+
+Participant code __________   Agreement yes / no   Age band __________
+Gender optional __________
+Prior experience with physical robots none / prior experience / prefer not to answer
+Prior experience with Reachy Mini yes / no / prefer not to answer
+
+The retained dataset summarizes physical-robot experience as none or prior experience. The earlier protocol draft proposed none/occasional/frequent; no occasional/frequent distinctions are available, and none are reconstructed.
+
+Condition administration
+
+Read before each greeting: “Please face the robot and say ‘Hello’ to begin. Watch the robot’s response. When it finishes, describe your impression of the robot using the questionnaire. There are no right or wrong answers.”
+
+Have the assigned response ready. After the participant says “Hello,” use the operator trigger to start that response without naming the amplitude. Record completion, interruption/failure, operator intervention, and environmental changes. Administer Appendix C without coaching: HRIES first, then valence, arousal, the verbatim open response, and movement size last. Do not repeat a greeting to change a rating.
+
+After the first questionnaire, maintain the neutral pose for 30 seconds, then repeat the same instructions and measures for the second condition. If an interruption or technical fault prevents completion, preserve its record, resolve the problem, and allow at most one replacement; flag prior exposure. Stop the condition if the replacement also fails. Use ratings from the first completed attempt.
+
+Debrief and record check
+
+Read: “The greetings differed in antenna movement size. We are studying whether this changes perceived emotion and sociability. Thank you for participating.” Invite questions. Check participant code, assigned and actual order, greeting number, responses, and any faults/repeats. Preserve missing responses rather than filling them in.
+
+Session record fields: date; facilitator/operator; actual distance and viewing angle; room; speaker device and volume; robot identity; calibrated neutral; configuration/audio/code hashes; condition and amplitude; attempt/repeat identifier; start/end; completion and reason; achieved joint feedback; head/base checks; acoustic timing; neutral recovery; environmental notes. These fields define what a replication should retain; they do not imply that all were available for this pilot.

@@ -9,6 +9,8 @@ Potential final project: expressive greetings that communicate intended social i
 
 Flow: frozen WAV → Conversation PCM converter → custom scheduled output; custom amplitude trajectory → Emotions parser → single SDK scheduler → measured joint feedback; stop/end → Emotions transition calculation → custom neutral recovery verification.
 
+Participant interaction: the participant says “Hello” first, then the facilitator uses the operator trigger to start the already prepared “Hello, nice to meet you” response with the assigned antenna movement. The six-second cycle covers the robot response, excluding participant speech and operator delay. This human-initiated exchange uses fixed playback rather than automatic speech recognition or live response generation.
+
 These are two **app components**, not two complete running apps. The PCM converter is a small component; no claim is made to live conversation integration. The greeting trajectory, scheduler, measurements, study logic and analysis are our implementation. The reused code has a real execution path, not merely similar functionality. Removing the converter breaks the audio input path; removing the Emotions ports removes the trajectory ingestion and neutral-transition calculations.
 
 ## Provenance verification

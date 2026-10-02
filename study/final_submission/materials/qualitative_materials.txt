@@ -1,0 +1,43 @@
+Appendix E Qualitative responses and coding rules
+
+Responses below reproduce the raw questionnaire workbook in recorded presentation order. One descriptive category is assigned per response. These are short accounts of a greeting rather than a validated qualitative measure.
+
+P01   Condition A   Robotic or mechanical impression
+
+“The tone was very flat, and the speaking pace and transitions between words were smooth and slow. It did not feel very enthusiastic.”
+
+P01   Condition B   Increased liveliness or interactivity
+
+“The tone was slightly more upbeat.”
+
+P02   Condition B   Robotic or mechanical impression
+
+“It felt robotic, cold, and mechanical.”
+
+P02   Condition A   Little or no perceived difference
+
+“It did not feel very different from the previous one.”
+
+P03   Condition A   Robotic or mechanical impression
+
+“It should interact with me more. The tone sounded quite robotic.”
+
+P03   Condition B   Increased liveliness or interactivity
+
+“It felt more interactive, and the speaking pace seemed a little faster, although I’m not sure if that was just my own perception.”
+
+P04   Condition B   Little or no perceived difference
+
+“I didn’t have any particular impression.”
+
+P04   Condition A   Little or no perceived difference
+
+“I didn’t have any particular impression.”
+
+Category definitions
+
+Robotic or mechanical impression: explicit descriptions of flat, robotic, cold, mechanical, or unenthusiastic behavior. P01 A, P02 B, and P03 A; 3 responses. P03 A also requests greater interaction, but its observed greeting description is robotic.
+
+Increased liveliness or interactivity: explicit descriptions of a more upbeat or interactive greeting. P01 B and P03 B; 2 responses. P03’s perceived faster speech and uncertainty are retained in the full response, rather than removed from the interpretation.
+
+Little or no perceived difference: an explicit lack of difference or lack of a particular impression. P02 A and P04 A/B; 3 responses. This category combines two kinds of weak response and should not be interpreted as proof that no perceptual difference occurred.

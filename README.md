@@ -1,6 +1,12 @@
 # Reachy Mini antenna-amplitude greeting study
 
-Section 1 is prepared for Mac execution: [workflow and physical checklist](docs/SECTION1_MAC.md), [evidence/status](evidence/section1-2026-09-30/README.md), and [simulation recordings](evidence/section1-2026-09-30/index.html). The latest report is `output/documents/HRI Report Lab 2 Section 1 Prepared.docx`; only Section 1 differs from the retained Section 3 Revised source.
+The final Part 8 report is [HRI Lab 2 Final Report](output/documents/HRI%20Lab%202%20Final%20Report.docx), rewritten from the newly supplied `HRI Report Lab 2 (1).docx`, rather than an earlier repository DOCX. The report covers Introduction, Method, Results, Discussion, References, and complete study appendices. [Analysis outputs and participant materials](study/final_submission/) reproduce its questionnaire results.
+
+The pilot has **4 participants, 8 condition records, 4 complete A/B pairs, and no missing questionnaire ratings or excluded records**. Condition A is **10°** and Condition B is **30°** maximum displacement from neutral per antenna. Recorded completion is **4/4 in each condition**. Mean sociability is **A 3.6875, B 4.3125, paired B−A +0.625**; arousal is **A 3.75, B 4.50, +0.75**; valence is **A 4.75, B 5.25, +0.50**. Report figures use these same underlying values.
+
+**Physical participant logs are missing from this submission.** The study team reports that they are retained on another person's computer. Calibration, physical review, achieved excursion/timing, and exact room/audio settings cannot be independently verified here. Pending review/configuration fields remain unchanged. Recorded completion must not be treated as telemetry-verified delivery. The questionnaire analysis is reproducible; full physical-session verification remains incomplete.
+
+Earlier Section 1 work is retained as technical history: [Mac workflow](docs/SECTION1_MAC.md), [evidence/status](evidence/section1-2026-09-30/README.md), and [simulation recordings](evidence/section1-2026-09-30/index.html). Earlier repository DOCX revisions are not the final report.
 
 One reproducible greeting, one manipulation: `antenna_amplitude_deg`, provisionally **A=10°**, **B=30°** maximum displacement per antenna from calibrated neutral. SDK antenna array order is **right, left**. Left follows neutral → +A → −A → neutral; right signs are reversed. Segment durations are 1, 2, 1 s with minimum-jerk interpolation. One second of neutral precedes and follows the movement, giving a six-second cycle. The same prerecorded “Hello, nice to meet you” WAV starts at t=1 s. Increasing amplitude at fixed timing also increases speed and acceleration.
 
@@ -81,7 +87,7 @@ python -m reachy_lab2 session --participant P01 --condition A --operator OP1 --b
 python -m reachy_lab2 session --participant P01 --condition B --operator OP1 --backend physical --host reachy-mini.local --audio-device 2
 ```
 
-After A, collect HRIES, valence, arousal, open response, then movement size. The B command prompts after the first questionnaire and enforces a 30-second neutral reset; reverse A/B for a BA assignment. Each command performs one greeting only. Participant replies “Hello” after it finishes. Allow 3–5 minutes for instructions, the greeting and questionnaire; section 5.3's instructor-confirmation placeholder remains unresolved.
+In each condition, have the response ready and ask the participant to say “Hello” to initiate the exchange. The facilitator then presses Enter to start Reachy Mini’s prepared “Hello, nice to meet you” response; the archived app does not automatically recognize speech. Each command performs one robot response only. After A, collect HRIES, valence, arousal, open response, then movement size. The B command prompts after the first questionnaire and enforces a 30-second neutral reset; reverse A/B for a BA assignment. Allow 3–5 minutes for instructions, the greeting exchange and questionnaire; actual session durations were not recorded.
 
 The first completed attempt supplies ratings. If interrupted or failed, document the problem, resolve it and allow only one replacement with `--repeat-of ORIGINAL_TRIAL_UUID`; preserve both logs and record prior exposure. Stop after a second failure. Never repeat or exclude based on ratings. `study/SURVEY.md` preserves the HRIES label swaps 2/3 and 5/6, sociability as primary, and separate exploratory valence/arousal.
 
@@ -108,13 +114,16 @@ Command and predicted-DAC onset target t=1 s (±50 ms), motion end t=5 s (±50 m
 ## Analysis and evidence
 
 ```sh
-python -m reachy_lab2.analysis --responses study/data/raw/responses.csv --logs logs --out analysis/pilot-v1
+python -m pip install -r study/analysis-requirements.txt
+python scripts/analyze_report_data.py --out analysis/reproduced-pilot
 ```
 
-Empty raw templates intentionally fail with “No participant responses.” Analysis requires matching physical study logs, retains missing items, scores four separate HRIES means, reports B−A pairs, keeps valence/arousal separate, produces a paired HRIES figure and a qualitative coding sheet, and audits all observed attempts for completion. It does not invent data or exclude an unexpected manipulation-check rating. See [VALIDATION.md](VALIDATION.md) for completed and pending checks.
+This descriptive path reads the retained raw questionnaire XLSX, cross-checks its numeric and text responses against `responses.csv`, merges the participant register, and reproduces all scores, paired summaries, recorded completion, qualitative coding, and both paired figures. Its audit records source hashes and the missing physical logs. Original spreadsheets remain unchanged: the older analysis-ready workbook contains stray `40` entries in date/failure/notes cells and is retained only for provenance. The regenerated CSV uses raw responses and register dates/deviations instead.
+
+The original `python -m reachy_lab2.analysis` module is a separate, stricter path for its richer response schema and matching eligible physical trial logs. The present raw files lack those trial identifiers, so that command does not reproduce this submission as-is. No synthetic logs are substituted. [VALIDATION.md](VALIDATION.md) preserves earlier software/simulation checks and their historical pending status; they are not participant evidence.
 
 ## Repository contents
 
-`reachy_lab2/`, `config/`, and `assets/greeting/` contain the active app. `scripts/` and `tests/` support reproducibility; `study/` contains the protocol, survey, data dictionary, and empty data templates. `third_party/` retains the exact reused source and license evidence. `evidence/antenna-greeting/` retains the validation runs cited in the report, including the documented earlier failure.
+`reachy_lab2/`, `config/`, and `assets/greeting/` contain the active app. `scripts/` and `tests/` support reproducibility; `study/` contains the protocol, survey, data dictionary, collected raw data, and final descriptive analysis/materials. `third_party/` retains the exact reused source and license evidence. `evidence/antenna-greeting/` retains the technical validation runs, including the documented earlier failure.
 
-`output/documents/HRI Report Lab 2 Section 3 Revised.docx` is the preserved source for the Section 1 revision. The Section 5 Draft is retained solely as the source baseline for the section-preservation audit; it is not the submission copy. The local `.venv/` remains installed for running the app and is excluded from Git.
+The earlier Section 1 Prepared, Section 3 Revised, and Section 5 Draft DOCX files are historical revisions, not the submission copy. The local `.venv/` remains installed for running the app and is excluded from Git.
